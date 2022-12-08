@@ -1,17 +1,62 @@
 {
     "categoryCrime": {
-        "againstCollectiveSecurity": {
-          "OfTheFires": {
-            "OfForestFires": {
-              "modifiers": ["negligence", "lifethreatening", "severe"],
-              "weight": 0,
-              "associated_articles":
-                },
-              "associated_chapters":
-            },
-            "category_weight":
-            "associated_title":,
-        },
+        // "againstCollectiveSecurity": {
+        //   "OfTheFires": {
+        //     "OfForestFires": {
+        //       "modifiers": ["negligence", "lifethreatening", "severe"],
+        //       "weight": 0,
+        //       "associated_articles":
+        //         },
+        //       "associated_chapters":
+        //     },
+        //     "category_weight":
+        //     "associated_title":,
+        // },
+        "Homicide": {
+          "Intentional": {
+            "modifiers": ["vulnurable or underage victim", "prior sexual assualt", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
+            "weight": 0,
+            "associated_articles": [138, 139, 140]
+          },
+          "Reckless": {
+            "modifiers": ["negligence", "severity", "number of people"],
+            "weight": 0,
+            "associated_articles": [142]
+          },
+          "Preintentional": {
+            "modifiers": "", 
+            "weight": 0,
+            "associated_articles": []
+          },
+          "Leading to suicide": {
+            "modifiers": ["leading cause", "cooperation", "death execution", "vulnarable victim", "distribution online"], 
+            "weight": 0,
+            "associated_articles": 143
+          },
+          "associated_chapter": "Title I: Homicide and its forms"
+
+        }, 
+        "Assault": {
+          "Intentional": {
+            "subject": ["passive", "active"],
+            "modifiers":["health", "medical involvement", "means of assault", "cruelty", 
+          "treachery", "vulnurable or underage victim", "bond with a victim", "body mutilation"],
+          "weight": 0,
+          "associated_articles": [147, 148, 149, 150]
+          },
+          "Reckless": {
+            "modifiers":["vehicles", "firearms", "professional imprudence", "injuries"],
+            "weight": 0,
+            "associated_articles": [152]
+          },
+          "Gender based": {
+            "victim": "female",
+            "modifiers": ["aggression type"],
+            "weight": 0,
+            "associated_articles": [153]
+          }
+
+        }
         
     }
 }
