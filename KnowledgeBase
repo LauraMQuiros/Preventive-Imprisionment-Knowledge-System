@@ -1,1 +1,17 @@
-
+{
+    "categoryCrime": {
+        "againstCollectiveSecurity": {
+          "OfTheFires": {
+            "OfForestFires": {
+              "modifiers": ["negligence", "lifethreatening", "severe"],
+              "weight": 0,
+              "associated_articles":
+                },
+              "associated_chapters":
+            },
+            "category_weight":
+            "associated_title":,
+        },
+        
+    }
+}
