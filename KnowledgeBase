@@ -139,7 +139,7 @@
             },
             "Finantial malpractice":{ //chapters VII and VII bis
               "modifiers":["third-party damage", "public administration obstruction", "attempt",
-              "entirely responsible", "property destruction", "passive", "fraudulent accountability"
+              "entirely responsible", "property destruction", "passive", "fraudulent accountability",
               "cooperation", "vulnerable victim"
               ],
               "weight": 0,
@@ -176,7 +176,7 @@
                 "modifiers":["vulnerable victim"],
                 "weight": 0,
                 "associated_articles":[287, 288]
-              },
+              }
             },
             "Public property damage":{ //Combined "subtraction of sth of public/cultural use" and "public property"
               "modifiers":[],
