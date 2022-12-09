@@ -14,7 +14,7 @@
         // },
         "Homicide": {
           "Intentional": {
-            "modifiers": ["vulnurable or underage victim", "prior sexual assualt", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
+            "modifiers": ["vulnerable or underage victim", "prior sexual assault", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
             "weight": 0,
             "associated_articles": [138, 139, 140]
           },
@@ -29,7 +29,7 @@
             "associated_articles": []
           },
           "Leading to suicide": {
-            "modifiers": ["leading cause", "cooperation", "death execution", "vulnarable victim", "distribution online"], 
+            "modifiers": ["leading cause", "cooperation", "death execution", "vulnerable victim", "distribution online"],
             "weight": 0,
             "associated_articles": 143
           },
@@ -40,7 +40,7 @@
           "Intentional": {
             "subject": ["passive", "active"],
             "modifiers":["health", "medical involvement", "means of assault", "cruelty", 
-          "treachery", "vulnurable or underage victim", "bond with a victim", "body mutilation"],
+          "treachery", "vulnerable or underage victim", "bond with a victim", "body mutilation"],
           "weight": 0,
           "associated_articles": [147, 148, 149, 150]
           },
@@ -55,8 +55,82 @@
             "weight": 0,
             "associated_articles": [153]
           }
-
+        },
+        "Trafficking in human beings": {
+          "Trafficking": {
+            "modifiers":["victim is minor", "life, physical or mental integrity of victim been endangered",
+            "vulnerable victim", "abuse of authority/status", "part of organization", "leader of organization"],
+            "weight": 0,
+            "associated_articles": [177 bis]
+          },
+          "Provocation, conspiracy and proposition": {
+            "modifiers":[],
+            "weight": 0,
+            "associated_articles": [177 bis]
+          },
+          "associated_chapter": "Title VII bis: Trafficking in human beings"
+        },
+        "Omission of Duty to Relief": {
+          "Omitting Help": {
+            "modifiers":["preventing others to help"],
+            "weight": 0,
+            "associated_articles": [195]
+          },
+          "Causing Accident and Omitting Help": {
+            "modifiers":["imprudence"],
+            "weight": 0,
+            "associated_articles": [195]
+          },
+          "Omitting Help by Health Professional": {
+            "modifiers": [],
+            "weight": 0,
+            "associated_articles": [195, 196]
+          },
+          "associated_chapter": "Title IX: Of the omission of the duty of relief"
+        },
+        "Breach of Privacy": {
+          "Privacy Breach": {
+            "modifiers":["spread of breached information", "only partaking in spreading", "persons in charge or responsible",
+            "unauthorized use of personal data of the victim", "victim minor or disabled", "sensitive information",
+            "breach with goal of profit", "part of criminal organization", "abuse of authority"],
+            //Sensitive information: ideology, religion, beliefs, health, racial origin or sexual life
+            "weight": 0,
+            "associated_articles": [197, 197 quater, 198]
+          },
+          "Breach of Private Data Security": {
+            "modifiers":["part of criminal organization", "abuse of authority"],
+            "weight": 0,
+            "associated_articles": [197 bis, 197 quater, 198]
+          },
+          "Interception of Private Data": {
+            "modifiers":["part of criminal organization", "abuse of authority"],
+            "weight": 0,
+            "associated_articles": [197 bis, 197 quater, 198]
+          },
+          "Providing Computer Program or Passwords for Privacy Breach": {
+            "modifiers":["part of criminal organization", "abuse of authority"],
+            "weight": 0,
+            "associated_articles": [197 ter, 197 quater, 198]
+          },
+          "Revealing secrets known through profession": {
+            "modifiers":["obligation of confidentiality", "part of criminal organization"],
+            "weight": 0,
+            "associated_articles": [197 quater, 199]
+          },
+          "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter I : Of the discovery and revelation of secrets"
+        },
+        "Trespassing": {
+          "Break In": {
+            "modifiers":["violence", "abuse of authority"],
+            "weight": 0,
+            "associated_articles": [202, 204]
+          },
+          "Trespassing a place of profession or commercial establishment": {
+            "modifiers":["not leaving", "violence", "abuse of authority"],
+            "weight": 0,
+            "associated_articles": [203, 204]
+          },
+          "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter II : On trespassing, address of legal persons and establishments open to the public"
         }
-        
     }
 }
