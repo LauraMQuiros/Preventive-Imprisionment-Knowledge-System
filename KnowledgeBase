@@ -113,29 +113,32 @@
               "associated_articles":[268, 269, 287, 288, 234, 235, 236]
             },
             "Violent Theft":{
-              "modifiers":["cooperation", "vulnerable victim"],
+              "modifiers":["cooperation", "vulnerable victim", "necesity items", "luxury items", 
+              "electric items", "collaboration of underage children", "criminal organisation", "public institution",
+              "used residency"],
               "weight": 0,
-              "associated_articles":[268, 269, 287, 288]
+              "associated_articles":[268, 269, 287, 288, 235, 237, 238, 239, 240, 241, 242]
             },
             "Extorsion":{
               "modifiers":["cooperation", "vulnerable victim"],
               "weight": 0,
-              "associated_articles":[268, 269, 287, 288]
+              "associated_articles":[268, 269, 287, 288, 243]
             },
             "Vehicle Theft":{
-              "modifiers":["cooperation", "vulnerable victim"],
+              "modifiers":["cooperation", "vulnerable victim", "violence"],
               "weight": 0,
-              "associated_articles":[268, 269, 287, 288]
+              "associated_articles":[268, 269, 287, 288, 242, 244]
             },
-            "Identity Theft":{
-              "modifiers":["cooperation", "vulnerable victim"],
+            "Usurpation":{
+              "modifiers":["cooperation", "vulnerable victim", "residency", "land", "water"],
               "weight": 0,
-              "associated_articles":[268, 269, 287, 288]
+              "associated_articles":[268, 269, 287, 288, 245, 246, 247]
             },
             "Scamming":{
               "modifiers":["cooperation", "vulnerable victim"],
               "weight": 0,
-              "associated_articles":[268, 269, 287, 288]
+              "associated_articles":[268, 269, 287, 288, 248, 249, 250, 251, 151.2, 252, 253, 
+              254, 255, 256]
             },
             "Finantial malpractice":{
               "modifiers":["third-party damage", "public administration obstruction", "attempt",
@@ -149,33 +152,34 @@
             "Auction manipulation":{
               "modifiers":["cooperation", "vulnerable victim"],
               "weight": 0,
-              "associated_articles":[268, 269, 287, 288]
+              "associated_articles":[268, 269, 287, 288, 262]
             },
             "Property damage":{
               "modifiers":["cooperation", "vulnerable victim"],
               "weight": 0,
-              "associated_articles":[268, 269, 287, 288]
+              "associated_articles":[268, 269, 287, 288, 263, 264, 264.2, 264.3, 264.4, 265, 266, 267]
             },
             "Non-personal property violation or damage":{
               "Intellectual property":{
                 "modifiers":["vulnerable victim"],
                 "weight": 0,
-                "associated_articles":[287, 288]
+                "associated_articles":[287, 288, 270, 271, 272]
               },
               "Industrial property":{
                 "modifiers":["vulnerable victim"],
                 "weight": 0,
-                "associated_articles":[287, 288]
+                "associated_articles":[287, 288, 273, 274, 275, 276, 277]
               },
               "Market and consumption violations":{
                 "modifiers":["vulnerable victim"],
                 "weight": 0,
-                "associated_articles":[287, 288]
+                "associated_articles":[287, 288, 278, 279, 280, 281, 282, 282.2, 
+                283, 284, 285, 285.2, 285.3, 285.4, 286]
               },
               "Corruption in business":{
                 "modifiers":["vulnerable victim"],
                 "weight": 0,
-                "associated_articles":[287, 288]
+                "associated_articles":[287, 288, 286.2, 286.3, 286.4]
               }
             },
             "Public property damage":{
