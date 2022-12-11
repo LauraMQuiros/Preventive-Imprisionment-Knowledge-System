@@ -135,7 +135,8 @@
               "associated_articles":[268, 269, 287, 288, 245, 246, 247]
             },
             "Scamming":{
-              "modifiers":["cooperation", "vulnerable victim"],
+              "modifiers":["cooperation", "vulnerable victim", "quantity", "document fraud", 
+              "coercion", "necesity items", "luxury items", "electric items"],
               "weight": 0,
               "associated_articles":[268, 269, 287, 288, 248, 249, 250, 251, 151.2, 252, 253, 
               254, 255, 256]
@@ -143,19 +144,20 @@
             "Finantial malpractice":{
               "modifiers":["third-party damage", "public administration obstruction", "attempt",
               "entirely responsible", "property destruction", "passive", "fraudulent accountability",
-              "cooperation", "vulnerable victim"
-              ],
+              "cooperation", "vulnerable victim"],
               "weight": 0,
               "associated_articles":[257, 258, 258.2, 258.3, 259, 259.2, 260, 261, 261.2, 268, 269,
               287, 288]
             }, 
             "Auction manipulation":{
-              "modifiers":["cooperation", "vulnerable victim"],
+              "modifiers":["cooperation", "vulnerable victim", "abuse of authority/status"],
               "weight": 0,
               "associated_articles":[268, 269, 287, 288, 262]
             },
             "Property damage":{
-              "modifiers":["cooperation", "vulnerable victim"],
+              "modifiers":["cooperation", "vulnerable victim", "quantity", "public property damage",
+              "violence", "document fraud", "electric items", "illegal data compilation", "illegal data trade", 
+              "military property", "explosive"],
               "weight": 0,
               "associated_articles":[268, 269, 287, 288, 263, 264, 264.2, 264.3, 264.4, 265, 266, 267]
             },
