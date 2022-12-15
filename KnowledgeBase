@@ -1,295 +1,298 @@
 {
-    "categoryCrime": {
-      "CrimesAgainstPublicSecurity": {
-        "CatastrophicRisk": {
-          "NuclearManipulation":{
-            "modifiers": ["life threatening", "alteration of nuclear plant", "environmental damage", 
-            "entirely responsible", "negligence","illegal storage", "illegal production"],
-            "weight": 0,
-            "associated_articles": [341, 342, 343, 344, 345]
-          },
-          "Explosions":{
-            "modifiers": ["public property damage", "life threatening"],
-            "weight": 0,
-            "associated_articles": [346, 347]
-          },
-          "ExplosiveAgents":{
-            "modifiers": ["illegal manipulation", "illegal transport", "illegal ownership", "illegal trade", 
-            "negligent supervision", "negligent manipulation", "entirely responsible", "cooperation", 
-            "obstruction of security check", "deception of checkup", "unsubordination to public administration"],
-            "weight": 0,
-            "associated_articles": [348, 349, 350]
-          }
+  "categoryCrime": {
+    "CrimesAgainstPublicSecurity": {
+      "crime_category_weight": 1, 
+      "CatastrophicRisk": {
+        "NuclearManipulation":{
+          "modifiers": ["life threatening", "alteration of nuclear plant", "environmental damage", 
+          "entirely responsible", "negligence","illegal storage", "illegal production"],
+          "weight": 1,
+          "associated_articles": [341, 342, 343, 344, 345]
         },
-        "Fire": {
-          "Arson":{
-            "modifiers": ["negligence", "life threatening"],
-            "weight": 0,
-            "associated_articles": [358, 358.2, 351], 
-            "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
-          },
-          "Forest fire":{
-            "modifiers": ["negligence", "life threatening"],
-            "weight": 0,
-            "associated_articles": [358,358.2, 352, 352, 353, 354, 355],
-            "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
-          },
-          "Non-forest fire":{
-            "modifiers": ["negligence", "environmental damage"],
-            "weight": 0,
-            "associated_articles": [358, 358.2, 356],
-            "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
-          },
-          "Owned-Property fire":{
-            "modifiers": ["negligence", "fraudulent purpose", "environmental damage", "third-party damage"],
-            "weight": 0,
-            "associated_articles": [358, 358.2, 357],
-            "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
-          }
+        "Explosions":{
+          "modifiers": ["public property damage", "life threatening"],
+          "weight": 1,
+          "associated_articles": [346, 347]
         },
-        "PublicHealth": {
-          "modifiers": ["illegal manipulation", "illegal production", "illegal disposal",
-          "illegal trade", "expired product", "damaged product", "illegal product", "life threatening",
-          "medicinal drugs or sanitary product", "fraudulent information spread", "cooperation", "passive", "distribution", 
-          "document fraud", "government employee", "scale of distribution", "distribution to underage", 
-          "criminal organization", "public promotion", "doping", "coercion", "alimentary product", "poisoning",
-          "negligence", "recreational drugs", "quantity", "conspiracy", "encouragement of illegal activities"], 
-          "weight": 0,
-          "associated_articles": [359, 360, 361, 362, 362.2, 362.3, 362.4, 362.5, 362.6,
-          363, 364, 365, 366, 367, 368, 369, 370, 371, 172, 373, 374, 375, 376, 377, 378
-          ]
-        },
-        "RoadSafety": {
-          "speeding":{
-            "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
-            "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
-            "weight": 0,
-            "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
-          },
-          "reckless behavior":{
-            "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
-            "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
-            "weight": 0,
-            "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
-          },
-          "unlicensed driving":{
-            "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
-            "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
-            "weight": 0,
-            "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
-          }
-        },
-        "associated_chapter": "Title XVII: Crimes against Collective Security"
+        "ExplosiveAgents":{
+          "modifiers": ["illegal manipulation", "illegal transport", "illegal ownership", "illegal trade", 
+          "negligent supervision", "negligent manipulation", "entirely responsible", "cooperation", 
+          "obstruction of security check", "deception of checkup", "unsubordination to public administration"],
+          "weight": 0.75,
+          "associated_articles": [348, 349, 350]
+        }
       },
-        "Homicide": {
-          "Intentional": {
-            "modifiers": ["vulnerable/underage victim", "prior sexual assault", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
-            "weight": 0,
-            "associated_articles": [138, 139, 140]
-          },
-          "Reckless": {
-            "modifiers": ["negligence", "severity", "number of people"],
-            "weight": 0,
-            "associated_articles": [142]
-          },
-          "Preintentional": {
-            "modifiers": "", 
-            "weight": 0,
-            "associated_articles": []
-          },
-          "Leading to suicide": {
-            "modifiers": ["leading cause", "cooperation", "death execution", "vulnerable victim", "distribution online"],
-            "weight": 0,
-            "associated_articles": 143
-          },
-          "associated_chapter": "Title I: Homicide and its forms"
-
-        }, 
-          "Property and socioeconomic crimes":{
-            "Theft":{
-              "modifiers":["cooperation", "vulnerable victim", "item price", "necesity items", "luxury items", 
-              "electric items", "collaboration of underage children", "criminal organisation", "upon borrowing"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 234, 235, 236]
-            },
-            "Violent Theft":{
-              "modifiers":["cooperation", "vulnerable victim", "necesity items", "luxury items", 
-              "electric items", "collaboration of underage children", "criminal organisation", "public institution",
-              "used residency"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 235, 237, 238, 239, 240, 241, 242]
-            },
-            "Extorsion":{
-              "modifiers":["cooperation", "vulnerable victim"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 243]
-            },
-            "Vehicle Theft":{
-              "modifiers":["cooperation", "vulnerable victim", "violence"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 242, 244]
-            },
-            "Usurpation":{
-              "modifiers":["cooperation", "vulnerable victim", "residency", "land", "water"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 245, 246, 247]
-            },
-            "Scamming":{
-              "modifiers":["cooperation", "vulnerable victim", "quantity", "document fraud", 
-              "coercion", "necesity items", "luxury items", "electric items"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 248, 249, 250, 251, 151.2, 252, 253, 
-              254, 255, 256]
-            },
-            "Finantial malpractice":{
-              "modifiers":["third-party damage", "public administration obstruction", "attempt",
-              "entirely responsible", "property destruction", "passive", "fraudulent accountability",
-              "cooperation", "vulnerable victim"],
-              "weight": 0,
-              "associated_articles":[257, 258, 258.2, 258.3, 259, 259.2, 260, 261, 261.2, 268, 269,
-              287, 288]
-            }, 
-            "Auction manipulation":{
-              "modifiers":["cooperation", "vulnerable victim", "abuse of authority/status"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 262]
-            },
-            "Property damage":{
-              "modifiers":["cooperation", "vulnerable victim", "quantity", "public property damage",
-              "violence", "document fraud", "electric items", "illegal data compilation", "illegal data trade", 
-              "military property", "explosive"],
-              "weight": 0,
-              "associated_articles":[268, 269, 287, 288, 263, 264, 264.2, 264.3, 264.4, 265, 266, 267]
-            },
-            "Non-personal property violation or damage":{
-              "Intellectual property":{
-                "modifiers":["vulnerable victim"],
-                "weight": 0,
-                "associated_articles":[287, 288, 270, 271, 272]
-              },
-              "Industrial property":{
-                "modifiers":["vulnerable victim"],
-                "weight": 0,
-                "associated_articles":[287, 288, 273, 274, 275, 276, 277]
-              },
-              "Market and consumption violations":{
-                "modifiers":["vulnerable victim"],
-                "weight": 0,
-                "associated_articles":[287, 288, 278, 279, 280, 281, 282, 282.2, 
-                283, 284, 285, 285.2, 285.3, 285.4, 286]
-              },
-              "Corruption in business":{
-                "modifiers":["vulnerable victim"],
-                "weight": 0,
-                "associated_articles":[287, 288, 286.2, 286.3, 286.4]
-              }
-            },
-            "Public property damage":{
-              "modifiers":[],
-              "weight": 0,
-              "associated_articles":[289, 290, 291, 292, 293, 294, 296, 297]
-            },
-            "Money laundering":{
-              "modifiers":[],
-              "weight": 0,
-              "associated_articles":[298, 299, 300, 301, 302, 303, 304]
-            },
-            "associated_chapter": "Title XIII: Crimes against property and socioeconomic order"
-          },
-        "Assault": {
-          "Intentional": {
-            "subject": ["passive", "active"],
-            "modifiers":["health", "medical involvement", "means of assault", "cruelty", 
-          "treachery", "vulnerable or underage victim", "bond with a victim", "body mutilation"],
-          "weight": 0,
-          "associated_articles": [147, 148, 149, 150]
-          },
-          "Reckless": {
-            "modifiers":["vehicles", "firearms", "professional imprudence", "injuries"],
-            "weight": 0,
-            "associated_articles": [152]
-          },
-          "Gender based": {
-            "victim": "female",
-            "modifiers": ["aggression type"],
-            "weight": 0,
-            "associated_articles": [153]
-          }
+      "Fire": {
+        "Arson":{
+          "modifiers": ["negligence", "life threatening"],
+          "weight": 0.5,
+          "associated_articles": [358, 358 bis, 351],
+          "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
         },
-        "Trafficking in human beings": {
-          "Trafficking": {
-            "modifiers":["victim is minor", "life, physical or mental integrity of victim been endangered",
-            "vulnerable victim", "abuse of authority/status", "part of organization", "leader of organization"],
-            "weight": 0,
-            "associated_articles": [177.2]
+        "Forest fire":{
+          "modifiers": ["negligence", "life threatening"],
+          "weight": 0.25,
+          "associated_articles": [358,358 bis, 352, 352, 353, 354, 355],
+          "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
+        },
+        "Non-forest fire":{
+          "modifiers": ["negligence", "environmental damage"],
+          "weight": 0,
+          "associated_articles": [358, 358 bis, 356],
+          "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
+        },
+        "Owned-Property fire":{
+          "modifiers": ["negligence", "fraudulent purpose", "environmental damage", "third-party damage"],
+          "weight": 0.5,
+          "associated_articles": [358, 358 bis, 357],
+          "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
+        }
+      },
+      "PublicHealth": {
+        "modifiers": ["illegal manipulation", "illegal production", "illegal disposal",
+        "illegal trade", "expired product", "damaged product", "illegal product", "life threatening",
+        "medicinal drugs or sanitary product", "fraudulent information spread", "cooperation", "passive", "distribution", 
+        "document fraud", "government employee", "scale of distribution", "distribution to underage", 
+        "criminal organization", "public promotion", "doping", "coercion", "alimentary product", "poisoning",
+        "negligence", "recreational drugs", "quantity", "conspiracy", "encouragement of illegal activities"], 
+        "weight": 0,
+        "associated_articles": [359, 360, 361, 362, 362 bis, 362 ter, 362 quater, 362 quinquies, 362 sexies,
+        363, 364, 365, 366, 367, 368, 369, 370, 371, 172, 373, 374, 375, 376, 377, 378
+        ]
+      },
+      "RoadSafety": {
+        "speeding":{
+          "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
+          "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
+          "weight": 0,
+          "associated_articles": [379, 380, 381, 382, 382 bis, 383, 384, 385, 385 bis, 385 ter]
+        },
+        "reckless behavior":{
+          "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
+          "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
+          "weight": 0,
+          "associated_articles": [379, 380, 381, 382, 382 bis, 383, 384, 385, 385 bis, 385 ter]
+        },
+        "unlicensed driving":{
+          "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
+          "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
+          "weight": 0,
+          "associated_articles": [379, 380, 381, 382, 382 bis, 383, 384, 385, 385 bis, 385 ter]
+        }
+      },
+      "associated_chapter": "Title XVII: Crimes against Collective Security"
+    },
+      "Homicide": {
+        "crime_category_weight": 1, 
+        "Intentional": {
+          "modifiers": ["vulnerable or underage victim", "prior sexual assault", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
+          "weight": 0.75,
+          "associated_articles": [138, 139, 140]
+        },
+        "Reckless": {
+          "modifiers": ["negligence", "severity", "number of people"],
+          "weight": 0.5,
+          "associated_articles": [142]
+        },
+        "Preintentional": {
+          "modifiers": "", 
+          "weight": 0.25,
+          "associated_articles": []
+        },
+        "Leading to suicide": {
+          "modifiers": ["leading cause", "cooperation", "death execution", "vulnerable victim"],
+          "weight": 0.3,
+          "associated_articles": 143
+        },
+        "associated_chapter": "Title I: Homicide and its forms"
+
+      }, 
+        "Property and socioeconomic crimes":{
+          "crime_category_weight": 0.25,
+          "Theft":{
+            "modifiers":["cooperation", "vulnerable victim", "item price", "necesity items", "luxury items", 
+            "electric items", "collaboration of underage children", "criminal organisation", "upon borrowing"],
+            "weight": 0.25,
+            "associated_articles":[268, 269, 287, 288, 234, 235, 236]
           },
-          "Provocation, conspiracy and proposition": {
+          "Violent Theft":{
+            "modifiers":["cooperation", "vulnerable victim"],
+            "weight": 0.75,
+            "associated_articles":[268, 269, 287, 288]
+          },
+          "Extorsion":{
+            "modifiers":["cooperation", "vulnerable victim"],
+            "weight": 0.75,
+            "associated_articles":[268, 269, 287, 288]
+          },
+          "Vehicle Theft":{
+            "modifiers":["cooperation", "vulnerable victim"],
+            "weight": 0.25,
+            "associated_articles":[268, 269, 287, 288]
+          },
+          "Identity Theft":{
+            "modifiers":["cooperation", "vulnerable victim"],
+            "weight": 0.75,
+            "associated_articles":[268, 269, 287, 288]
+          },
+          "Scamming":{
+            "modifiers":["cooperation", "vulnerable victim"],
+            "weight": 0.25,
+            "associated_articles":[268, 269, 287, 288]
+          },
+          "Finantial malpractice":{ //chapters VII and VII bis
+            "modifiers":["third-party damage", "public administration obstruction", "attempt",
+            "entirely responsible", "property destruction", "passive", "fraudulent accountability",
+            "cooperation", "vulnerable victim"
+            ],
+            "weight": 0.5,
+            "associated_articles":[257, 258, 258 bis, 258 ter, 259, 259 bis, 260, 261, 261 bis, 268, 269,
+            287, 288]
+          }, 
+          "Auction manipulation":{
+            "modifiers":["cooperation", "vulnerable victim"],
+            "weight": 0.25,
+            "associated_articles":[268, 269, 287, 288]
+          },
+          "Property damage":{
+            "modifiers":["cooperation", "vulnerable victim"],
+            "weight": 0,
+            "associated_articles":[268, 269, 287, 288]
+          },
+          "Non-personal property violation or damage":{
+            "Intellectual property":{
+              "modifiers":["vulnerable victim"],
+              "weight": 0,
+              "associated_articles":[287, 288]
+            },
+            "Industrial property":{
+              "modifiers":["vulnerable victim"],
+              "weight": 0,
+              "associated_articles":[287, 288]
+            },
+            "Market and consumption violations":{
+              "modifiers":["vulnerable victim"],
+              "weight": 0,
+              "associated_articles":[287, 288]
+            },
+            "Corruption in business":{
+              "modifiers":["vulnerable victim"],
+              "weight": 0,
+              "associated_articles":[287, 288]
+            }
+          },
+          "Public property damage":{ //Combined "subtraction of sth of public/cultural use" and "public property"
             "modifiers":[],
             "weight": 0,
-            "associated_articles": [177.2]
+            "associated_articles":[289, 290, 291, 292, 293, 294, 296, 297]
           },
-          "associated_chapter": "Title VII bis: Trafficking in human beings"
+          "Money laundering":{
+            "modifiers":[],
+            "weight": 0,
+            "associated_articles":[298, 299, 300, 301, 302, 303, 304]
+          },
+          "associated_chapter": "Title XIII: Crimes against property and socioeconomic order"
         },
-        "Omission of Duty to Relief": {
-          "Omitting Help": {
-            "modifiers":["preventing others to help"],
-            "weight": 0,
-            "associated_articles": [195]
-          },
-          "Causing Accident and Omitting Help": {
-            "modifiers":["imprudence"],
-            "weight": 0,
-            "associated_articles": [195]
-          },
-          "Omitting Help by Health Professional": {
-            "modifiers": [],
-            "weight": 0,
-            "associated_articles": [195, 196]
-          },
-          "associated_chapter": "Title IX: Of the omission of the duty of relief"
+      "Assault": {
+        "crime_category_weight": 1, 
+        "Intentional": {
+          "subject": ["passive", "active"],
+          "modifiers":["health", "medical involvement", "means of assault", "cruelty", 
+        "treachery", "vulnerable or underage victim", "bond with a victim", "body mutilation"],
+        "weight": 1,
+        "associated_articles": [147, 148, 149, 150]
         },
-        "Breach of Privacy": {
-          "Privacy Breach": {
-            "modifiers":["spread of breached information", "only partaking in spreading", "persons in charge or responsible",
-            "unauthorized use of personal data of the victim", "victim minor or disabled", "sensitive information",
-            "breach with goal of profit", "part of criminal organization", "abuse of authority"],
-            "weight": 0,
-            "associated_articles": [197, 197.4, 198]
-          },
-          "Breach of Private Data Security": {
-            "modifiers":["part of criminal organization", "abuse of authority"],
-            "weight": 0,
-            "associated_articles": [197.2, 197.4, 198]
-          },
-          "Interception of Private Data": {
-            "modifiers":["part of criminal organization", "abuse of authority"],
-            "weight": 0,
-            "associated_articles": [197.2, 197.4, 198]
-          },
-          "Providing Computer Program or Passwords for Privacy Breach": {
-            "modifiers":["part of criminal organization", "abuse of authority"],
-            "weight": 0,
-            "associated_articles": [197.3, 197.4, 198]
-          },
-          "Revealing secrets known through profession": {
-            "modifiers":["obligation of confidentiality", "part of criminal organization"],
-            "weight": 0,
-            "associated_articles": [197.4, 199]
-          },
-          "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter I : Of the discovery and revelation of secrets"
+        "Reckless": {
+          "modifiers":["vehicles", "firearms", "professional imprudence", "injuries"],
+          "weight": 0.5,
+          "associated_articles": [152]
         },
-        "Trespassing": {
-          "Break In": {
-            "modifiers":["violence", "abuse of authority"],
-            "weight": 0,
-            "associated_articles": [202, 204]
-          },
-          "Trespassing a place of profession or commercial establishment": {
-            "modifiers":["not leaving", "violence", "abuse of authority"],
-            "weight": 0,
-            "associated_articles": [203, 204]
-          },
-          "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter II : On trespassing, address of legal persons and establishments open to the public"
-        }
-    }
+        "Gender based": {
+          "victim": "female",
+          "modifiers": ["aggression type"],
+          "weight": 0.5,
+          "associated_articles": [153]
+        },
+      },
+      "Trafficking in human beings": {
+        "crime_category_weight": 1, 
+        "Trafficking": {
+          "modifiers":["vulnerable or underage victim", "life, physical or mental integrity of victim been endangered",
+           "abuse of authority/status", "part of organization", "leader of organization"],
+          "weight": 1,
+          "associated_articles": [177 bis]
+        },
+        "Provocation, conspiracy and proposition": {
+          "modifiers":[],
+          "weight": 0.5,
+          "associated_articles": [177 bis]
+        },
+        "associated_chapter": "Title VII bis: Trafficking in human beings"
+      },
+      "Omission of Duty to Relief": {
+        "crime_category_weight": 0.5, 
+        "Omitting Help": {
+          "modifiers":["preventing others to help"],
+          "weight": 0.5,
+          "associated_articles": [195]
+        },
+        "Causing Accident and Omitting Help": {
+          "modifiers":["imprudence"],
+          "weight": 0.75,
+          "associated_articles": [195]
+        },
+        "Omitting Help by Health Professional": {
+          "modifiers": [],
+          "weight": 1,
+          "associated_articles": [195, 196]
+        },
+        "associated_chapter": "Title IX: Of the omission of the duty of relief"
+      },
+      "Breach of Privacy": {
+        "crime_category_weight": 0.5, 
+        "Privacy Breach": {
+          "modifiers":["spread of breached information", "only partaking in spreading", "persons in charge or responsible",
+          "unauthorized use of personal data of the victim", "victim minor or disabled", "sensitive information",
+          "breach with goal of profit", "part of criminal organization", "abuse of authority"],
+          //Sensitive information: ideology, religion, beliefs, health, racial origin or sexual life
+          "weight": 0.5,
+          "associated_articles": [197, 197 quater, 198]
+        },
+        "Breach of Private Data Security": {
+          "modifiers":["part of criminal organization", "abuse of authority"],
+          "weight": 0.75,
+          "associated_articles": [197 bis, 197 quater, 198]
+        },
+        "Interception of Private Data": {
+          "modifiers":["part of criminal organization", "abuse of authority"],
+          "weight": 0.6,
+          "associated_articles": [197 bis, 197 quater, 198]
+        },
+        "Providing Computer Program or Passwords for Privacy Breach": {
+          "modifiers":["part of criminal organization", "abuse of authority"],
+          "weight": 0.5,
+          "associated_articles": [197 ter, 197 quater, 198]
+        },
+        "Revealing secrets known through profession": {
+          "modifiers":["obligation of confidentiality", "part of criminal organization"],
+          "weight": 0.75,
+          "associated_articles": [197 quater, 199]
+        },
+        "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter I : Of the discovery and revelation of secrets"
+      },
+      "Trespassing": {
+        "crime_category_weight": 0.75, 
+        "Break In": {
+          "modifiers":["violence", "abuse of authority"],
+          "weight": 1,
+          "associated_articles": [202, 204]
+        },
+        "Trespassing a place of profession or commercial establishment": {
+          "modifiers":["not leaving", "violence", "abuse of authority"],
+          "weight": 0.5,
+          "associated_articles": [203, 204]
+        },
+        "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter II : On trespassing, address of legal persons and establishments open to the public"
+      }
+  }
 }
