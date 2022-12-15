@@ -1,0 +1,141 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[style=apa, natbib]{biblatex}
+\addbibresource{references.bib}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage{hyperref}
+
+\addbibresource{references.bib}
+\renewcommand{\div}{\;\mathsf{div}\;}
+
+\newcommand{\Algorithm}{\textbf{\textsf{algorithm}}$\;$}
+\newcommand{\Do}{\textbf{\textsf{do}}$\;$}
+\newcommand{\Else}{\textbf{\textsf{else}}$\;$}
+\newcommand{\End}{\textbf{\textsf{end}}$\;$}
+\newcommand{\For}{\textbf{\textsf{for}$\;$}}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[style=apa, natbib]{biblatex}
+\addbibresource{references.bib}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{blindtext}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks   = true, %Colours links instead of ugly boxes
+    linkcolor={red!50!black},
+    citecolor={blue!80!black},
+    urlcolor={blue!80!black},
+    pdfborder={0 0 0}
+}
+
+\addbibresource{references.bib}
+\renewcommand{\div}{\;\mathsf{div}\;}
+
+\newcommand{\Algorithm}{\textbf{\textsf{algorithm}}$\;$}
+\newcommand{\Do}{\textbf{\textsf{do}}$\;$}
+\newcommand{\Else}{\textbf{\textsf{else}}$\;$}
+\newcommand{\End}{\textbf{\textsf{end}}$\;$}
+\newcommand{\For}{\textbf{\textsf{for}$\;$}}
+\newcommand{\If}{\textbf{\textsf{if}}$\;$}
+\newcommand{\Input}{\textbf{\textsf{input}}$\;$}
+\newcommand{\Result}{\textbf{\textsf{result}}$\;$}
+\newcommand{\Return}{\textbf{\textsf{return}}$\;$}
+\newcommand{\Then}{\textbf{\textsf{then}}$\;$}
+\newcommand{\To}{\textbf{\textsf{to}}$\;$}
+\newcommand{\Output}{\textbf{\textsf{output}}$\;$}
+\newcommand{\While}{\textbf{\textsf{while}}$\;$}
+\newcommand{\becomes}{$\leftarrow\;$}
+\newcommand{\Comment}[1]{$/*$#1$*/$}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    stringstyle=\color{DarkGreen},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{DarkGreen},
+}
+
+
+% My Packages 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\\ Laura M. Quirós (S4776380)}
+\rhead{Report of Knowledge System \\ Knowledge and Agent Technology}
+
+%This package gives flexibility to use lettered lists in addition to numbered lists
+\usepackage[shortlabels]{enumitem}
+\usepackage{titlesec}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+%\usepackage[most]{tcolorbox} % Colorful and featureful boxes
+\usepackage{scrextend} % Indented paragraphs
+\usepackage{minted} % Highlighted code
+\noindent
+
+
+%%% Seth's preferred Macros %%%
+% Define the color used for our boxes
+%\definecolor{green}{rgb}{0, 1, 0}
+%\definecolor{cornflowerblue}{rgb}{0.39, 0.58, 0.93}
+% Nice box to contain problem answer
+%\newtcolorbox{problemAnswer}[1][]{enhanced jigsaw,breakable,sharp corners,colback=green!20,leftrule=6pt,toprule=1pt,rightrule=1pt,bottomrule=1pt,parbox=false}
+
+%\newtcolorbox{problemAnswerR}[1][]{enhanced jigsaw,breakable,sharp corners,colback=cornflowerblue!20,leftrule=6pt,toprule=1pt,rightrule=1pt,bottomrule=1pt,parbox=false}
+
+
+\title{Template}
+\author{Laura M Quirós (s4776380) //}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem}
+In our Knowledge system we attempt to recreate the decision process that a judge makes when deciding if someone goes to preventive prison. The context is the Spanish justice system. This decision is mainly based in two factors: whether the arrested person is an active danger to society and whether they will be able to be hold accountable for their actions when the time of the trial comes. This second factor refers to how likely is for the subject to flee such that they cannot be located afterwards. 
+These factors are evaluated by a judge after the arrested person has been in custody, a period of time in which they have been processed. The national and/or local police has emitted a report on the crime and the regarding government employee has taken the person's antecedents and contact information. The police report includes the arrested person's testimony.
+The government employee compiles these three elements and highlights the antecedents of the same category for the judge to consider (more on crime categories in the domain model subsection). 
+Usually there is a hearing with the arrested person in which a second testimony is compiled by the government employee in presence of judge, lawyer and fiscal, but this is only relevant to posterior trial. The judge has already decided whether this person will go to prison or not.
+For our knowledge system, we try to simulate this decision-making process for some of the most common crime categories, according to data provided by our expert.
+
+\section{Expert}
+Our expert is \\
+\section{Role of Knowledge Technology}
+\section{The knowledge models}
+\subsection{Problem Solving model}
+%% how is the decision made usually, what information the judge gets (antecedents, police report (type, witness info, adj), contact info)
+\subsection{Domain model}
+%% explain concepts of categories, crimes, variables 
+\subsection{Rule model}
+%% Three-part component of decision-making and the rules that compose it
+%\subsection{Inference type}
+%\section{User interface, functionality, tools used}
+\section{Walkthrough of a session} 
+%\section{Validation of knowledge models} %with the expert
+%\section{Task division} %among group members
+%\section{Reflection} % experiences? role of knowledge technology? problems? evaluation of used techniques? lessons?
+
+\end{document}

@@ -83,7 +83,7 @@
       },
         "Homicide": {
           "Intentional": {
-            "modifiers": ["vulnerable or underage victim", "prior sexual assault", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
+            "modifiers": ["vulnerable/underage victim", "prior sexual assault", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
             "weight": 0,
             "associated_articles": [138, 139, 140]
           },
