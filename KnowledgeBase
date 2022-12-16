@@ -196,14 +196,24 @@
               }
             },
             "Public property damage":{
-              "modifiers":["cultural value", "document fraud", "quantity", ""],
-              "weight": 0,
-              "associated_articles":[289, 290, 291, 292, 293, 294, 296, 297]
-            },
-            "Money laundering":{
               "modifiers":[],
               "weight": 0,
-              "associated_articles":[298, 299, 300, 301, 302, 303, 304]
+              "associated_articles":[289]
+            },
+            "Corruption in limited societies and cooperatives":{
+              "modifiers":["document fraud", "quantity", "abuse of authority/status", "lack of information", 
+              "obstruction of security check", "vulnerable or underage victim"],
+              "weight": 0,
+              "associated_articles":[290, 291, 292, 293, 294, 296, 297, 129]
+            },
+            "Money laundering":{
+              "modifiers":["cultural value", "passive", "necesity items", "quantity", "illegal trade", 
+              "illegal storage", "illegal ownership", "illegal manipulation", "public health violation", 
+              "public administration obstruction", "negligence", "leader of organization", "belonging to the criminal group",
+              "personal benefit", "entirely responsible", "persons in charge or responsible", "government employee", 
+              "health worker", "encouragement of illegal activities", "conspiracy", "coercion"],
+              "weight": 0,
+              "associated_articles":[298, 299, 300, 301, 302, 303, 304, 368, 372, 374, 66.2, 33.7]
             },
             "associated_chapter": "Title XIII: Crimes against property and socioeconomic order"
           },
