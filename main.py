@@ -1,3 +1,9 @@
+"""
+Run commands: python3 -m streamlit run main.py
+opens in localhost with   Local URL: http://localhost:8501
+Network URL: http://145.97.162.212:8501
+"""
+
 import streamlit as st
 import numpy as np
 import pandas as pd
