@@ -1,7 +1,7 @@
 import streamlit as st
 
 def init_session_state():
-    st.session_state['state'] = 'crime_estimation'
+    st.session_state['state'] = 'crime estimation'
 
     st.session_state['report_coefficient'] = 0
 

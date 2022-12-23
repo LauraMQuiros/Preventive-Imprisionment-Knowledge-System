@@ -22,7 +22,7 @@ def title_section():
 
 init_session_state()
 title_section()
-if st.session_state['state']== 'crime estimated':
+if st.session_state['state']== 'crime estimation':
     choose_estimated_crime()
 else:
     if st.session_state['state'] == 'antecedents':
