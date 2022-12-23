@@ -2,8 +2,8 @@
   "categoryCrime": {
     "Crime Against Public Security": {
       "crime_category_weight": 1, 
-      "CatastrophicRisk": {
-        "NuclearManipulation":{
+      "Catastrophic Risk": {
+        "Nuclear Manipulation":{
           "modifiers": ["life threatening", "alteration of nuclear plant", "environmental damage", 
           "entirely responsible", "negligence","illegal storage", "illegal production"],
           "weight": 1,
@@ -14,7 +14,7 @@
           "weight": 1,
           "associated_articles": [346, 347]
         },
-        "ExplosiveAgents":{
+        "Explosive Agents":{
           "modifiers": ["illegal manipulation", "illegal transport", "illegal ownership", "illegal trade", 
           "negligent supervision", "negligent manipulation", "entirely responsible", "cooperation", 
           "obstruction of security check", "deception of checkup", "unsubordination to public administration"],
@@ -61,19 +61,19 @@
         ]
       },
       "Road Safety": {
-        "speeding":{
+        "Speeding":{
           "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
           "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
           "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         },
-        "reckless behavior":{
+        "Reckless Behavior":{
           "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
           "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
           "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         },
-        "unlicensed driving":{
+        "Unlicensed Driving":{
           "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
           "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
           "weight": 0,
@@ -164,20 +164,20 @@
               "weight": 0,
               "associated_articles":[268, 269, 287, 288, 263, 264, 264.2, 264.3, 264.4, 265, 266, 267]
             },
-            "Non-personal property violation or damage":{
+            "Non-personal Property Violation or Damage":{
               "Intellectual property":{
                 "modifiers":["vulnerable victim", "passive", "international violation", "quantity"],
                 "weight": 0,
                 "associated_articles":[287, 288, 270, 271, 272]
               },
-              "Industrial property":{
+              "Industrial Property":{
                 "modifiers":["vulnerable victim", "public promotion", "illegal trade", "illegal production", 
                 "illegal storage", "illegal ownership", "fraudulent information spread", "belonging to the criminal group"
                 , "passive", "violation of secrecy"],
                 "weight": 0,
                 "associated_articles":[287, 288, 273, 274, 275, 276, 277]
               },
-              "Market and consumption violations":{
+              "Market and Consumption Violations":{
                 "modifiers":["vulnerable victim", "document fraud", "violation of secrecy", "vandalism", 
                 "personal benefit", "passive", "socially disruptive", "vulnerable victim", "defamation",
                 "government employee", "overpricing", "coercion", "misuse of legally obtained secrets", 
@@ -187,7 +187,7 @@
                 "associated_articles":[287, 288, 278, 279, 280, 281, 282, 282.2, 
                 283, 284, 285, 285.2, 285.3, 285.4, 286, 197, 308, 255]
               },
-              "Corruption in business":{
+              "Corruption In Business":{
                 "modifiers":["vulnerable victim", "bribe", "trading in influence", "quantity", 
                 "public administration obstruction", "encouragement of illegal activities", "abuse of authority/status", 
                 "government employee", "gambling business", "criminal organization", "necesity items"],
