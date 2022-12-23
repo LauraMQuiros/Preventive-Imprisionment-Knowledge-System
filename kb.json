@@ -1,6 +1,6 @@
 {
   "categoryCrime": {
-    "CrimesAgainstPublicSecurity": {
+    "Crime Against Public Security": {
       "crime_category_weight": 1, 
       "CatastrophicRisk": {
         "NuclearManipulation":{
@@ -48,7 +48,7 @@
           "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
         }
       },
-      "PublicHealth": {
+      "Public Health": {
         "modifiers": ["illegal manipulation", "illegal production", "illegal disposal",
         "illegal trade", "expired product", "damaged product", "illegal product", "life threatening",
         "medicinal drugs or sanitary product", "fraudulent information spread", "cooperation", "passive", "distribution", 
@@ -60,7 +60,7 @@
         363, 364, 365, 366, 367, 368, 369, 370, 371, 172, 373, 374, 375, 376, 377, 378
         ]
       },
-      "RoadSafety": {
+      "Road Safety": {
         "speeding":{
           "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
           "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
@@ -107,7 +107,7 @@
         "associated_chapter": "Title I: Homicide and its forms"
 
       }, 
-        "Property and socioeconomic crimes":{
+        "Crimes Against Property and Socioeconomic Order":{
           "crime_category_weight": 0.25,
             "Theft":{
               "modifiers":["cooperation", "vulnerable victim", "item price", "necesity items", "luxury items", 

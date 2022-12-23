@@ -12,12 +12,12 @@ from decision import *
 import json 
 
 st.set_page_config(
-    page_title='Preventetive Prison Decision Making System',
+    page_title='Preventive Prison Decision Making System',
     layout='wide'
 )
 
 def title_section():
-    st.markdown('# Preventetive Prison Decision Making System')
+    st.markdown('# Preventive Prison Decision Making System')
     st.markdown('---')
 
 init_session_state()
