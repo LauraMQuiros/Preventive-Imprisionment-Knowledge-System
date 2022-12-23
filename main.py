@@ -22,15 +22,15 @@ def title_section():
 
 init_session_state()
 title_section()
-
-choose_estimated_crime()
-
-
-
-# there will be states: 
-# crime_estimation
-# antecedants
-# crime_report
-# police report
-# prisoner info
-# final report
+if st.session_state['state']== 'crime estimated':
+    choose_estimated_crime()
+else:
+    if st.session_state['state'] == 'antecedents':
+        choose_antecedents()
+    elif st.session_state['state'] == 'police report':
+        #includes crime report
+        crime_report()
+    elif st.session_state['state'] == 'contact information':
+        personal_info()
+    elif st.session_state['state'] == 'report':
+        final_conclusions()

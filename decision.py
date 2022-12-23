@@ -21,8 +21,20 @@ def choose_estimated_crime():
         if col2.checkbox(crime):
             selected_antecedents += [crime]
 
-    
-
-
     st.session_state['estimated_crime_coefficient'] = crime_categories[selected_crime]['crime_category_weight']
     print(st.session_state['estimated_crime_coefficient'])
+
+def choose_antecedents():
+    crime_categories = kb['categoryCrime']
+    print(st.write("**Under construction**"))
+
+def crime_report():
+    crime_categories = kb['categoryCrime']
+    print(st.write("**Under construction**"))
+
+def personal_info():
+    crime_categories = kb['categoryCrime']
+    print(st.write("**Under construction**"))
+
+def final_conclusions():
+    print(st.write("**Under construction**"))
