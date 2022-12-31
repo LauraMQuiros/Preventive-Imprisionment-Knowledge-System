@@ -107,6 +107,33 @@
         "associated_chapter": "Title I: Homicide and its forms"
 
       }, 
+      "Crimes against Freedom": {
+        "crime_category_weight": 0, 
+        "Illegal arrests and kidnappings": {
+          "modifiers": ["the release of the victim within 3 days", "the confinement or detention has lasted more than fifteen days",
+          "demanding condition to release the person", "vulnerable or underage victim", "the intention of violating the freedom or sexual indemnity of the victim",
+          "the perpetrator is the official figure"],
+          "weight": 0,
+          "associated_articles": [163, 164, 165, 166, 167, 168]
+        },
+        "Threats": {
+          "modifiers": ["the threat has been made imposing a condition", "the threats are made in writing, by telephone or by any means of communication or reproduction",
+           "threats against populations, ethnic groups, cultural or religious groups", "publicly claim the commission of terrorist acts", 
+           "threat consists of receiving a reward in exchange for not publishing or disseminating facts"], 
+          "weight": 0,
+          "associated_articles": [169, 170, 171]
+        },
+        "Coercions": {
+          "modifiers": ["preventing the exercise of a fundamental right", "the crime is committed in the presence of minors",
+           "the crime is committed using weapons", "the crime takes place in the common residence or in the residence of the victim",
+           "serious intimidation or violence", "vulnerable or underage victim", "surveillance, persecution or search for physical proximity",
+           "attack against the freedom of the victim, against her property or a person close to her", "improper use of personal data to acquire products or hire services"], 
+          "weight": 0,
+          "associated_articles": [172, "172 bis", "172b", "172 quater"]
+        },
+        "associated_chapter": "Title VI: Crimes against freedom"
+
+      }, 
         "Crimes Against Property and Socioeconomic Order":{
           "crime_category_weight": 0.25,
             "Theft":{
