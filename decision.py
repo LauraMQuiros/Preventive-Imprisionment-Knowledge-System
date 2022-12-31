@@ -10,19 +10,21 @@ kb = json.load(file)
 def choose_estimated_crime():
     crime_categories = kb['categoryCrime']
     col1, col2 = st.columns([1, 1])
-
     selected_category = col1.radio('What is the category the estimated crime belongs to', crime_categories)
+
+
     crimes_of_category = [ d for d in crime_categories[selected_category] if ((d != "crime_category_weight") and (d != "associated_chapter"))]
     crimes = crimes_of_category.copy()
     crimes.append('None/not clear')
     #Try make it radio I don't like that it collapses
-    estimate_crime = col2.selectbox('What is the estimated committed crime?', crimes, index=(len(crimes)-1))
+
+
+    estimate_crime = col2.radio('What is the estimated committed crime?', crimes)
     st.session_state['estimated_crime'] = estimate_crime
     st.session_state['estimated_category_crimes'] = crimes_of_category
 
     #I am missing here the multiplication by the crime itself?
     st.session_state['estimated_crime_coefficient'] = crime_categories[selected_category]['crime_category_weight']
-    print(st.session_state['estimated_crime_coefficient'])
 
     if col2.button('Next'):
         st.session_state['state'] = 'antecedents'
@@ -49,15 +51,15 @@ def choose_antecedents():
     if st.button('Next'):
         if noAntecedents:
             if len(selected_antecedents)==0:
-                st.session_state['state'] = 'police report'
+                st.session_state['state'] = 'police report' # there is a dublicate here 
                 st.experimental_rerun()
             else: 
-                st.write("Warning: You seem to have selected antecedents and checked the no-antecedents box")
+                st.write("Warning: You seem to have selected antecedents and checked the no-antecedents box.")
         else: 
             if len(selected_antecedents)==0:
-                st.write("Warning: No antecedents selected and unchecked no-antecedents box")
+                st.write("Warning: No antecedents selected and unchecked no-antecedents box.")
             else:
-                st.session_state['state'] = 'police report'
+                st.session_state['state'] = 'police report' # there is a dublicate here 
                 st.experimental_rerun()
 
 def crime_report():
