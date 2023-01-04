@@ -344,5 +344,17 @@
         },
         "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter II : On trespassing, address of legal persons and establishments open to the public"
       }
+  },
+  "Police Report Type": {
+    "Local": {
+      "weight": 0.75
+    }, 
+    "National": {
+      "weight": 1
+    }
+  },
+  "Personal Information": {
+    "modifiers": ["The suspect has a family.", "The suspect has a job.", "The suspect is a foreigner.",
+     "The suspect shows signs of violence during the arrest."]
   }
 }

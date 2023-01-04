@@ -12,7 +12,6 @@ def choose_estimated_crime():
     col1, col2 = st.columns([1, 1])
     selected_category = col1.radio('What is the category the estimated crime belongs to', crime_categories)
 
-
     crimes_of_category = [ d for d in crime_categories[selected_category] if ((d != "crime_category_weight") and (d != "associated_chapter"))]
     crimes = crimes_of_category.copy()
     crimes.append('None/not clear')
@@ -34,6 +33,9 @@ def choose_antecedents():
     st.write('What are the antecedents of the same category?')
     noAntecedents = st.checkbox('There are not any')
     selected_antecedents = []
+
+    print(st.session_state['estimated_crime'])
+
     #I'd like to have a button '+' such that a new template form appears with 3 multiple choice questions: crime, modif, conviction status
     #i want them to be stacked one in top of the next one but that may present a difficulty since streamlit does not seem to have default component for it
 
@@ -63,12 +65,30 @@ def choose_antecedents():
                 st.experimental_rerun()
 
 def crime_report():
-    crime_categories = kb['categoryCrime']
-    print(st.write("**Under construction**"))
+    st.header('_Crime Report_')
+
+    col1, col2 = st.columns([1, 1])
+    report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
+    st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
+
+    col2.write("**Under construction**")
+    
+    if st.button('Next'):
+        st.session_state['state'] = 'contact information'
+        st.experimental_rerun()
+     
 
 def personal_info():
-    crime_categories = kb['categoryCrime']
-    print(st.write("**Under construction**"))
+    st.header('_Personal Information_')
+    personal_modifiers = kb['Personal Information']['modifiers']
+    st.write("Select all the true statements about the suspect:")
+
+    for modifier in personal_modifiers:
+         if st.checkbox(modifier):
+            print("Hi")
+    if st.button('Next'):
+        st.session_state['state'] = 'report'
+        st.experimental_rerun()
 
 def final_conclusions():
     print(st.write("**Under construction**"))
