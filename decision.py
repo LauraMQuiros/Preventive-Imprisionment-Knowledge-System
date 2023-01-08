@@ -31,40 +31,45 @@ def choose_antecedents():
     crime = st.session_state['estimated_crime']
     category_crimes = st.session_state['estimated_category_crimes']
     status = ['Guilty', 'Not guilty, but was in Preventive Prison for it', 'Not guilty, was not in Preventive Prison']
-    selected_antecedents = {} #dictionary so we can store both crime and status in the same place
+    selected_antecedents = [] #dictionary so we can store both crime and status in the same place
+    selected_status= []
+    numberOfAntecedents = 0
 
     #And we make the terminal show us that the input so far has been collected
     print(crime)
     print(category_crimes)
     print(st.session_state['estimated_category_weight'])
     print(selected_antecedents)
-
-    #Start of the page + no antecedents
     st.write('What are the antecedents of the same category?')
-    noAntecedents = st.checkbox('There are not any')
-
+    
     #I'd like to have a button '+' such that a new template form appears with 3 multiple choice questions: crime, modif, conviction status
-    newAntecedent = st.button('Add an antecedent')
-    if newAntecedent:
+    with st.form("Add an antecedent", clear_on_submit=True):
         col1, col2 = st.columns(2)      
-        #PROBLEM: IT CLOSES AS SOON AS ANY THE FOLLOWING TWO ARE CHANGED FROM DEFAULT    
+        #PROBLEM: IT DOES NOT STORE ALL ANTECEDENTS IN DIC NOR ARRAY :((      
         newCrime = col1.radio("What is the antecedent's crime?", category_crimes)
         newStatus = col2.radio("What is the status of the antecedent?", status)
+        newAntecedent = st.form_submit_button('Done')
         if newStatus != status[-1]:
-            selected_antecedents.update({newCrime: newStatus})
-        print(selected_antecedents)
-        done = col2.button("Done")
+            selected_status += [newStatus]
+            selected_antecedents+= [newCrime]        
+        if newAntecedent:
+            print(selected_antecedents)
+    noAntecedents = st.checkbox('There are not any') 
 
-        #If time allows it: i want ALL antecedents to be visible before proceeding
-        #options = st.multiselect('Confirm or modify your chosen antecedents',selected_antecedents, selected_antecedents)
-        #st.write('You selected:', options)
-
+    #If time allows it: i want ALL antecedents to be visible before proceeding
+    #options = st.multiselect('Confirm or modify your chosen antecedents',selected_antecedents, selected_antecedents)
+    
+    st.header("Antecedents stored")
+    col1, col2 = st.columns (2)
+    for a in range(len(selected_antecedents)):
+        col1.write(selected_antecedents[a])
+        col2.write(selected_status[a])
     #We make the computations and store the first of the 3 fundamental weights
     #for crime in st.session_state['estimated_category_crimes']:
     #    if st.checkbox(crime):
     #        selected_antecedents += [crime]
     #        st.session_state['antecedants_coefficient']+= crime*st.session_state['modifier_weight']
-        
+    
     #Some warnings so we get the info b4 we go to the next page
     if st.button('Next'):
         if noAntecedents:
