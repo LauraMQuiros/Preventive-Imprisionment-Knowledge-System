@@ -86,7 +86,7 @@
         "crime_category_weight": 1, 
         "Intentional": {
           "modifiers": ["vulnerable or underage victim", "prior sexual assault", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
-          "weight": 0.75,
+          "weight": 1,
           "associated_articles": [138, 139, 140]
         },
         "Reckless": {

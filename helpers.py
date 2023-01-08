@@ -6,6 +6,7 @@ def init_session_state():
     st.session_state['modifier_count'] = 0
     st.session_state['antecedant_alpha'] = 0.5
     st.session_state['modifier_weight'] = 0.1
+    st.session_state['final_threshold'] = 1.5
 
     #This is in an if bc otherwise it never allows to move through pages
     if 'state' not in st.session_state.keys():
