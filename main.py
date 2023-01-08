@@ -1,7 +1,6 @@
 """
 Run commands: python3 -m streamlit run main.py
-opens in localhost with   Local URL: http://localhost:8501
-Network URL: http://145.97.162.212:8501
+To go to initial page: go to 3 lines top right, clear cache and rerun
 """
 
 import streamlit as st

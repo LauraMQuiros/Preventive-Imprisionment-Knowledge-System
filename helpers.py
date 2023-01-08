@@ -1,18 +1,27 @@
 import streamlit as st
 
 def init_session_state():
+    #These are the values that do not need to move through pages
     st.session_state['report_coefficient'] = 0
-    st.session_state['antecedants_coefficient'] = 0
-    st.session_state['fleeing_coefficient'] = 0
     st.session_state['modifier_count'] = 0
-
     st.session_state['antecedant_alpha'] = 0.5
     st.session_state['modifier_weight'] = 0.1
 
     #This is in an if bc otherwise it never allows to move through pages
     if 'state' not in st.session_state.keys():
         st.session_state['state'] = 'crime estimation'
-    if 'category_crime_weight' not in st.session_state.keys():
-        st.session_state['category_crime_weight'] = 0
-    if 'estimated_crime_coefficient' not in st.session_state.keys():
-        st.session_state['estimated_crime_coefficient'] = 0
+    #These are the main 3 values   
+    if 'crime_weight' not in st.session_state.keys():
+        st.session_state['crime_weight'] = 0
+    if 'antecedent_weight' not in st.session_state.keys():
+        st.session_state['antecedent_weight'] = 0
+    if 'fleeing_weight' not in st.session_state.keys():
+        st.session_state['fleeing_weight'] = 0
+
+    #1st page values
+    if 'estimated_crime' not in st.session_state.keys():
+        st.session_state['estimated_crime'] = "none"
+    if 'estimated_category_weight' not in st.session_state.keys():
+        st.session_state['estimated_category_weight'] = 0
+    if 'estimated_category_crimes' not in st.session_state.keys():
+        st.session_state['estimated_category_crimes'] = "none"

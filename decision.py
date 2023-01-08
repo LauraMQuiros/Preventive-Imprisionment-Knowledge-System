@@ -15,45 +15,62 @@ def choose_estimated_crime():
     crimes_of_category = [ d for d in crime_categories[selected_category] if ((d != "crime_category_weight") and (d != "associated_chapter"))]
     crimes = crimes_of_category.copy()
     crimes.append('None/not clear')
-    #Try make it radio I don't like that it collapses
-
 
     estimate_crime = col2.radio('What is the estimated committed crime?', crimes)
     st.session_state['estimated_crime'] = estimate_crime
     st.session_state['estimated_category_crimes'] = crimes_of_category
-
-    #I am missing here the multiplication by the crime itself?
-    st.session_state['estimated_crime_coefficient'] = crime_categories[selected_category]['crime_category_weight']
+    #This is just to have the category weight
+    st.session_state['estimated_category_weight'] = crime_categories[selected_category]['crime_category_weight']
 
     if col2.button('Next'):
         st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
 
 def choose_antecedents():
+    #First we get some info we are gonna need
+    crime = st.session_state['estimated_crime']
+    category_crimes = st.session_state['estimated_category_crimes']
+    status = ['Guilty', 'Not guilty, but was in Preventive Prison for it', 'Not guilty, was not in Preventive Prison']
+    selected_antecedents = {} #dictionary so we can store both crime and status in the same place
+
+    #And we make the terminal show us that the input so far has been collected
+    print(crime)
+    print(category_crimes)
+    print(st.session_state['estimated_category_weight'])
+    print(selected_antecedents)
+
+    #Start of the page + no antecedents
     st.write('What are the antecedents of the same category?')
     noAntecedents = st.checkbox('There are not any')
-    selected_antecedents = []
-
-    print(st.session_state['estimated_crime'])
 
     #I'd like to have a button '+' such that a new template form appears with 3 multiple choice questions: crime, modif, conviction status
-    #i want them to be stacked one in top of the next one but that may present a difficulty since streamlit does not seem to have default component for it
+    newAntecedent = st.button('Add an antecedent')
+    if newAntecedent:
+        col1, col2 = st.columns(2)      
+        #PROBLEM: IT CLOSES AS SOON AS ANY THE FOLLOWING TWO ARE CHANGED FROM DEFAULT    
+        newCrime = col1.radio("What is the antecedent's crime?", category_crimes)
+        newStatus = col2.radio("What is the status of the antecedent?", status)
+        if newStatus != status[-1]:
+            selected_antecedents.update({newCrime: newStatus})
+        print(selected_antecedents)
+        done = col2.button("Done")
 
-    #I think it's possible if we just iteratively increase the antecedents. However, we may be interested in having the answers of those 3 questions
-    #plus the total amount that is added for reporting purposes. My suggestion is to use arrays and make index number each of the antecedents. 
-    # Antecedent 0: antecedent0_crime= antecedent_crimes[0] antecedent0_increment = antecedent_additions[0] and so on
+        #If time allows it: i want ALL antecedents to be visible before proceeding
+        #options = st.multiselect('Confirm or modify your chosen antecedents',selected_antecedents, selected_antecedents)
+        #st.write('You selected:', options)
 
-    #The following is placeholder
-    for crime in st.session_state['estimated_category_crimes']:
-        if st.checkbox(crime):
-            selected_antecedents += [crime]
-            st.session_state['antecedants_coefficient']+= crime*st.session_state['modifier_weight']
-    
-    #Some warnings so we get the info b4 we go to the next one
+    #We make the computations and store the first of the 3 fundamental weights
+    #for crime in st.session_state['estimated_category_crimes']:
+    #    if st.checkbox(crime):
+    #        selected_antecedents += [crime]
+    #        st.session_state['antecedants_coefficient']+= crime*st.session_state['modifier_weight']
+        
+    #Some warnings so we get the info b4 we go to the next page
     if st.button('Next'):
         if noAntecedents:
             if len(selected_antecedents)==0:
-                st.session_state['state'] = 'police report' # there is a dublicate here 
+                # there are two ways to go to next page, feel free to combine them in one if statement
+                st.session_state['state'] = 'police report' 
                 st.experimental_rerun()
             else: 
                 st.write("Warning: You seem to have selected antecedents and checked the no-antecedents box.")
@@ -61,18 +78,26 @@ def choose_antecedents():
             if len(selected_antecedents)==0:
                 st.write("Warning: No antecedents selected and unchecked no-antecedents box.")
             else:
-                st.session_state['state'] = 'police report' # there is a dublicate here 
+                st.session_state['state'] = 'police report'
                 st.experimental_rerun()
 
 def crime_report():
+    #First we get some info we are gonna need
+    crime = st.session_state['estimated_crime']
+    category_crimes = st.session_state['estimated_category_crimes']
+    #Following is giving issues
+    #selected_modifiers = [ m for m in category_crimes[crime] if ((m != "crime_category_weight") and (m != "associated_chapter"))]
+    #modifiers = selected_modifiers.copy()
+    #modifiers.append('None/not clear')
+
     st.header('_Crime Report_')
+    st.write("**Under construction**")
 
     col1, col2 = st.columns([1, 1])
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
+    #col2.radio("What are the crime's modifiers?", modifiers)
 
-    col2.write("**Under construction**")
-    
     if st.button('Next'):
         st.session_state['state'] = 'contact information'
         st.experimental_rerun()
@@ -92,3 +117,8 @@ def personal_info():
 
 def final_conclusions():
     print(st.write("**Under construction**"))
+    # Like a health bar in a videogame, color coded like a traffic light
+    # Maybe add download button to download the final conclusions as pdf
+    # Number of each weight (3), color red the title if made it reach threshold by itself
+    # Antecedents with higher input organised by status
+    # Fleeing only the checked ones (must make it variable that can move)
