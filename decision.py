@@ -39,43 +39,58 @@ def choose_antecedents():
     print(crime)
     print(category_crimes)
     print(st.session_state['estimated_category_weight'])
-    st.write('What are the antecedents of the same category?')
-    
+    my_expander = st.expander(label='Add an antecedent')
+    with my_expander:
     #I'd like to have a button '+' such that a new template form appears with 3 multiple choice questions: crime, modif, conviction status
-    with st.form("Add an antecedent", clear_on_submit=True):
-        col1, col2 = st.columns(2)    
-        newCrime = col1.radio("What is the antecedent's crime?", category_crimes)
-        newStatus = col2.radio("What is the status of the antecedent?", status)
-        
-        st.warning("Click in the 'done' button to store the antecedent")
-        newAntecedent = st.form_submit_button('Done')
-        if newAntecedent:
-            st.session_state["selected_status"] += [newStatus]
-            st.session_state["selected_antecedents"]+= [newCrime]        
-
-            print(st.session_state["selected_status"])
+        with st.form("Add an antecedent", clear_on_submit=True):
+            col1, col2 = st.columns(2)    
+            newCrime = col1.radio("What is the antecedent's crime?", category_crimes)
+            newStatus = col2.radio("What is the status of the antecedent?", status)
+            st.warning("Click in the 'done' button to store the antecedent")
+            newAntecedent = st.form_submit_button('Done')
+            if newAntecedent:
+                st.session_state["selected_status"] += [newStatus]
+                st.session_state["selected_antecedents"]+= [newCrime]        
+                print(st.session_state["selected_status"])
     noAntecedents = st.checkbox('There are not any') 
     
     selected_antecedents = st.session_state["selected_antecedents"]
     selected_status = st.session_state["selected_status"]
-    selected_category = st.session_state["selected_category"]
+    selected_category = st.session_state["estimated_category"]
     st.header("Antecedents stored")
     df = pd.DataFrame({'selected_antecedants': selected_antecedents, 'selected_status': selected_status})
-    #ekiminate row names
+    #is it even possible to take the row numbers out?
     df = df.sort_values('selected_antecedants', ascending=True)
     print(df)
+    
+    col1, col2 = st.columns([1, 1])
+    # allow for elimination from the dataframe
+    eliminate = col1.button("Eliminate an antecedent")
+    if eliminate: 
+        options =[]
+        for i in range(len(selected_antecedents)):
+            options += [i]
+        eliminate =st.radio("Select the number of the antecedent you want to eliminate", options)
+        elim = st.button("Eliminate")
+        if elim:
+            df= df.drop([1], axis=0, inplace=True)
+            print(df)
+            #we have to reload the page i assume for the df to be printed first
+            #otherwise this is it. But doesn't work yet
+    
     st.table(df)
 
-    #eliminate from the dataframe
     #category = kb[selected_category]
     #crim = category[within_crimes] #this is gonna depend on the name 
     #weight =0
     #for a in range(len(selected_antecedents)):
     #    if selected_status[a] != status[2]:
-    #        weight += kb[selected_category][selected_antecedents[a]][]
+    #        for crime_within in kb[selected_category][selected_antecedents[a]]:
+    #            if selected_antecedents[a] == crime_within:
+    #               weight += crimewithin["weight"]
 
     #Some warnings so we get the info b4 we go to the next page
-    if st.button('Next'):
+    if col2.button('Confirm'):
         if noAntecedents:
             if len(selected_antecedents)==0:
                 # there are two ways to go to next page, feel free to combine them in one if statement
