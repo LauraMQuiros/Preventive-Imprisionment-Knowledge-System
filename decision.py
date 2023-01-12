@@ -98,6 +98,7 @@ def crime_report():
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
     #col2.radio("What are the crime's modifiers?", modifiers)
+    # adjacent crime system
 
     if st.button('Next'):
         st.session_state['state'] = 'contact information'

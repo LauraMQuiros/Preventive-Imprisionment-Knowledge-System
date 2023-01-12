@@ -353,7 +353,8 @@
     }
   },
   "Personal Information": {
-    "modifiers": ["The suspect has a family.", "The suspect has a job.", "The suspect is a foreigner.",
-     "The suspect shows signs of violence during the arrest."]
+    "modifiers": ["The suspect does not have a family.", "The suspect does not have a job.", "The suspect is a foreigner.",
+     "The suspect shows signs of violence during the arrest.", "The suspect is known to have an addiction to drugs", 
+     "The suspect has no residence"]
   }
 }
