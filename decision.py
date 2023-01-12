@@ -19,6 +19,7 @@ def choose_estimated_crime():
     estimate_crime = col2.radio('What is the estimated committed crime?', crimes)
     st.session_state['estimated_crime'] = estimate_crime
     st.session_state['estimated_category_crimes'] = crimes_of_category
+    st.session_state['estimated_category'] = selected_category
     #This is just to have the category weight
     st.session_state['estimated_category_weight'] = crime_categories[selected_category]['crime_category_weight']
 
@@ -57,14 +58,21 @@ def choose_antecedents():
     
     selected_antecedents = st.session_state["selected_antecedents"]
     selected_status = st.session_state["selected_status"]
+    selected_category = st.session_state["selected_category"]
     st.header("Antecedents stored")
-    df = pd.DataFrame(selected_antecedents, selected_status)
-    #It'd be nice if someone could figure out how to order it :)
-    #And maybe rename the column 0
+    df = pd.DataFrame({'selected_antecedants': selected_antecedents, 'selected_status': selected_status})
+    #ekiminate row names
+    df = df.sort_values('selected_antecedants', ascending=True)
+    print(df)
     st.table(df)
 
-    #We make the computations and store the first of the 3 fundamental weights
-
+    #eliminate from the dataframe
+    #category = kb[selected_category]
+    #crim = category[within_crimes] #this is gonna depend on the name 
+    #weight =0
+    #for a in range(len(selected_antecedents)):
+    #    if selected_status[a] != status[2]:
+    #        weight += kb[selected_category][selected_antecedents[a]][]
 
     #Some warnings so we get the info b4 we go to the next page
     if st.button('Next'):
