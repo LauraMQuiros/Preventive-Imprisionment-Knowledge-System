@@ -107,7 +107,7 @@
         "associated_chapter": "Title I: Homicide and its forms"
       }, 
       "Crimes against Freedom": {
-        "crime_category_weight": 0.75, 
+        "crime_category_weight": 0.5, 
         "Illegal arrests and kidnappings": {
           "modifiers": ["the release of the victim within 3 days", "the confinement or detention has lasted more than fifteen days",
           "demanding condition to release the person", "vulnerable or underage victim", "the intention of violating the freedom or sexual indemnity of the victim",
@@ -244,7 +244,7 @@
             "associated_chapter": "Title XIII: Crimes against property and socioeconomic order"
           },
       "Assault": {
-        "crime_category_weight": 1, 
+        "crime_category_weight": 0.75, 
         "Intentional": {
           "subject": ["passive", "active"],
           "modifiers":["health", "medical involvement", "means of assault", "cruelty", 
@@ -265,7 +265,7 @@
         }
       },
       "Human Trafficking": {
-        "crime_category_weight": 1, 
+        "crime_category_weight": 0.75, 
         "Trafficking": {
           "modifiers":["vulnerable or underage victim", "life, physical or mental integrity of victim been endangered",
            "abuse of authority/status", "part of organization", "leader of organization"],
@@ -280,7 +280,7 @@
         "associated_chapter": "Title VII bis: Trafficking in human beings"
       },
       "Omission of Duty to Rescue": {
-        "crime_category_weight": 0.5, 
+        "crime_category_weight": 0.25, 
         "Omitting Help": {
           "modifiers":["preventing others to help"],
           "weight": 0.5,
@@ -299,7 +299,7 @@
         "associated_chapter": "Title IX: Of the omission of the duty of relief"
       },
       "Breach of Privacy": {
-        "crime_category_weight": 0.5, 
+        "crime_category_weight": 0.25, 
         "Privacy Breach": {
           "modifiers":["spread of breached information", "only partaking in spreading", "persons in charge or responsible",
           "unauthorized use of personal data of the victim", "victim minor or disabled", "sensitive information",
@@ -330,7 +330,7 @@
         "associated_chapter": "Title X: Crimes against privacy , the right to one's own image and the inviolability of the home. Chapter I : Of the discovery and revelation of secrets"
       },
       "Trespassing": {
-        "crime_category_weight": 0.75, 
+        "crime_category_weight": 0.25, 
         "Break In": {
           "modifiers":["violence", "abuse of authority"],
           "weight": 1,
@@ -354,7 +354,7 @@
   },
   "Personal Information": {
     "modifiers": ["The suspect does not have a family.", "The suspect does not have a job.", "The suspect is a foreigner.",
-     "The suspect shows signs of violence during the arrest.", "The suspect is known to have an addiction to drugs", 
-     "The suspect has no residence"]
+     "The suspect shows signs of violence during the arrest.", "The suspect is known to have an addiction to drugs.", 
+     "The suspect has no residence."]
   }
 }
