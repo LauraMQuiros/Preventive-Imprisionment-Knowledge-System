@@ -59,19 +59,19 @@
         "Speeding":{
           "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
           "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
-          "weight": 0.25,
+          "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         },
         "Reckless Behavior":{
           "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
           "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
-          "weight": 0.25,
+          "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         },
         "Unlicensed Driving":{
           "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "small vehicle", "life threatening",
           "third-party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
-          "weight": 0.25,
+          "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         }
       },
@@ -87,17 +87,17 @@
           },
           "Reckless": {
             "modifiers": ["negligence", "severity", "number of people"],
-            "weight": 0.5,
+            "weight": 0.25,
             "associated_articles": [142]
           },
-          "Preintentional": {
+          "Attempted": {
             "modifiers": "", 
-            "weight": 0.25,
+            "weight": 0.5,
             "associated_articles": []
           },
           "Leading to suicide": {
             "modifiers": ["leading cause", "cooperation", "death execution", "vulnerable victim"],
-            "weight": 0.5,
+            "weight": 0.25,
             "associated_articles": 143
           }
         },
@@ -106,7 +106,7 @@
       "Crimes against Freedom": {
         "crime_category_weight": 0.5, 
         "Crimes of Category": {
-          "Illegal arrests and kidnappings": {
+          "Kidnappings": {
             "modifiers": ["the release of the victim within 3 days", "the confinement or detention has lasted more than fifteen days",
             "demanding condition to release the person", "vulnerable or underage victim", "the intention of violating the freedom or sexual indemnity of the victim",
             "the perpetrator is the official figure"],
@@ -117,7 +117,7 @@
             "modifiers": ["the threat has been made imposing a condition", "the threats are made in writing, by telephone or by any means of communication or reproduction",
              "threats against populations, ethnic groups, cultural or religious groups", "publicly claim the commission of terrorist acts", 
              "threat consists of receiving a reward in exchange for not publishing or disseminating facts"], 
-            "weight": 0.5,
+            "weight": 0.25,
             "associated_articles": [169, 170, 171]
           },
           "Coercions": {
@@ -125,13 +125,13 @@
              "the crime is committed using weapons", "the crime takes place in the common residence or in the residence of the victim",
              "serious intimidation or violence", "vulnerable or underage victim", "surveillance, persecution or search for physical proximity",
              "attack against the freedom of the victim, against her property or a person close to her", "improper use of personal data to acquire products or hire services"], 
-            "weight": 0.75,
+            "weight": 0.5,
             "associated_articles": [172, "172 bis", "172b", "172 quater"]
           }
         },
         "associated_chapter": "Title VI: Crimes against freedom"
       }, 
-        "Crimes Against Property and Socioeconomic Order":{
+      "Crimes Against Property and Socioeconomic Order": {
           "crime_category_weight": 0.5,
           "Crimes of Category": {
             "Theft":{
@@ -152,20 +152,20 @@
               "weight": 0.75,
               "associated_articles":[268, 269, 287, 288, 243]
             },
-            "Vehicle Theft":{
+            "Use Theft":{
               "modifiers":["cooperation", "vulnerable victim", "violence"],
-              "weight": 0.5,
+              "weight": 0.25,
               "associated_articles":[268, 269, 287, 288, 242, 244]
             },
             "Usurpation":{
               "modifiers":["cooperation", "vulnerable victim", "residency", "land", "water"],
-              "weight": 0.75,
+              "weight": 0,
               "associated_articles":[268, 269, 287, 288, 245, 246, 247]
             },
             "Scamming":{
               "modifiers":["cooperation", "vulnerable victim", "quantity", "document fraud", 
               "coercion", "necesity items", "luxury items", "electric items"],
-              "weight": 0.5,
+              "weight": 0.25,
               "associated_articles":[268, 269, 287, 288, 248, 249, 250, 251, 151.2, 252, 253, 
               254, 255, 256]
             },
@@ -173,7 +173,7 @@
               "modifiers":["third-party damage", "public administration obstruction", "attempt",
               "entirely responsible", "property destruction", "passive", "fraudulent accountability",
               "cooperation", "vulnerable victim"],
-              "weight": 0.75,
+              "weight": 0.25,
               "associated_articles":[257, 258, 258.2, 258.3, 259, 259.2, 260, 261, 261.2, 268, 269,
               287, 288]
             }, 
@@ -186,7 +186,7 @@
               "modifiers":["cooperation", "vulnerable victim", "quantity", "public property damage",
               "violence", "document fraud", "electric items", "illegal data compilation", "illegal data trade", 
               "military property", "explosive"],
-              "weight": 0.75,
+              "weight": 0.25,
               "associated_articles":[268, 269, 287, 288, 263, 264, 264.2, 264.3, 264.4, 265, 266, 267]
             },
             "Damage to intellectual property":{
@@ -198,7 +198,7 @@
               "modifiers":["vulnerable victim", "public promotion", "illegal trade", "illegal production", 
               "illegal storage", "illegal ownership", "fraudulent information spread", "belonging to the criminal group"
               , "passive", "violation of secrecy"],
-              "weight": 0.5,
+              "weight": 0.25,
               "associated_articles":[287, 288, 273, 274, 275, 276, 277]
             },
             "Market and Consumption Violations":{
@@ -207,7 +207,7 @@
               "government employee", "overpricing", "coercion", "misuse of legally obtained secrets", 
               "trade of confidential information", "conspiracy", "encouragement of illegal activities", 
               "illegal programs or electronic components"],
-              "weight": 0.5,
+              "weight": 0,
               "associated_articles":[287, 288, 278, 279, 280, 281, 282, 282.2, 
               283, 284, 285, 285.2, 285.3, 285.4, 286, 197, 308, 255]
             },
@@ -215,18 +215,18 @@
               "modifiers":["vulnerable victim", "bribe", "trading in influence", "quantity", 
               "public administration obstruction", "encouragement of illegal activities", "abuse of authority/status", 
               "government employee", "gambling business", "criminal organization", "necesity items"],
-              "weight": 1,
+              "weight": 0.5,
               "associated_articles":[287, 288, 286.2, 286.3, 286.4, 24, 427]
             },
             "Public property damage":{
               "modifiers":[],
-              "weight": 0.75,
+              "weight": 0,
               "associated_articles":[289]
             },
             "Corruption in limited societies and cooperatives":{
               "modifiers":["document fraud", "quantity", "abuse of authority/status", "lack of information", 
               "obstruction of security check", "vulnerable or underage victim"],
-              "weight": 1,
+              "weight": 0.25,
               "associated_articles":[290, 291, 292, 293, 294, 296, 297, 129]
             },
             "Money laundering":{
@@ -235,17 +235,16 @@
               "public administration obstruction", "negligence", "leader of organization", "belonging to the criminal group",
               "personal benefit", "entirely responsible", "persons in charge or responsible", "government employee", 
               "health worker", "encouragement of illegal activities", "conspiracy", "coercion"],
-              "weight": 1,
+              "weight": 0.25,
               "associated_articles":[298, 299, 300, 301, 302, 303, 304, 368, 372, 374, 66.2, 33.7]
             }
           },
             "associated_chapter": "Title XIII: Crimes against property and socioeconomic order"
-          },
+      },
       "Assault": {
         "crime_category_weight": 0.75, 
         "Crimes of Category": {
           "Intentional": {
-            "subject": ["passive", "active"],
             "modifiers":["health", "medical involvement", "means of assault", "cruelty", 
           "treachery", "vulnerable or underage victim", "bond with a victim", "body mutilation"],
           "weight": 1,
@@ -253,13 +252,12 @@
           },
           "Reckless": {
             "modifiers":["vehicles", "firearms", "professional imprudence", "injuries"],
-            "weight": 0.5,
+            "weight": 0,
             "associated_articles": [152]
           },
           "Gender based": {
-            "victim": "female",
             "modifiers": ["aggression type"],
-            "weight": 0.5,
+            "weight": 0.75,
             "associated_articles": [153]
           }
         }
@@ -286,12 +284,12 @@
         "Crimes of Category": {
           "Omitting Help": {
             "modifiers":["preventing others to help"],
-            "weight": 0.5,
+            "weight": 0,
             "associated_articles": [195]
           },
-          "Causing Accident and Omitting Help": {
+          "Hit and Run": {
             "modifiers":["imprudence"],
-            "weight": 0.75,
+            "weight": 0.25,
             "associated_articles": [195]
           },
           "Omitting Help by Health Professional": {
@@ -309,27 +307,27 @@
             "modifiers":["spread of breached information", "only partaking in spreading", "persons in charge or responsible",
             "unauthorized use of personal data of the victim", "victim minor or disabled", "sensitive information",
             "breach with goal of profit", "part of criminal organization", "abuse of authority"],
-            "weight": 0.5,
+            "weight": 0,
             "associated_articles": [197, 197.4, 198]
           },
           "Breach of Private Data Security": {
             "modifiers":["part of criminal organization", "abuse of authority"],
-            "weight": 0.75,
+            "weight": 0,
             "associated_articles": [197.2, 197.4, 198]
           },
           "Interception of Private Data": {
             "modifiers":["part of criminal organization", "abuse of authority"],
-            "weight": 0.5,
+            "weight": 0,
             "associated_articles": [197.2, 197.4, 198]
           },
           "Providing Computer Program or Passwords for Privacy Breach": {
             "modifiers":["part of criminal organization", "abuse of authority"],
-            "weight": 0.5,
+            "weight": 0,
             "associated_articles": [197.3, 197.4, 198]
           },
           "Revealing secrets known through profession": {
             "modifiers":["obligation of confidentiality", "part of criminal organization"],
-            "weight": 0.75,
+            "weight": 0,
             "associated_articles": [197.4, 199]
           }  
         },
@@ -340,12 +338,12 @@
         "Crimes of Category": {
           "Break In": {
             "modifiers":["violence", "abuse of authority"],
-            "weight": 1,
+            "weight": 0.5,
             "associated_articles": [202, 204]
           },
           "Trespassing a place of profession or commercial establishment": {
             "modifiers":["not leaving", "violence", "abuse of authority"],
-            "weight": 0.75,
+            "weight": 0,
             "associated_articles": [203, 204]
           }
         },
