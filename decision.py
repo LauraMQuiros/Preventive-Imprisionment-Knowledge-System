@@ -12,9 +12,10 @@ def choose_estimated_crime():
     col1, col2 = st.columns([1, 1])
     selected_category = col1.radio('What is the category the estimated crime belongs to', crime_categories)
 
-    crimes_of_category = [ d for d in crime_categories[selected_category] if ((d != "crime_category_weight") and (d != "associated_chapter"))]
+    crimes_of_category = crime_categories[selected_category]['Crimes of Category']
     crimes = crimes_of_category.copy()
-    crimes.append('None/not clear')
+    # removed because dictionary cannot 
+    # crimes.append('None/not clear') 
 
     estimate_crime = col2.radio('What is the estimated committed crime?', crimes)
     st.session_state['estimated_crime'] = estimate_crime
@@ -27,18 +28,17 @@ def choose_estimated_crime():
         st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
 
+
+
 def choose_antecedents():
     #First we get some info we are gonna need
     crime = st.session_state['estimated_crime']
     category_crimes = st.session_state['estimated_category_crimes']
-    status = ['Guilty', 'Not guilty, but was in Preventive Prison for it', 'Not guilty, was not in Preventive Prison']
+    status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison']
     #selected_antecedents = [] #dictionary so we can store both crime and status in the same place
     #selected_status= []
 
     #And we make the terminal show us that the input so far has been collected
-    print(crime)
-    print(category_crimes)
-    print(st.session_state['estimated_category_weight'])
     my_expander = st.expander(label='Add an antecedent')
     with my_expander:
     #I'd like to have a button '+' such that a new template form appears with 3 multiple choice questions: crime, modif, conviction status
@@ -107,21 +107,24 @@ def choose_antecedents():
 
 def crime_report():
     #First we get some info we are gonna need
-    crime = st.session_state['estimated_crime']
-    category_crimes = st.session_state['estimated_category_crimes']
-    #Following is giving issues
-    #selected_modifiers = [ m for m in category_crimes[crime] if ((m != "crime_category_weight") and (m != "associated_chapter"))]
-    #modifiers = selected_modifiers.copy()
-    #modifiers.append('None/not clear')
+    selected_category = st.session_state['estimated_category']
+    estimate_crime = st.session_state['estimated_crime']
+    
+    number_of_modifiers = 0
+
+    modifiers = kb['categoryCrime'][selected_category]['Crimes of Category'][estimate_crime]['modifiers']
 
     st.header('_Crime Report_')
-    st.write("**Under construction**")
 
     col1, col2 = st.columns([1, 1])
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
     #col2.radio("What are the crime's modifiers?", modifiers)
     # adjacent crime system
+    col2.header("Check all the modifiers of the estimated crime.")
+    for modifier in modifiers:
+        if col2.checkbox(modifier):
+            number_of_modifiers+=1
 
     if st.button('Next'):
         st.session_state['state'] = 'contact information'
