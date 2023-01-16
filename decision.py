@@ -188,10 +188,14 @@ def final_conclusions():
     st.pyplot(fig)
     
     # Number of each weight (3), color red the title if made it reach threshold by itself
+    st.write(str(crime_weight))
+    st.write(str(antecedent_weight))
+        # Maybe it'd be cool to have the df here and make comments on that?
+    st.write(str(fleeing_weight))
+        # Fleeing only the checked ones (must make it variable that can move) 
     
-    # Antecedents with higher input organised by status
-    # Fleeing only the checked ones (must make it variable that can move) 
     rerun = st.button("Do you want to rerun the model?")
     if rerun:
         st.write("idk")
+
     # Maybe add download button to download the final conclusions as pdf
