@@ -32,6 +32,7 @@ def choose_estimated_crime():
 
 def choose_antecedents():
     #First we get some info we are gonna need
+    category_weight = st.session_state['estimated_category_weight']
     crime = st.session_state['estimated_crime']
     selected_category = st.session_state["estimated_category"]
     category_crimes = st.session_state['estimated_category_crimes']
@@ -84,7 +85,10 @@ def choose_antecedents():
     for a in range(0,len(selected_antecedents)):
         if selected_status[a] != status[2]:
             weight += category_crimes[selected_antecedents[a]]['weight']
-            print("This is the weigth: "+ str(weight))
+            
+    antecedent = st.session_state['antecedant_alpha']
+    weight *= antecedent * category_weight
+    print("This is the antecedent weight: "+ str(weight))
     st.session_state['antecedent_weight']= weight
 
     #Some warnings so we get the info b4 we go to the next page
@@ -161,7 +165,7 @@ def personal_info():
         st.experimental_rerun()
 
 def final_conclusions():
-    print(st.write("**Under construction**"))
+    
     antecedent_weight = st.session_state['antecedent_weight']
     crime_weight = st.session_state['crime_weight']
     fleeing_weight = st.session_state['fleeing_weight']
@@ -184,7 +188,7 @@ def final_conclusions():
     fig, ax = plt.subplots()
     ax.hist(final_weight, bins= 1, orientation= 'horizontal')
     fig.set_size_inches(8.5, 3.5)
-    ax.set_xlim(0, 7)
+    ax.set_xlim(0, 3)
     st.pyplot(fig)
     
     # Number of each weight (3), color red the title if made it reach threshold by itself
