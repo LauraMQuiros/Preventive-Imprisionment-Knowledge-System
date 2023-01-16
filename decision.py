@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit_book as stb
 import json
+import time
 from helpers import *
 import pandas as pd
 
@@ -11,19 +12,16 @@ def choose_estimated_crime():
     crime_categories = kb['categoryCrime']
     col1, col2 = st.columns([1, 1])
     selected_category = col1.radio('What is the category the estimated crime belongs to', crime_categories)
+    crimes_of_category = crime_categories[selected_category]['Crimes of Category'] 
 
-    crimes_of_category = crime_categories[selected_category]['Crimes of Category']
-    crimes = crimes_of_category.copy()
-    # removed because dictionary cannot 
-    # crimes.append('None/not clear') 
-
-    estimate_crime = col2.radio('What is the estimated committed crime?', crimes)
+    estimate_crime = col2.radio('What is the estimated committed crime?', crimes_of_category)
     st.session_state['estimated_crime'] = estimate_crime
     st.session_state['estimated_category_crimes'] = crimes_of_category
     st.session_state['estimated_category'] = selected_category
     #This is just to have the category weight
     st.session_state['estimated_category_weight'] = crime_categories[selected_category]['crime_category_weight']
-
+    st.session_state['estimated_crime_weight']= crimes_of_category[estimate_crime]['weight']
+    print(st.session_state['estimated_crime_weight'])
     if col2.button('Next'):
         st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
@@ -33,15 +31,13 @@ def choose_estimated_crime():
 def choose_antecedents():
     #First we get some info we are gonna need
     crime = st.session_state['estimated_crime']
+    selected_category = st.session_state["estimated_category"]
     category_crimes = st.session_state['estimated_category_crimes']
     status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison']
-    #selected_antecedents = [] #dictionary so we can store both crime and status in the same place
-    #selected_status= []
 
-    #And we make the terminal show us that the input so far has been collected
+    #Antecedent collection. STATUS: COMPLETED
     my_expander = st.expander(label='Add an antecedent')
     with my_expander:
-    #I'd like to have a button '+' such that a new template form appears with 3 multiple choice questions: crime, modif, conviction status
         with st.form("Add an antecedent", clear_on_submit=True):
             col1, col2 = st.columns(2)    
             newCrime = col1.radio("What is the antecedent's crime?", category_crimes)
@@ -53,16 +49,17 @@ def choose_antecedents():
                 st.session_state["selected_antecedents"]+= [newCrime]        
                 print(st.session_state["selected_status"])
     noAntecedents = st.checkbox('There are not any') 
-    
+
+    #A table to show the chosen antecedents
     selected_antecedents = st.session_state["selected_antecedents"]
     selected_status = st.session_state["selected_status"]
-    selected_category = st.session_state["estimated_category"]
     st.header("Antecedents stored")
     df = pd.DataFrame({'selected_antecedants': selected_antecedents, 'selected_status': selected_status})
-    #is it even possible to take the row numbers out?
+    #TO-DO: hide the row numbers
     df = df.sort_values('selected_antecedants', ascending=True)
     print(df)
-    
+
+    #Elimination of unwanted antecedents. STATUS: TO-DO    
     col1, col2 = st.columns([1, 1])
     # allow for elimination from the dataframe
     eliminate = col1.button("Eliminate an antecedent")
@@ -77,17 +74,16 @@ def choose_antecedents():
             print(df)
             #we have to reload the page i assume for the df to be printed first
             #otherwise this is it. But doesn't work yet
-    
-    st.table(df)
 
-    #category = kb[selected_category]
-    #crim = category[within_crimes] #this is gonna depend on the name 
-    #weight =0
-    #for a in range(len(selected_antecedents)):
-    #    if selected_status[a] != status[2]:
-    #        for crime_within in kb[selected_category][selected_antecedents[a]]:
-    #            if selected_antecedents[a] == crime_within:
-    #               weight += crimewithin["weight"]
+    st.table(df)
+    
+    #computation of the antecedent weight. STATUS: COMPLETED
+    weight =0
+    for a in range(0,len(selected_antecedents)):
+        if selected_status[a] != status[2]:
+            weight += category_crimes[selected_antecedents[a]]['weight']
+            print("This is the weigth: "+ str(weight))
+    st.session_state['antecedent_weight']= weight
 
     #Some warnings so we get the info b4 we go to the next page
     if col2.button('Confirm'):
@@ -109,13 +105,10 @@ def crime_report():
     #First we get some info we are gonna need
     selected_category = st.session_state['estimated_category']
     estimate_crime = st.session_state['estimated_crime']
-    
     number_of_modifiers = 0
-
     modifiers = kb['categoryCrime'][selected_category]['Crimes of Category'][estimate_crime]['modifiers']
 
     st.header('_Crime Report_')
-
     col1, col2 = st.columns([1, 1])
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
@@ -145,7 +138,12 @@ def personal_info():
 
 def final_conclusions():
     print(st.write("**Under construction**"))
-    # Like a health bar in a videogame, color coded like a traffic light
+
+    # Like a health bar in a videogame, color coded like a traffic light (css snippets included in https://discuss.streamlit.io/t/change-the-progress-bar-color/8189 )
+    my_bar = st.progress(0)
+    for percent_complete in range(100):
+        time.sleep(0.1)
+        my_bar.progress(percent_complete + 1)
     # Maybe add download button to download the final conclusions as pdf
     # Number of each weight (3), color red the title if made it reach threshold by itself
     # Antecedents with higher input organised by status

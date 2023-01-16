@@ -28,6 +28,8 @@ def init_session_state():
         st.session_state['estimated_category_weight'] = 0
     if 'estimated_category_crimes' not in st.session_state.keys():
         st.session_state['estimated_category_crimes'] = "none"
+    if 'estimated_crime_weight' not in st.session_state.keys():
+        st.session_state['estimated_crime_weight'] = 0
 
     #2nd page values
     if 'selected_antecedents' not in st.session_state.keys():
