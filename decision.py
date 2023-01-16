@@ -115,20 +115,27 @@ def crime_report():
     modifier_weight = st.session_state['modifier_weight']
     crimes_of_category = st.session_state['estimated_category_crimes']
     number_of_modifiers = 0
+    selected_modifiers = []
     modifiers = crimes_of_category[estimate_crime]['modifiers']
 
     st.header('_Crime Report_')
     col1, col2 = st.columns([1, 1])
 
     # adjacent crime system STATUS: TO ASK EXPERT
-
+    # explain when it should be national/local report
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
     report_weight = st.session_state['report_coefficient']
-    col2.header("Check all the modifiers of the estimated crime.")
-    for modifier in modifiers:
-        if col2.checkbox(modifier):
-            number_of_modifiers+=1
+
+    #explain what modifiers are
+    if len(modifiers)>0:
+        col2.header("Check all the modifiers of the estimated crime.")
+        for modifier in modifiers:
+            if col2.checkbox(modifier):
+                selected_modifiers += [modifier]
+                number_of_modifiers+=1
+        st.session_state['modifiers'] = selected_modifiers
+        st.table(selected_modifiers)
 
     #computation of weight  
     weight = category_weight* (crime_weight + report_weight*(number_of_modifiers* modifier_weight))
@@ -165,11 +172,14 @@ def personal_info():
         st.experimental_rerun()
 
 def final_conclusions():
+    category_weight = st.session_state['estimated_category_weight']
+    I_crime_weight = st.session_state['estimated_crime_weight']
     
-    antecedent_weight = st.session_state['antecedent_weight']
-    crime_weight = st.session_state['crime_weight']
-    fleeing_weight = st.session_state['fleeing_weight']
-    final_weight = (antecedent_weight + crime_weight + fleeing_weight)
+    Antecedent_weight = st.session_state['antecedent_weight']
+    Crime_weight = st.session_state['crime_weight']
+    modifiers = st.session_state['modifiers']
+    Fleeing_weight = st.session_state['fleeing_weight']
+    final_weight = (Antecedent_weight + Crime_weight + Fleeing_weight)
 
     # Like a health bar in a videogame, color coded like a traffic light 
     # css snippets included in https://discuss.streamlit.io/t/change-the-progress-bar-color/8189
@@ -192,10 +202,21 @@ def final_conclusions():
     st.pyplot(fig)
     
     # Number of each weight (3), color red the title if made it reach threshold by itself
-    st.write(str(crime_weight))
-    st.write(str(antecedent_weight))
+    with st.expander("The crime weight: " +str(category_weight)): 
+        col1, col2, col3 = st.columns([1,1,1])
+        st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on category weigh, crime weight and modifiers")
+        col1.write("The category weight here was "+ str(round(category_weight, 2)))
+        if I_crime_weight >=0.75:
+            col1.warning("this is a high evaluation for a category")
+        col2.write("The crime weight was "+ str(I_crime_weight))
+        if I_crime_weight >=0.75:
+            col2.warning("this is a high evaluation for a crime")
+        col3.write("To all this we add the modifiers")
+        col3.write(modifiers)    
+
+    st.write(str(Antecedent_weight))
         # Maybe it'd be cool to have the df here and make comments on that?
-    st.write(str(fleeing_weight))
+    st.write(str(Fleeing_weight))
         # Fleeing only the checked ones (must make it variable that can move) 
     
     rerun = st.button("Do you want to rerun the model?")
