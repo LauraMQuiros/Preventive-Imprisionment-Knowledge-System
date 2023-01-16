@@ -3,7 +3,7 @@ import streamlit as st
 def init_session_state():
     #These are the values that do not need to move through pages
     st.session_state['report_coefficient'] = 0
-    st.session_state['modifier_count'] = 0
+    st.session_state['modifier_count'] = 0 #I don't think we need this one tho
     st.session_state['antecedant_alpha'] = 0.5
     st.session_state['modifier_weight'] = 0.1
     st.session_state['final_threshold'] = 1.5

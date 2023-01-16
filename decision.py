@@ -35,7 +35,7 @@ def choose_antecedents():
     category_crimes = st.session_state['estimated_category_crimes']
     status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison']
 
-    #Antecedent collection. STATUS: COMPLETED
+    #Antecedent collection
     my_expander = st.expander(label='Add an antecedent')
     with my_expander:
         with st.form("Add an antecedent", clear_on_submit=True):
@@ -77,7 +77,7 @@ def choose_antecedents():
 
     st.table(df)
     
-    #computation of the antecedent weight. STATUS: COMPLETED
+    #computation of the antecedent weight
     weight =0
     for a in range(0,len(selected_antecedents)):
         if selected_status[a] != status[2]:
@@ -103,21 +103,31 @@ def choose_antecedents():
 
 def crime_report():
     #First we get some info we are gonna need
-    selected_category = st.session_state['estimated_category']
+    category_weight = st.session_state['estimated_category_weight']
+    crime_weight = st.session_state['estimated_crime_weight']
     estimate_crime = st.session_state['estimated_crime']
+    modifier_weight = st.session_state['modifier_weight']
+    crimes_of_category = st.session_state['estimated_category_crimes']
     number_of_modifiers = 0
-    modifiers = kb['categoryCrime'][selected_category]['Crimes of Category'][estimate_crime]['modifiers']
+    modifiers = crimes_of_category[estimate_crime]['modifiers']
 
     st.header('_Crime Report_')
     col1, col2 = st.columns([1, 1])
+
+    # adjacent crime system STATUS: TO ASK EXPERT
+
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
-    #col2.radio("What are the crime's modifiers?", modifiers)
-    # adjacent crime system
+    report_weight = st.session_state['report_coefficient']
     col2.header("Check all the modifiers of the estimated crime.")
     for modifier in modifiers:
         if col2.checkbox(modifier):
             number_of_modifiers+=1
+
+    #computation of weight  
+    weight = category_weight* (crime_weight + report_weight*(number_of_modifiers* modifier_weight))
+    print("This is the crime weight: "+ str(weight))
+    st.session_state['crime_weight'] = weight
 
     if st.button('Next'):
         st.session_state['state'] = 'contact information'
@@ -126,25 +136,47 @@ def crime_report():
 
 def personal_info():
     st.header('_Personal Information_')
+    category_weight = st.session_state['estimated_category_weight']
+    crime_weight = st.session_state['estimated_crime_weight']
     personal_modifiers = kb['Personal Information']['modifiers']
     st.write("Select all the true statements about the suspect:")
 
+    n_personal = 0
+    amount_reduced = (category_weight*crime_weight)/ len(personal_modifiers)
+    amount_reduced =round(amount_reduced, 4)
     for modifier in personal_modifiers:
          if st.checkbox(modifier):
-            print("Hi")
+            n_personal += amount_reduced
+
+    #computation of weight
+    weight = (category_weight*crime_weight)- n_personal
+    weight = round(weight, 4)
+    print("This is the fleeing risk weight:" + str(weight))
+    st.session_state['fleeing_weight'] = weight
+
     if st.button('Next'):
         st.session_state['state'] = 'report'
         st.experimental_rerun()
 
 def final_conclusions():
     print(st.write("**Under construction**"))
+    antecedent_weight = st.session_state['antecedent_weight']
+    crime_weight = st.session_state['crime_weight']
+    fleeing_weight = st.session_state['fleeing_weight']
+    final_weight = (antecedent_weight + crime_weight + fleeing_weight)
 
-    # Like a health bar in a videogame, color coded like a traffic light (css snippets included in https://discuss.streamlit.io/t/change-the-progress-bar-color/8189 )
+    # Like a health bar in a videogame, color coded like a traffic light 
+    # css snippets included in https://discuss.streamlit.io/t/change-the-progress-bar-color/8189
+    
     my_bar = st.progress(0)
     for percent_complete in range(100):
         time.sleep(0.1)
         my_bar.progress(percent_complete + 1)
-    # Maybe add download button to download the final conclusions as pdf
+    
     # Number of each weight (3), color red the title if made it reach threshold by itself
     # Antecedents with higher input organised by status
-    # Fleeing only the checked ones (must make it variable that can move)
+    # Fleeing only the checked ones (must make it variable that can move) 
+    rerun = st.button("Do you want to rerun the model?")
+    if rerun:
+        st.write("idk")
+    # Maybe add download button to download the final conclusions as pdf
