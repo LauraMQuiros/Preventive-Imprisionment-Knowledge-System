@@ -20,10 +20,10 @@ def choose_estimated_crime():
     st.session_state['estimated_crime'] = estimate_crime
     st.session_state['estimated_category_crimes'] = crimes_of_category
     st.session_state['estimated_category'] = selected_category
-    #This is just to have the category weight
+
     st.session_state['estimated_category_weight'] = crime_categories[selected_category]['crime_category_weight']
     st.session_state['estimated_crime_weight']= crimes_of_category[estimate_crime]['weight']
-    print(st.session_state['estimated_crime_weight'])
+
     if col2.button('Next'):
         st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
@@ -32,6 +32,8 @@ def choose_estimated_crime():
 
 def choose_antecedents():
     #First we get some info we are gonna need
+    
+    noAntecedents = st.checkbox('There are not any antecedents.') 
     category_weight = st.session_state['estimated_category_weight']
     crime = st.session_state['estimated_crime']
     selected_category = st.session_state["estimated_category"]
@@ -51,16 +53,14 @@ def choose_antecedents():
                 st.session_state["selected_status"] += [newStatus]
                 st.session_state["selected_antecedents"]+= [newCrime]        
                 print(st.session_state["selected_status"])
-    noAntecedents = st.checkbox('There are not any') 
 
     #A table to show the chosen antecedents
     selected_antecedents = st.session_state["selected_antecedents"]
     selected_status = st.session_state["selected_status"]
     st.header("Antecedents stored")
-    df = pd.DataFrame({'selected_antecedants': selected_antecedents, 'selected_status': selected_status})
+    df = pd.DataFrame({'Selected Antecedants': selected_antecedents, 'Selected Status': selected_status})
     #TO-DO: hide the row numbers
-    df = df.sort_values('selected_antecedants', ascending=True)
-    print(df)
+    df = df.sort_values('Selected Antecedants', ascending=True)
 
     #Elimination of unwanted antecedents. STATUS: TO-DO    
     col1, col2 = st.columns([1, 1])
@@ -70,11 +70,11 @@ def choose_antecedents():
         options =[]
         for i in range(len(selected_antecedents)):
             options += [i]
-        eliminate =st.radio("Select the number of the antecedent you want to eliminate", options)
+        row_to_elim = st.radio("Select the number of the antecedent you want to eliminate.", options)
+        
         elim = st.button("Eliminate")
         if elim:
-            df= df.drop([1], axis=0, inplace=True)
-            print(df)
+            df= df.drop(row_to_elim, axis=0, inplace=True)
             #we have to reload the page i assume for the df to be printed first
             #otherwise this is it. But doesn't work yet
 
@@ -92,7 +92,7 @@ def choose_antecedents():
     st.session_state['antecedent_weight']= weight
 
     #Some warnings so we get the info b4 we go to the next page
-    if col2.button('Confirm'):
+    if st.button('Next'):
         if noAntecedents:
             if len(selected_antecedents)==0:
                 # there are two ways to go to next page, feel free to combine them in one if statement
@@ -108,6 +108,9 @@ def choose_antecedents():
                 st.experimental_rerun()
 
 def crime_report():
+
+    st.header('_Crime Report_')
+
     #First we get some info we are gonna need
     category_weight = st.session_state['estimated_category_weight']
     crime_weight = st.session_state['estimated_crime_weight']
@@ -118,7 +121,7 @@ def crime_report():
     selected_modifiers = []
     modifiers = crimes_of_category[estimate_crime]['modifiers']
 
-    st.header('_Crime Report_')
+    
     col1, col2 = st.columns([1, 1])
 
     # adjacent crime system STATUS: TO ASK EXPERT
@@ -204,14 +207,14 @@ def final_conclusions():
     # Number of each weight (3), color red the title if made it reach threshold by itself
     with st.expander("The crime weight: " +str(category_weight)): 
         col1, col2, col3 = st.columns([1,1,1])
-        st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on category weigh, crime weight and modifiers")
+        st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on category weigh, crime weight and modifiers.")
         col1.write("The category weight here was "+ str(round(category_weight, 2)))
         if I_crime_weight >=0.75:
-            col1.warning("this is a high evaluation for a category")
+            col1.warning("This is a high evaluation for a crime category.")
         col2.write("The crime weight was "+ str(I_crime_weight))
         if I_crime_weight >=0.75:
-            col2.warning("this is a high evaluation for a crime")
-        col3.write("To all this we add the modifiers")
+            col2.warning("This is a high evaluation for a crime.")
+        col3.write("To all this we add the modifiers:")
         col3.write(modifiers)    
 
     st.write(str(Antecedent_weight))
