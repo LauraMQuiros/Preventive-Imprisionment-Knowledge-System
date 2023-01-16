@@ -24,14 +24,18 @@ def choose_estimated_crime():
     st.session_state['estimated_category_weight'] = crime_categories[selected_category]['crime_category_weight']
     st.session_state['estimated_crime_weight']= crimes_of_category[estimate_crime]['weight']
 
-    if col2.button('Next'):
+    st.markdown('---')
+    btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
+
+    if btn8.button('Next'):
         st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
 
 
-
 def choose_antecedents():
     #First we get some info we are gonna need
+
+    st.subheader('_Antecedents_')
     
     noAntecedents = st.checkbox('There are not any antecedents.') 
     category_weight = st.session_state['estimated_category_weight']
@@ -57,7 +61,7 @@ def choose_antecedents():
     #A table to show the chosen antecedents
     selected_antecedents = st.session_state["selected_antecedents"]
     selected_status = st.session_state["selected_status"]
-    st.header("Antecedents stored")
+    st.subheader("Antecedents stored")
     df = pd.DataFrame({'Selected Antecedants': selected_antecedents, 'Selected Status': selected_status})
     #TO-DO: hide the row numbers
     df = df.sort_values('Selected Antecedants', ascending=True)
@@ -81,7 +85,7 @@ def choose_antecedents():
     st.table(df)
     
     #computation of the antecedent weight
-    weight =0
+    weight = 0
     for a in range(0,len(selected_antecedents)):
         if selected_status[a] != status[2]:
             weight += category_crimes[selected_antecedents[a]]['weight']
@@ -91,8 +95,12 @@ def choose_antecedents():
     print("This is the antecedent weight: "+ str(weight))
     st.session_state['antecedent_weight']= weight
 
+
+    st.markdown('---')
+    btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
+
     #Some warnings so we get the info b4 we go to the next page
-    if st.button('Next'):
+    if btn8.button('Next'):
         if noAntecedents:
             if len(selected_antecedents)==0:
                 # there are two ways to go to next page, feel free to combine them in one if statement
@@ -106,22 +114,27 @@ def choose_antecedents():
             else:
                 st.session_state['state'] = 'police report'
                 st.experimental_rerun()
+    
+    if btn1.button('Back'):
+        st.session_state['state'] = 'crime estimation' 
+        st.experimental_rerun()
+
 
 def crime_report():
 
-    st.header('_Crime Report_')
+    st.subheader('_Police Report_')
 
     #First we get some info we are gonna need
     category_weight = st.session_state['estimated_category_weight']
     crime_weight = st.session_state['estimated_crime_weight']
-    estimate_crime = st.session_state['estimated_crime']
     modifier_weight = st.session_state['modifier_weight']
+
+    estimate_crime = st.session_state['estimated_crime']
     crimes_of_category = st.session_state['estimated_category_crimes']
-    number_of_modifiers = 0
-    selected_modifiers = []
     modifiers = crimes_of_category[estimate_crime]['modifiers']
 
-    
+    selected_modifiers = []
+
     col1, col2 = st.columns([1, 1])
 
     # adjacent crime system STATUS: TO ASK EXPERT
@@ -132,26 +145,34 @@ def crime_report():
 
     #explain what modifiers are
     if len(modifiers)>0:
-        col2.header("Check all the modifiers of the estimated crime.")
+        col2.write("Check all the modifiers of the estimated crime.")
         for modifier in modifiers:
             if col2.checkbox(modifier):
                 selected_modifiers += [modifier]
-                number_of_modifiers+=1
         st.session_state['modifiers'] = selected_modifiers
-        st.table(selected_modifiers)
+        df = pd.DataFrame({'Selected Modifiers': selected_modifiers})
+        st.table(df)
 
     #computation of weight  
-    weight = category_weight* (crime_weight + report_weight*(number_of_modifiers* modifier_weight))
+    weight = category_weight*(crime_weight + report_weight*(len(selected_modifiers)* modifier_weight))
     print("This is the crime weight: "+ str(weight))
     st.session_state['crime_weight'] = weight
 
-    if st.button('Next'):
+    st.markdown('---')
+    btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
+
+    if btn8.button('Next'):
         st.session_state['state'] = 'contact information'
+        st.experimental_rerun()
+
+    if btn1.button('Back'):
+        st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
      
 
 def personal_info():
     st.header('_Personal Information_')
+
     category_weight = st.session_state['estimated_category_weight']
     crime_weight = st.session_state['estimated_crime_weight']
     personal_modifiers = kb['Personal Information']['modifiers']
@@ -165,13 +186,19 @@ def personal_info():
             n_personal += amount_reduced
 
     #computation of weight
-    weight = (category_weight*crime_weight)- n_personal
+    weight = (category_weight*crime_weight) - n_personal
     weight = round(weight, 4)
-    print("This is the fleeing risk weight:" + str(weight))
     st.session_state['fleeing_weight'] = weight
 
-    if st.button('Next'):
+    st.markdown('---')
+    btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
+
+    if btn8.button('Next'):
         st.session_state['state'] = 'report'
+        st.experimental_rerun()
+
+    if btn1.button('Back'):
+        st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
 
 def final_conclusions():
@@ -182,6 +209,7 @@ def final_conclusions():
     Crime_weight = st.session_state['crime_weight']
     modifiers = st.session_state['modifiers']
     Fleeing_weight = st.session_state['fleeing_weight']
+
     final_weight = (Antecedent_weight + Crime_weight + Fleeing_weight)
 
     # Like a health bar in a videogame, color coded like a traffic light 
@@ -221,9 +249,16 @@ def final_conclusions():
         # Maybe it'd be cool to have the df here and make comments on that?
     st.write(str(Fleeing_weight))
         # Fleeing only the checked ones (must make it variable that can move) 
-    
-    rerun = st.button("Do you want to rerun the model?")
-    if rerun:
+
+    st.markdown('---')
+    btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
+
+    if btn1.button('Back'):
+        st.session_state['state'] = 'contact information'
+        st.experimental_rerun()
+
+    if btn8.button("Restart"):
         st.write("idk")
+    
 
     # Maybe add download button to download the final conclusions as pdf

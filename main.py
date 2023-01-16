@@ -16,7 +16,7 @@ st.set_page_config(
 )
 
 def title_section():
-    st.markdown('# Preventive Prison Decision Making System')
+    st.markdown('# Preventive Prison Decision Making System :police_car:')
     st.markdown('---')
 
 init_session_state()
