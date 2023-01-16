@@ -1,7 +1,9 @@
 import streamlit as st
 import streamlit_book as stb
 import json
-import time
+import altair as alt
+import matplotlib.pyplot as plt
+import numpy as np
 from helpers import *
 import pandas as pd
 
@@ -167,13 +169,26 @@ def final_conclusions():
 
     # Like a health bar in a videogame, color coded like a traffic light 
     # css snippets included in https://discuss.streamlit.io/t/change-the-progress-bar-color/8189
+    # https://altair-viz.github.io/gallery/bar_chart_with_labels.html
     
-    my_bar = st.progress(0)
-    for percent_complete in range(100):
-        time.sleep(0.1)
-        my_bar.progress(percent_complete + 1)
+    #df = pd.DataFrame({'value': final_weight}, index=[0])
+    #print(df)
+    #bars = alt.Chart(df).mark_bar().encode(
+    #    x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c']
+    #)
+    #st.altair_chart(bars,use_container_width=True)
+
+    #At the end I'm using a plain and boring matplotlib 
+    # but it may be cool if we do have adjacent crimes i guess
+    print("This is the final weight " +str(final_weight))
+    fig, ax = plt.subplots()
+    ax.hist(final_weight, bins= 1, orientation= 'horizontal')
+    fig.set_size_inches(8.5, 3.5)
+    ax.set_xlim(0, 7)
+    st.pyplot(fig)
     
     # Number of each weight (3), color red the title if made it reach threshold by itself
+    
     # Antecedents with higher input organised by status
     # Fleeing only the checked ones (must make it variable that can move) 
     rerun = st.button("Do you want to rerun the model?")
