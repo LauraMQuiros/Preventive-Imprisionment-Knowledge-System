@@ -103,6 +103,7 @@ def choose_antecedents():
 
     #Some warnings so we get the info b4 we go to the next page
     if btn8.button('Next'):
+        df = {}
         if noAntecedents:
             if len(selected_antecedents)==0:
                 # there are two ways to go to next page, feel free to combine them in one if statement
@@ -118,6 +119,7 @@ def choose_antecedents():
                 st.experimental_rerun()
     
     if btn1.button('Back'):
+        df = {}
         st.session_state['state'] = 'crime estimation' 
         st.experimental_rerun()
 
@@ -200,7 +202,7 @@ def personal_info():
         st.experimental_rerun()
 
     if btn1.button('Back'):
-        st.session_state['state'] = 'antecedents'
+        st.session_state['state'] = 'police report'
         st.experimental_rerun()
 
 
@@ -237,7 +239,7 @@ def final_conclusions():
     
     plt.yticks([])
     plt.gca().set_aspect(0.5)
-    plt.xlim(0, max(3, final_weight+0.2))
+    plt.xlim(0, max(2, final_weight+0.05))
     fig.set_size_inches(8.5, 3.5)
     plt.title("Final Calculation")
 
