@@ -7,8 +7,6 @@ import numpy as np
 from helpers import *
 import pandas as pd
 from matplotlib import cm
-from matplotlib.colors import ListedColormap, LinearSegmentedColormap
-from matplotlib import colors as mcolors, path
 
 
 file = open('kb.json', 'r')
@@ -232,22 +230,32 @@ def final_conclusions():
 
     final_weight = (Antecedent_weight + Crime_weight + Fleeing_weight)
 
-    df = pd.DataFrame({"x":["Final Calculation"], 'y':[final_weight]})
 
-    fig, ax = plt.subplots(figsize=(5, 1)) 
-    bar = ax.barh(0,final_weight, height=0.5)
+    fig, ax = plt.subplots() 
+    bar = ax.barh(0, final_weight, height=0.5)
     gradientbars(bar)
     
     plt.yticks([])
     plt.gca().set_aspect(0.5)
+    plt.xlim(0, max(3, final_weight+0.2))
     fig.set_size_inches(8.5, 3.5)
+    plt.title("Final Calculation")
+
     st.pyplot(fig)
+
+    string = "IS"
+
+    if final_weight < 1.5:
+        string = "IS NOT"
+    
+    st.write(final_weight)
+    st.subheader("The suspect " + string + " going to the preventive prison.")
 
     
     # Number of each weight (3), color red the title if made it reach threshold by itself
-    with st.expander("The crime weight: " +str(category_weight)): 
+    with st.expander("Explanation of the results."): 
         col1, col2, col3 = st.columns([1,1,1])
-        st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on category weigh, crime weight and modifiers.")
+        st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on a _category weight_, a degree/crime weight, and modifiers.")
         col1.write("The category weight here was "+ str(round(category_weight, 2)))
         if I_crime_weight >=0.75:
             col1.warning("This is a high evaluation for a crime category.")
