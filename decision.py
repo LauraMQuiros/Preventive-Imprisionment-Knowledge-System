@@ -6,6 +6,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from helpers import *
 import pandas as pd
+from matplotlib import cm
+from matplotlib.colors import ListedColormap, LinearSegmentedColormap
+from matplotlib import colors as mcolors, path
+
 
 file = open('kb.json', 'r')
 kb = json.load(file)
@@ -201,6 +205,22 @@ def personal_info():
         st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
 
+
+def gradientbars(bars):
+      
+      ax = bars[0].axes
+      lim = ax.get_xlim()+ax.get_ylim()
+      for bar in bars:
+          
+          bar.set_zorder(1)
+          bar.set_facecolor("none")
+          x,y = bar.get_xy()
+          w, h = bar.get_width(), bar.get_height()
+          grad = np.atleast_2d(np.linspace(0,1*w/1.5,256))
+          ax.imshow(grad, extent=[x,x+w,y,y+h], aspect="auto", zorder=0, norm=cm.colors.NoNorm(vmin=0,vmax=1),
+          cmap=plt.get_cmap('RdYlGn').reversed())
+      ax.axis(lim) 
+
 def final_conclusions():
     category_weight = st.session_state['estimated_category_weight']
     I_crime_weight = st.session_state['estimated_crime_weight']
@@ -212,25 +232,17 @@ def final_conclusions():
 
     final_weight = (Antecedent_weight + Crime_weight + Fleeing_weight)
 
-    # Like a health bar in a videogame, color coded like a traffic light 
-    # css snippets included in https://discuss.streamlit.io/t/change-the-progress-bar-color/8189
-    # https://altair-viz.github.io/gallery/bar_chart_with_labels.html
-    
-    #df = pd.DataFrame({'value': final_weight}, index=[0])
-    #print(df)
-    #bars = alt.Chart(df).mark_bar().encode(
-    #    x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c']
-    #)
-    #st.altair_chart(bars,use_container_width=True)
+    df = pd.DataFrame({"x":["Final Calculation"], 'y':[final_weight]})
 
-    #At the end I'm using a plain and boring matplotlib 
-    # but it may be cool if we do have adjacent crimes i guess
-    print("This is the final weight " +str(final_weight))
-    fig, ax = plt.subplots()
-    ax.hist(final_weight, bins= 1, orientation= 'horizontal')
+    fig, ax = plt.subplots(figsize=(5, 1)) 
+    bar = ax.barh(0,final_weight, height=0.5)
+    gradientbars(bar)
+    
+    plt.yticks([])
+    plt.gca().set_aspect(0.5)
     fig.set_size_inches(8.5, 3.5)
-    ax.set_xlim(0, 3)
     st.pyplot(fig)
+
     
     # Number of each weight (3), color red the title if made it reach threshold by itself
     with st.expander("The crime weight: " +str(category_weight)): 
