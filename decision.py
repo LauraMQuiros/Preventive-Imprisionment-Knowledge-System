@@ -41,8 +41,6 @@ def choose_antecedents():
     
     noAntecedents = st.checkbox('There are not any antecedents.') 
     category_weight = st.session_state['estimated_category_weight']
-    crime = st.session_state['estimated_crime']
-    selected_category = st.session_state["estimated_category"]
     category_crimes = st.session_state['estimated_category_crimes']
     status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison']
 
@@ -69,7 +67,6 @@ def choose_antecedents():
 
     if len(selected_antecedents)>=1:
         st.subheader("Antecedents stored")
-        st.table(df)
         #Elimination of unwanted antecedents. STATUS: TO-DO    
         col1, col2 = st.columns([1, 1])
         # allow for elimination from the dataframe
@@ -78,13 +75,19 @@ def choose_antecedents():
             options =[]
             for i in range(len(selected_antecedents)):
                 options += [i]
-            row_to_elim = st.radio("Select the number of the antecedent you want to eliminate.", options)
             
+            # for index in options:
+            #     if st.checkbox(index):
+            #         df= df.drop(row_to_elim, axis=0, inplace=True)
+
+            row_to_elim = st.radio("Select the number of the antecedent you want to eliminate.", options)
+            print(row_to_elim)
             elim = st.button("Eliminate")
             if elim:
                 df= df.drop(row_to_elim, axis=0, inplace=True)
-                #we have to reload the page i assume for the df to be printed first
-                #otherwise this is it. But doesn't work yet
+            #     we have to reload the page i assume for the df to be printed first
+            #     otherwise this is it. But doesn't work yet
+        st.table(df)
     else:
         st.write("No antecedents have been selected")
 
@@ -120,7 +123,7 @@ def choose_antecedents():
                 st.experimental_rerun()
     
     if btn1.button('Back'):
-        df = {}
+        st.session_state["selected_antecedents"] = []
         st.session_state['state'] = 'crime estimation' 
         st.experimental_rerun()
 
@@ -142,7 +145,6 @@ def crime_report():
 
     col1, col2 = st.columns([1, 1])
 
-    # adjacent crime system STATUS: TO ASK EXPERT
     # explain when it should be national/local report
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
@@ -300,7 +302,7 @@ def final_conclusions():
         st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on a _category weight_, a degree/crime weight, and modifiers.")
         st.write("The category weight here was "+ str(round(category_weight, 2))+ " and the crime itself was given a weight of "+ str(I_crime_weight))
         if category_weight >=0.75 and I_crime_weight >=0.75:
-            st.warning("These are very high evaluations for both crime category and crime, so it almost guarantees preventive prision by themselves")
+            st.warning("These are very high evaluations for both crime category and crime, so it almost guarantees preventive prision by themselves.")
         else:
             if category_weight >=0.75:    
                 st.warning("This is a high evaluation for a crime category.")
@@ -313,7 +315,7 @@ def final_conclusions():
         # Fleeing only the checked ones (must make it variable that can move) 
         st.write("The risk of fleeing was initialized as the danger of the crime committed (multiplication between category and crime weight), which resulted in "+ str(category_weight*Crime_weight))
         if len(information)>=1:
-            st.write("We subtract to this according to the danger factors asked. In this case, the person's risk of fleeing was lowered by the following factors")
+            st.write("We subtract to this according to the danger factors asked. In this case, the person's risk of fleeing was lowered by the following factors:")
             st.write(information)
         else:
             st.write("There was no normal behavior that could decrease this person's risk factor")
