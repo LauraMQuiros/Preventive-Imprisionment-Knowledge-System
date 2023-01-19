@@ -78,9 +78,11 @@ def choose_antecedents():
         gd = GridOptionsBuilder.from_dataframe(st.session_state.df_for_grid)
         gd.configure_selection(selection_mode='multiple', use_checkbox=True)
         gd.configure_column("Selected Antecedants", editable=False)
+        gd.configure_grid_options(rowHeight=40, headerHeight = 40)
         gridoptions = gd.build()
         grid_table = AgGrid(st.session_state.df_for_grid, gridOptions=gridoptions, autoHeight  = False, 
-                update_mode=GridUpdateMode.SELECTION_CHANGED, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW)        elim_button = st.button("Eliminate")
+                update_mode=GridUpdateMode.SELECTION_CHANGED, width='100%', height = len(st.session_state.df_for_grid)*40+40, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW)        
+        elim_button = st.button("Eliminate")
         if elim_button:
             st.session_state.df_for_grid = delete_row(st.session_state.df_for_grid, grid_table)
             st.experimental_rerun()
@@ -89,12 +91,13 @@ def choose_antecedents():
 
     #computation of the antecedent weight
 
-    selected_antecedents =  st.session_state.df_for_grid['Selected Antecedants']
-    selected_status =  st.session_state.df_for_grid['Selected Status'] 
+    selected_antecedents =  st.session_state.df_for_grid.get('Selected Antecedants')
+    selected_status =  st.session_state.df_for_grid.get('Selected Status')
     weight = 0
-    for a in range(0,len(selected_antecedents)):
-        if selected_status[a] != status[2]:
-            weight += category_crimes[selected_antecedents[a]]['weight']
+
+    for stat, crime in zip(selected_status, selected_antecedents):
+        if stat != 'Not guilty, was not in Preventive Prison':
+            weight += category_crimes[crime]['weight']
             
     antecedent = st.session_state['antecedant_alpha']
     weight *= antecedent * category_weight
