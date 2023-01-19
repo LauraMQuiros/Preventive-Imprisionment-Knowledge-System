@@ -313,7 +313,8 @@ def final_conclusions():
             if I_crime_weight >=0.75:
                 st.warning("This is a high evaluation for a crime.")
         if len(modifiers)>= 1:
-            st.write("To all this we add the modifier(s): " + str(modifiers))   
+            st.write("To all this we add the modifier(s):")
+            st.write(modifiers) 
 
     with st.expander("Values of the fleeing risk weight"):
         # Fleeing only the checked ones (must make it variable that can move) 
