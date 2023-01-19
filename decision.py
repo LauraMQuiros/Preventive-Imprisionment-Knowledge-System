@@ -93,6 +93,10 @@ def choose_antecedents():
 
     selected_antecedents =  st.session_state.df_for_grid.get('Selected Antecedants')
     selected_status =  st.session_state.df_for_grid.get('Selected Status')
+
+    st.session_state["selected_antecedents"] = selected_antecedents
+    st.session_state["selected_status"] = selected_status
+
     weight = 0
 
     for stat, crime in zip(selected_status, selected_antecedents):
