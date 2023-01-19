@@ -7,6 +7,9 @@ import numpy as np
 from helpers import *
 import pandas as pd
 from matplotlib import cm
+from st_aggrid import AgGrid, GridUpdateMode, ColumnsAutoSizeMode 
+from st_aggrid.grid_options_builder import GridOptionsBuilder
+
 
 
 file = open('kb.json', 'r')
@@ -33,6 +36,14 @@ def choose_estimated_crime():
         st.session_state['state'] = 'antecedents'
         st.experimental_rerun()
 
+def delete_row(df, grid):
+    selected_rows = grid['selected_rows']
+    if selected_rows:
+        selected_indices = [i['_selectedRowNodeInfo']
+                            ['nodeRowIndex'] for i in selected_rows]
+        df_indices = st.session_state.df_for_grid.index[selected_indices]
+        df = df.drop(df_indices)
+    return df
 
 def choose_antecedents():
     #First we get some info we are gonna need
@@ -42,8 +53,11 @@ def choose_antecedents():
     noAntecedents = st.checkbox('There are not any antecedents.') 
     category_weight = st.session_state['estimated_category_weight']
     category_crimes = st.session_state['estimated_category_crimes']
-    status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison']
+    status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison'] 
 
+    # df = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
+    if "df_for_grid" not in st.session_state:
+            st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
     #Antecedent collection
     my_expander = st.expander(label='Add an antecedent')
     with my_expander:
@@ -54,44 +68,29 @@ def choose_antecedents():
             st.warning("Click in the 'done' button to store the antecedent")
             newAntecedent = st.form_submit_button('Done')
             if newAntecedent:
-                st.session_state["selected_status"] += [newStatus]
-                st.session_state["selected_antecedents"]+= [newCrime]        
-                print(st.session_state["selected_status"])
+                new_row = {'Selected Antecedants': newCrime, 'Selected Status': newStatus}
+                st.session_state.df_for_grid = st.session_state.df_for_grid.append(new_row, ignore_index=True)
+                print(st.session_state.df_for_grid)
 
-    #A table to show the chosen antecedents
-    selected_antecedents = st.session_state["selected_antecedents"]
-    selected_status = st.session_state["selected_status"]
-    df = pd.DataFrame({'Selected Antecedants': selected_antecedents, 'Selected Status': selected_status})
-    #TO-DO: hide the row numbers (when done update report page as well)
-    df = df.sort_values('Selected Antecedants', ascending=True)
-
-    if len(selected_antecedents)>=1:
+    # A table to show the chosen antecedents
+    if  st.session_state.df_for_grid.empty == False:
         st.subheader("Antecedents stored")
-        #Elimination of unwanted antecedents. STATUS: TO-DO    
-        col1, col2 = st.columns([1, 1])
-        # allow for elimination from the dataframe
-        eliminate = col1.button("Eliminate an antecedent")
-        if eliminate: 
-            options =[]
-            for i in range(len(selected_antecedents)):
-                options += [i]
-            
-            # for index in options:
-            #     if st.checkbox(index):
-            #         df= df.drop(row_to_elim, axis=0, inplace=True)
-
-            row_to_elim = st.radio("Select the number of the antecedent you want to eliminate.", options)
-            print(row_to_elim)
-            elim = st.button("Eliminate")
-            if elim:
-                df= df.drop(row_to_elim, axis=0, inplace=True)
-            #     we have to reload the page i assume for the df to be printed first
-            #     otherwise this is it. But doesn't work yet
-        st.table(df)
+        gd = GridOptionsBuilder.from_dataframe(st.session_state.df_for_grid)
+        gd.configure_selection(selection_mode='multiple', use_checkbox=True)
+        gd.configure_column("Selected Antecedants", editable=False)
+        gridoptions = gd.build()
+        grid_table = AgGrid(st.session_state.df_for_grid, gridOptions=gridoptions, autoHeight  = False, 
+                update_mode=GridUpdateMode.SELECTION_CHANGED, columns_auto_size_mode=ColumnsAutoSizeMode.FIT_ALL_COLUMNS_TO_VIEW)        elim_button = st.button("Eliminate")
+        if elim_button:
+            st.session_state.df_for_grid = delete_row(st.session_state.df_for_grid, grid_table)
+            st.experimental_rerun()
     else:
-        st.write("No antecedents have been selected")
+        st.write("No antecedents have been selected.")
 
     #computation of the antecedent weight
+
+    selected_antecedents =  st.session_state.df_for_grid['Selected Antecedants']
+    selected_status =  st.session_state.df_for_grid['Selected Status'] 
     weight = 0
     for a in range(0,len(selected_antecedents)):
         if selected_status[a] != status[2]:
@@ -99,7 +98,6 @@ def choose_antecedents():
             
     antecedent = st.session_state['antecedant_alpha']
     weight *= antecedent * category_weight
-    print("This is the antecedent weight: "+ str(weight))
     st.session_state['antecedent_weight']= weight
 
     st.markdown('---')
@@ -107,7 +105,6 @@ def choose_antecedents():
 
     #Some warnings so we get the info b4 we go to the next page
     if btn8.button('Next'):
-        df = {}
         if noAntecedents:
             if len(selected_antecedents)==0:
                 # there are two ways to go to next page, feel free to combine them in one if statement
@@ -123,7 +120,7 @@ def choose_antecedents():
                 st.experimental_rerun()
     
     if btn1.button('Back'):
-        st.session_state["selected_antecedents"] = []
+        st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
         st.session_state['state'] = 'crime estimation' 
         st.experimental_rerun()
 
