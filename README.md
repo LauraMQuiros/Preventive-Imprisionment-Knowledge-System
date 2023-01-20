@@ -5,3 +5,7 @@ This knowledge system evaluates both factors through the summation and multiplic
 This allows to compute the likelihood of a person to go to preventive prison in the spanish justice system according to criminal record, crime commited and ease of posterior location.
 
 DISCLAIMER: The crimes in the criminal record are talked about as "antecedents", which is a direct translation of the spanish term for a past crime figuring in the criminal record. Other mistranslations may be found.
+
+Some specifications about the requirements are in the Requirements.txt. 
+
+The main command to run the code (in VS) is python3 -m streamlit run main.py.
