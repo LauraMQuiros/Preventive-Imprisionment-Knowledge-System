@@ -43,3 +43,6 @@ def init_session_state():
     #4th page values 
     if 'personal_info' not in st.session_state.keys():
         st.session_state['personal_info']= []
+
+
+

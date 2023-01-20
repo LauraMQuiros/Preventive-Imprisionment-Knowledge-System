@@ -17,11 +17,13 @@ st.set_page_config(
 
 def title_section():
     st.markdown('# Preventive Prison Decision Making System :police_car:')
+    st.markdown('')
+    st.info('Based on the Spanish Penal Code.')
     st.markdown('---')
 
 init_session_state()
 title_section()
-if st.session_state['state']== 'crime estimation':
+if st.session_state['state'] == 'crime estimation':
     choose_estimated_crime()
 else:
     if st.session_state['state'] == 'antecedents':

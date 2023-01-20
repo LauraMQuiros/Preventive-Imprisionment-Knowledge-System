@@ -1,7 +1,6 @@
 import streamlit as st
-import streamlit_book as stb
+from streamlit import *
 import json
-import altair as alt
 import matplotlib.pyplot as plt
 import numpy as np
 from helpers import *
@@ -112,6 +111,7 @@ def choose_antecedents():
 
     #Some warnings so we get the info b4 we go to the next page
     if btn8.button('Next'):
+        st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
         if noAntecedents:
             if len(selected_antecedents)==0:
                 # there are two ways to go to next page, feel free to combine them in one if statement
@@ -130,7 +130,6 @@ def choose_antecedents():
         st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
         st.session_state['state'] = 'crime estimation' 
         st.experimental_rerun()
-
 
 def crime_report():
 
@@ -245,7 +244,7 @@ def final_conclusions():
     Fleeing_weight = st.session_state['fleeing_weight']
 
     final_weight = (Antecedent_weight + Crime_weight + Fleeing_weight)
-    st.write("The final weight amounts to " +str(final_weight))
+    st.subheader("The final weight amounts to " + str(round(final_weight, 2)))
 
     fig, ax = plt.subplots() 
     bar = ax.barh(0, final_weight, height=0.5)
@@ -334,6 +333,8 @@ def final_conclusions():
         st.experimental_rerun()
 
     if btn8.button("Restart"):
-        st.write("idk")
+        for key in st.session_state.keys():
+            del st.session_state[key]
+        st.session_state['state'] = 'crime estimation'
+        st.experimental_rerun()
     
-    #sadly couldn't figure out how to print the viewed page as pdf :(
