@@ -47,11 +47,11 @@
         }, 
         "Public Health": {
           "modifiers": ["Illegal manipulation", "Illegal production", "Illegal disposal",
-          "Illegal trade", "expired product", "damaged product", "illegal product", "People's lives were put into risk",
-          "medicinal drugs or sanitary product", "fraudulent information spread", "There is proof of full accountability", "There is proof of full accountability", "Illegal transport", 
-          "document fraud", "The suspect is a government employee/civil servant", "large scale of distribution", "distribution to underage",
-          "The suspect belongs to a criminal group", "public promotion", "Crime concerns doping", "coercion", "alimentary product", "Crime concerns poisoning",
-          "There is proof of full accountability", "Crime concerns recreational drugs", "large large quantity", "conspiracy", "encouragement of illegal activities"], 
+          "Illegal trade", "expired product", "damaged product", "illegal product", "People's lives were put into risk.",
+          "medicinal drugs or sanitary product", "fraudulent information spread", "There is a proof of full accountability.", "There is proof of full accountability", "Illegal transport", 
+          "document fraud", "The suspect is a government employee/civil servant.", "large scale of distribution", "distribution to underage",
+          "The suspect belongs to a criminal group.", "public promotion", "Crime concerns doping", "coercion", "alimentary product", "Crime concerns poisoning",
+          "There is proof of full accountability", "Crime concerns recreational drugs", "A huge quantity of the product.", "conspiracy", "encouragement of illegal activities"], 
           "weight": 1,
           "associated_articles": [359, 360, 361, 362, 362.2, 362.3, 362.4, 362.5, 362.6,
             363, 364, 365, 366, 367, 368, 369, 370, 371, 172, 373, 374, 375, 376, 377, 378]
@@ -321,7 +321,7 @@
             "associated_articles": [197.2, 197.4, 198]
           },
           "Providing Computer Program or Passwords for Privacy Breach": {
-            "modifiers":["The suspect belongs to a criminal group", "abuse of authority/status"],
+            "modifiers":["The suspect belongs to a criminal group.", "abuse of authority/status"],
             "weight": 0,
             "associated_articles": [197.3, 197.4, 198]
           },
