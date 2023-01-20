@@ -69,7 +69,6 @@ def choose_antecedents():
             if newAntecedent:
                 new_row = {'Selected Antecedents': newCrime, 'Selected Status': newStatus}
                 st.session_state.df_for_grid = st.session_state.df_for_grid.append(new_row, ignore_index=True)
-                print(st.session_state.df_for_grid)
 
     # A table to show the chosen antecedents
     if  st.session_state.df_for_grid.empty == False:
@@ -102,7 +101,6 @@ def choose_antecedents():
     antecedent = st.session_state['antecedant_alpha']
     weight *= antecedent * category_weight
     st.session_state['antecedent_weight']= weight
-    print(st.session_state['antecedent_weight'])
 
     st.markdown('---')
     btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
@@ -161,7 +159,6 @@ def crime_report():
 
     #computation of weight  
     weight = category_weight*(crime_weight + (len(selected_modifiers)* modifier_weight))
-    print("This is the crime weight: "+ str(weight))
     st.session_state['crime_weight'] = weight
 
     st.markdown('---')
