@@ -81,12 +81,12 @@
         "crime_category_weight": 1, 
         "Crimes of Category": {
           "Intentional": {
-            "modifiers": ["vulnerable or underage victim", "prior sexual assault", "belonging to the criminal group", "treachery", "cruelty", "reward", "crime facilitation"],
+            "modifiers": ["The victim is vulnerable or underage.", "The crime was commited with a prior sexual assault.", "The suspect belongs to the criminal group.", "The suspect commited the crime with a treachery", "The crime was commited with a high level of cruelty. ", "The suspect was promised/received a reward for the commited crime.", "The crime was commited to facilitate the commission of another crime or to prevent its discovery"],
             "weight": 1,
             "associated_articles": [138, 139, 140]
           },
           "Reckless": {
-            "modifiers": ["intentional", "severity", "number of people"],
+            "modifiers": ["More than one person was affected.", "The negligence was of the high seriousness."],
             "weight": 0.25,
             "associated_articles": [142]
           },
@@ -96,7 +96,7 @@
             "associated_articles": []
           },
           "Leading to suicide": {
-            "modifiers": ["leading cause", "entirely responsible", "death execution", "vulnerable victim"],
+            "modifiers": ["The actions of the suspect were the leading cause of the suicide.", "The suspect facilitated the death execution.", "The victim is vulnerable or underage."],
             "weight": 0.25,
             "associated_articles": 143
           }
@@ -107,24 +107,24 @@
         "crime_category_weight": 0.5, 
         "Crimes of Category": {
           "Kidnappings": {
-            "modifiers": ["the release of the victim within 3 days", "the confinement or detention has lasted more than fifteen days",
-            "demanding condition to release the person", "vulnerable or underage victim", "the intention of violating the freedom or sexual indemnity of the victim",
-            "the perpetrator is the official figure"],
+            "modifiers": ["The confinement or detention has lasted more than fifteen days.",
+            "The suspect had demanding condition to release the person.", "The victim is vulnerable or underage.", "The suspect had the intention of violating the freedom or sexual indemnity of the victim.",
+            "The suspect is the official figure."],
             "weight": 1,
             "associated_articles": [163, 164, 165, 166, 167, 168]
           },
           "Threats": {
-            "modifiers": ["the threat has been made imposing a condition", "the threats are made in writing, by telephone or by any means of communication or reproduction",
-             "threats against populations, ethnic groups, cultural or religious groups", "publicly claim the commission of terrorist acts", 
-             "threat consists of receiving a reward in exchange for not publishing or disseminating facts"], 
+            "modifiers": ["The threat has been made imposing a condition.", "The threats were made in writing, by telephone or by any means of communication or reproduction.",
+             "The threats were made against populations, ethnic groups, cultural or religious groups.", "The suspect publicly claimed the commission of terrorist acts.", 
+             "The made threat consists of receiving a reward in exchange for not publishing or disseminating facts."], 
             "weight": 0.25,
             "associated_articles": [169, 170, 171]
           },
           "Coercions": {
-            "modifiers": ["preventing the exercise of a fundamental right", "the crime is committed in the presence of minors",
-             "the crime is committed using weapons", "the crime takes place in the common residence or in the residence of the victim",
-             "serious intimidation or violence", "vulnerable or underage victim", "surveillance, persecution or search for physical proximity",
-             "attack against the freedom of the victim, against her property or a person close to her", "improper use of personal data to acquire products or hire services"], 
+            "modifiers": ["The suspect prevented the victim from the exercise of a fundamental right.", "The crime was committed in the presence of minors.",
+             "The crime was committed using weapons.", "The crime took place in the common residence or in the residence of the victim.",
+             "The crime included serious intimidation or violence.", "The victim is vulnerable or underage.", "One of the following occured: surveillance, persecution or search for physical proximity.",
+             "The suspect made attacks against the freedom of the victim, against her property or a person close to her."], 
             "weight": 0.5,
             "associated_articles": [172, "172 bis", "172b", "172 quater"]
           }
@@ -251,12 +251,12 @@
           "associated_articles": [147, 148, 149, 150]
           },
           "Reckless": {
-            "modifiers":["vehicles", "firearms", "professional imprudence", "injuries"],
+            "modifiers":["Assault occured due to the use of vehicles.", "Assault occured due to the use of firearms.", "Assult occured due to professional imprudence.", "The injuries are severe."],
             "weight": 0,
             "associated_articles": [152]
           },
           "Gender based": {
-            "modifiers": ["aggression type"],
+            "modifiers": ["The victim is a female.","aggression type"],
             "weight": 0.75,
             "associated_articles": [153]
           }
