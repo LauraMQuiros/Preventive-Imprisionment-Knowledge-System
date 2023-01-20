@@ -54,9 +54,9 @@ def choose_antecedents():
     category_crimes = st.session_state['estimated_category_crimes']
     status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison'] 
 
-    # df = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
+    # df = pd.DataFrame({'Selected Antecedents':[], 'Selected Status': []})
     if "df_for_grid" not in st.session_state:
-            st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
+            st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedents':[], 'Selected Status': []})
     #Antecedent collection
     my_expander = st.expander(label='Add an antecedent')
     with my_expander:
@@ -67,7 +67,7 @@ def choose_antecedents():
             st.warning("Click in the 'done' button to store the antecedent")
             newAntecedent = st.form_submit_button('Done')
             if newAntecedent:
-                new_row = {'Selected Antecedants': newCrime, 'Selected Status': newStatus}
+                new_row = {'Selected Antecedents': newCrime, 'Selected Status': newStatus}
                 st.session_state.df_for_grid = st.session_state.df_for_grid.append(new_row, ignore_index=True)
                 print(st.session_state.df_for_grid)
 
@@ -76,7 +76,7 @@ def choose_antecedents():
         st.subheader("Antecedents stored")
         gd = GridOptionsBuilder.from_dataframe(st.session_state.df_for_grid)
         gd.configure_selection(selection_mode='multiple', use_checkbox=True)
-        gd.configure_column("Selected Antecedants", editable=False)
+        gd.configure_column("Selected Antecedents", editable=False)
         gd.configure_grid_options(rowHeight=40, headerHeight = 40)
         gridoptions = gd.build()
         grid_table = AgGrid(st.session_state.df_for_grid, gridOptions=gridoptions, autoHeight  = False, 
@@ -90,7 +90,7 @@ def choose_antecedents():
 
     #computation of the antecedent weight
 
-    selected_antecedents =  st.session_state.df_for_grid.get('Selected Antecedants')
+    selected_antecedents =  st.session_state.df_for_grid.get('Selected Antecedents')
     selected_status =  st.session_state.df_for_grid.get('Selected Status')
 
     st.session_state["selected_antecedents"] = selected_antecedents
@@ -112,7 +112,7 @@ def choose_antecedents():
 
     #Some warnings so we get the info b4 we go to the next page
     if btn8.button('Next'):
-        st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
+        st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedents':[], 'Selected Status': []})
         if noAntecedents:
             if len(selected_antecedents)==0:
                 # there are two ways to go to next page, feel free to combine them in one if statement
@@ -128,7 +128,7 @@ def choose_antecedents():
                 st.experimental_rerun()
     
     if btn1.button('Back'):
-        st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedants':[], 'Selected Status': []})
+        st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedents':[], 'Selected Status': []})
         st.session_state['state'] = 'crime estimation' 
         st.experimental_rerun()
 
@@ -292,8 +292,8 @@ def final_conclusions():
             selected_antecedents_weights += [crimes_of_category[crime]['weight']]
 
 
-        df = pd.DataFrame({'Selected Antecedants': selected_antecedents, 'Selected Status': selected_status, 'Weight': selected_antecedents_weights})
-        df = df.sort_values('Selected Antecedants', ascending=True)
+        df = pd.DataFrame({'Selected Antecedents': selected_antecedents, 'Selected Status': selected_status, 'Weight': selected_antecedents_weights})
+        df = df.sort_values('Selected Antecedents', ascending=True)
         if len(selected_antecedents)>=1:
             st.subheader("Antecedents that influenced the decision")
             st.table(df)
