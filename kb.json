@@ -48,29 +48,29 @@
         "Public Health": {
           "modifiers": ["Illegal production of the product.", "Illegal disposal of the product.",
           "Illegal trade of the product.", "The product is expired.", "The product is damaged.", "The product is illegal.", "People's lives were put into risk.",
-          "medicinal drugs or sanitary product", "fraudulent information spread", "There is a proof of full accountability.", "Illegal transport", 
-          "document fraud", "The suspect is a government employee/civil servant.", "large scale of distribution", "distribution to underage",
-          "The suspect belongs to a criminal group.", "public promotion", "Crime concerns doping", "coercion", "alimentary product", "Crime concerns poisoning",
-          "Crime concerns recreational drugs", "A huge quantity of the product.", "conspiracy", "encouragement of illegal activities"], 
+          "The crime concers medicinal drugs or sanitary products.", "The crime involved fraudulent information spread.", "There is a proof of full accountability.", "The crime involved illegal transport.", 
+          "The crime involved a document fraud.", "The suspect is a government employee/civil servant.", "The crime concerns a large scale of distribution.", "The crime involved distribution to underage.",
+          "The suspect belongs to a criminal group.", "Crime concerns doping.", "The crime involved coercion.", "The crime involved alimentary products.", "Crime concerns poisoning.",
+          "Crime concerns recreational drugs.", "A huge quantity of the product was found.", "The crime involved conspiracy.", "The crime involved encouragement of illegal activities."], 
           "weight": 1,
           "associated_articles": [359, 360, 361, 362, 362.2, 362.3, 362.4, 362.5, 362.6,
             363, 364, 365, 366, 367, 368, 369, 370, 371, 172, 373, 374, 375, 376, 377, 378]
         },
         "Speeding":{
-          "modifiers": ["The crime involved alcohol consumption.", "The crime involved drug consumption.", "A large vehicle was iused.", "People's lives were put into risk.",
+          "modifiers": ["The crime involved alcohol consumption.", "The crime involved drug consumption.", "A large vehicle was used.", "People's lives were put into risk.",
           "There was a third party damage.", "The vehicle was abandoned.", "The suspect refused to test.", "The crime caused severe public disruption."], 
           "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         },
         "Reckless Behavior":{
-          "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "large vehicle", "People's lives were put into risk",
-          "There was a third party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
+          "modifiers": ["The crime involved alcohol consumption.", "The crime involved drug consumption.", "The crime was casued by a reckless behavior.", "A large vehicle was used.", "People's lives were put into risk.",
+          "There was a third party damage.", "The vehicle was abandoned.", "The suspect refused to test.", "The crime caused severe public disruption."], 
           "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         },
         "Unlicensed Driving":{
-          "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "large vehicle", "People's lives were put into risk",
-          "There was a third party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
+          "modifiers": ["The crime involved alcohol consumption.", "The crime involved drug consumption.", "A large vehicle was used.", "People's lives were put into risk.",
+          "There was a third party damage.", "The vehicle was abandoned.", "The suspect refused to test.", "The crime caused severe public disruption."], 
           "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         }
@@ -135,86 +135,86 @@
           "crime_category_weight": 0.5,
           "Crimes of Category": {
             "Theft":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim", "high total price", "luxury items", 
-              "electric items", "Involvement of underage children", "The suspect belongs to a criminal group", "upon borrowing"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage.", "The total price of stolen items is high.", "The stolen items are luxurious.", 
+              "The stolen items are electric items.", "The crime involved underage children.", "The suspect belongs to a criminal group.", "The theft occured upon borrowing."],
               "weight": 0.75,
               "associated_articles":[268, 269, 287, 288, 234, 235, 236]
             },
             "Violent Theft":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim", "luxury items", 
-              "electric items", "Involvement of underage children", "The suspect belongs to a criminal group", "public institution",
-              "used residency"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage.", "The stolen items are luxurious.", 
+              "The stolen items are electric items.", "The crime involved underage children.", "The suspect belongs to a criminal group.", "The crime occured in the public institution.",
+              "The crime occured in the residency of one or more people."],
               "weight": 1,
               "associated_articles":[268, 269, 287, 288, 235, 237, 238, 239, 240, 241, 242]
             },
             "Extorsion":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage."],
               "weight": 0.75,
               "associated_articles":[268, 269, 287, 288, 243]
             },
             "Use Theft":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim", "High degree of violence"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage.", "The crime involved a high degree of violence"],
               "weight": 0.25,
               "associated_articles":[268, 269, 287, 288, 242, 244]
             },
             "Usurpation":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim", "residency"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage.", "The crime occured in the residency of one or more people."],
               "weight": 0,
               "associated_articles":[268, 269, 287, 288, 245, 246, 247]
             },
             "Scamming":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim", "large quantity", "document fraud", 
-              "coercion", "luxury items", "electric items"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage.", "The crime was commited on a large scale.", "The crime involved document fraud.", 
+              "The crime involved coercion.", "The scamming involved luxury items.", "The scamming involved electric items."],
               "weight": 0.25,
               "associated_articles":[268, 269, 287, 288, 248, 249, 250, 251, 151.2, 252, 253, 
               254, 255, 256]
             },
             "Finantial malpractice":{
-              "modifiers":["There was a third party damage", "public administration obstruction", "attempt",
-              "property destruction", "fraudulent accountability",
-              "There is proof of full accountability", "vulnerable victim"],
+              "modifiers":["There was a third party damage.", "The crime involved public administration obstruction.",
+              "The crime involved property destruction.", "The crime involved fraudulent accountability.",
+              "There is proof of full accountability.", "The victim is vulnerable or underage."],
               "weight": 0.25,
               "associated_articles":[257, 258, 258.2, 258.3, 259, 259.2, 260, 261, 261.2, 268, 269,
               287, 288]
             }, 
             "Auction manipulation":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim", "abuse of authority/status"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage.", "The suspect abused their authority/status."],
               "weight": 0.25,
               "associated_articles":[268, 269, 287, 288, 262]
             },
             "Property damage":{
-              "modifiers":["There is proof of full accountability", "vulnerable victim", "large quantity", "public property damage",
-              "High degree of violence", "document fraud", "electric items", "illegal data compilation", "illegal data trade", 
-              "military property", "due to explosive"],
+              "modifiers":["There is proof of full accountability.", "The victim is vulnerable or underage.", "The damage was done on a large scale.", "The crime involved public property damage.",
+              "The victim is vulnerable or underage.", "The crime involved document fraud.", "The crime involved electric items.", "The crime involved illegal data compilation.", "The crime involved illegal data trade.", 
+              "The crime involved military property.", "The damage was done due to explosives."],
               "weight": 0.25,
               "associated_articles":[268, 269, 287, 288, 263, 264, 264.2, 264.3, 264.4, 265, 266, 267]
             },
             "Damage to intellectual property":{
-              "modifiers":["vulnerable victim", "international violation", "large quantity"],
+              "modifiers":["The victim is vulnerable or underage.", "The crime involved international violation.", "The damage was done on a large scale."],
               "weight": 0.25,
               "associated_articles":[287, 288, 270, 271, 272]
             },
             "Damage to Industrial Property":{
-              "modifiers":["vulnerable victim", "public promotion", "Illegal trade", "Illegal production", 
-              "Illegal storage", "Illegal ownership", "fraudulent information spread", "The suspect belongs to a criminal group"
-              , "Breach of the obligation of confidentiality"],
+              "modifiers":["The victim is vulnerable or underage.", "The crime involved public promotion.", "The crime involved illegal trade.", "The crime involved illegal production.", 
+              "The crime involved illegal storage.", "The crime involved illegal ownership.", "The crime involved fraudulent information spread.", "The suspect belongs to a criminal group.",
+              "The crime involved breach of the obligation of confidentiality."],
               "weight": 0.25,
               "associated_articles":[287, 288, 273, 274, 275, 276, 277]
             },
             "Market and Consumption Violations":{
-              "modifiers":["vulnerable victim", "document fraud", "Breach of the obligation of confidentiality", "vandalism", 
-              "personal benefit", "socially disruptive", "vulnerable victim", "defamation",
-              "The suspect is a government employee/civil servant", "overpricing", "coercion", "misuse of legally obtained secrets", 
-              "trade of confidential information", "conspiracy", "encouragement of illegal activities", 
-              "Made use of illegal programs or electronic components"],
+              "modifiers":["The victim is vulnerable or underage.", "The crime involved document fraud.", "The crime involved breach of the obligation of confidentiality.", "The crime involved vandalism.", 
+              "The crime involved personal benefit.", "The crime was socially disruptive.", "The crime involved defamation.",
+              "The suspect is a government employee/civil servant.", "The crime involved overpricing.", "The crime involved coercion.", "The crime involved misuse of legally obtained secrets.", 
+              "The crime involved trade of confidential information.", "The crime involved conspiracy.", "The crime involved encouragement of illegal activities.", 
+              "The crime involved use of illegal programs or electronic components."],
               "weight": 0,
               "associated_articles":[287, 288, 278, 279, 280, 281, 282, 282.2, 
               283, 284, 285, 285.2, 285.3, 285.4, 286, 197, 308, 255]
             },
             "Corruption In Business":{
-              "modifiers":["vulnerable victim", "bribe", "trading in influence", "large quantity of money involved", 
-              "public administration obstruction", "encouragement of illegal activities", "abuse of authority/status", 
-              "The suspect is a government employee/civil servant", "Crime related to the gambling business", "Crime related to a Belon", "The suspect belongs to a criminal group"],
+              "modifiers":["The victim is vulnerable or underage.", "The crime involved bribing.", "The crime involved trading in influence.", "The crime involved a large quantity of money.", 
+              "The crime involved public administration obstruction.", "The crime involved encouragement of illegal activities.", "The suspect abused their authority/status.", 
+              "The suspect is a government employee/civil servant.", "Crime is related to the gambling business.", "The suspect belongs to a criminal group."],
               "weight": 0.5,
               "associated_articles":[287, 288, 286.2, 286.3, 286.4, 24, 427]
             },
@@ -224,17 +224,17 @@
               "associated_articles":[289]
             },
             "Corruption in limited societies and cooperatives":{
-              "modifiers":["document fraud", "large quantity", "abuse of authority/status", "lack of information", 
-              "Obstruction of security check", "The victim is vulnerable or underage."],
+              "modifiers":["The crime involved document fraud.", "The crime was commited on a large scale.", "The suspect abused their authority/status.", 
+              "The crime involved obstruction of security check.", "The victim is vulnerable or underage."],
               "weight": 0.25,
               "associated_articles":[290, 291, 292, 293, 294, 296, 297, 129]
             },
             "Money laundering":{
-              "modifiers":["high cultural value", "large quantity", "Illegal trade", 
-              "Illegal storage", "Illegal ownership", "Illegal manipulation", "public health violation", 
-              "public administration obstruction", "There is proof of full accountability", "leader of organization", "The suspect belongs to a criminal group",
-              "personal benefit", "The suspect is a government employee/civil servant.", 
-              "The suspect is a health worker.", "encouragement of illegal activities", "conspiracy", "coercion"],
+              "modifiers":["The items involved are of a high cultural value.", "The items involved in thne crime were of a large quantity.", "The crime involved illegal trade.", 
+              "The crime involved illegal storage.", "The crime involved illegal ownership.", "The crime involved illegal manipulation.", "The crime involved public health violations.", 
+              "The crime involved public administration obstruction.", "There is proof of full accountability.", "The suspect is a leader of a criminal organization.", "The suspect belongs to a criminal group.",
+              "The crime involved personal benefit.", "The suspect is a government employee/civil servant.", 
+              "The suspect is a health worker.", "The crime involved encouragement of illegal activities.", "The crime involved conspiracy.", "The crime involved coercion."],
               "weight": 0.25,
               "associated_articles":[298, 299, 300, 301, 302, 303, 304, 368, 372, 374, 66.2, 33.7]
             }
@@ -283,12 +283,12 @@
         "crime_category_weight": 0.25, 
         "Crimes of Category": {
           "Omitting Help": {
-            "modifiers":["preventing others to help"],
+            "modifiers":["The suspect prevented other parties from helping."],
             "weight": 0,
             "associated_articles": [195]
           },
           "Hit and Run": {
-            "modifiers":["Severe negligence"],
+            "modifiers":["The crime involved severe negligence."],
             "weight": 0.25,
             "associated_articles": [195]
           },
@@ -304,29 +304,29 @@
         "crime_category_weight": 0.25, 
         "Crimes of Category": {
           "Privacy Breach": {
-            "modifiers":["spread of breached information", "leader of organization",
-            "unauthorized use of personal data of the victim", "victim minor or disabled", "sensitive information",
-            "breach with goal of profit", "The suspect belongs to a criminal group", "abuse of authority/status"],
+            "modifiers":["The crime involved spread of breached information.", "The suspect is a leader of a criminal organization.",
+            "The crime involved unauthorized use of personal data of the victim.", "The victim is vulnerable or underage.", "The breach involved sensitive information.",
+            "The breach occured with goal of profit.", "The suspect belongs to a criminal group", "The suspect abused their authority/status."],
             "weight": 0,
             "associated_articles": [197, 197.4, 198]
           },
           "Breach of Private Data Security": {
-            "modifiers":["The suspect belongs to a criminal group", "abuse of authority/status"],
+            "modifiers":["The suspect belongs to a criminal group.", "The suspect abused their authority/status."],
             "weight": 0,
             "associated_articles": [197.2, 197.4, 198]
           },
           "Interception of Private Data": {
-            "modifiers":["The suspect belongs to a criminal group", "abuse of authority/status"],
+            "modifiers":["The suspect belongs to a criminal group.", "The suspect abused their authority/status."],
             "weight": 0,
             "associated_articles": [197.2, 197.4, 198]
           },
           "Providing Computer Program or Passwords for Privacy Breach": {
-            "modifiers":["The suspect belongs to a criminal group.", "abuse of authority/status"],
+            "modifiers":["The suspect belongs to a criminal group.", "The suspect abused their authority/status."],
             "weight": 0,
             "associated_articles": [197.3, 197.4, 198]
           },
           "Revealing secrets known through profession": {
-            "modifiers":["Breach of the obligation of confidentiality.", "The suspect belongs to a criminal group."],
+            "modifiers":["The crime involved breach of the obligation of confidentiality.", "The suspect belongs to a criminal group."],
             "weight": 0,
             "associated_articles": [197.4, 199]
           }  
@@ -337,12 +337,12 @@
         "crime_category_weight": 0.25, 
         "Crimes of Category": {
           "Break In": {
-            "modifiers":["The crime commited had a high degree of violence.", "abuse of authority/status"],
+            "modifiers":["The crime involved a high degree of violence.", "The suspect abused their authority/status."],
             "weight": 0.5,
             "associated_articles": [202, 204]
           },
           "Trespassing a place of profession or commercial establishment": {
-            "modifiers":["Refusal to leave the place on grounds of homelessness", "High degree of violence", "abuse of authority/status"],
+            "modifiers":["The suspect refused to leave the place on grounds of homelessness.", "The crime involved a high degree of violence.", "The suspect abused their authority/status."],
             "weight": 0,
             "associated_articles": [203, 204]
           }
