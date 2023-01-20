@@ -4,43 +4,43 @@
       "crime_category_weight": 1, 
       "Crimes of Category": {
         "Nuclear Manipulation":{
-          "modifiers": ["People's lives were put into risk", "A nuclear plant was manipulated", "The environment received damage", 
-          "There is proof of full accountability","Illegal storage", "Illegal production"],
+          "modifiers": ["People's lives were put into risk.", "A nuclear plant was manipulated.", "The environment received damage.", 
+          "There is proof of full accountability.","The crime involved illegal storage.", "The crime involved illegal production."],
           "weight": 1,
           "associated_articles": [341, 342, 343, 344, 345]
         },
         "Explosions":{
-          "modifiers": ["Public property was damaged", "People's lives were put into risk"],
+          "modifiers": ["Public property was damaged.", "People's lives were put into risk."],
           "weight": 1,
           "associated_articles": [346, 347]
         },
         "Explosive Agents":{
-          "modifiers": ["Illegal manipulation", "Illegal transport", "Illegal ownership", "Illegal trade", 
-          "negligent supervision", "Negligent manipulation", "There is proof of full accountability", 
-          "Obstruction of security check", "Deception of inspection", "Insubordination to public administration regulations and warnings"],
+          "modifiers": ["The crime involved illegal manipulation.", "The crime involved illegal transport.", "The crime involved illegal ownership.", "The crime involved illegal trade.", 
+          "The crime involved inegligent supervision.", "The crime involved negligent manipulation.", "There is proof of full accountability.", 
+          "Obstruction of security check occured.", "The crime involved deception of inspection.", "The crime resulted due to insubordination to public administration regulations and warnings."],
           "weight": 0.75,
           "associated_articles": [348, 349, 350]
         },
         "Arson":{
-          "modifiers": ["There is proof of full accountability", "People's lives were put into risk"],
+          "modifiers": ["There is proof of full accountability.", "People's lives were put into risk."],
           "weight": 0.5,
           "associated_articles": [358, 358.2, 351],
           "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
         },
         "Forest fire":{
-          "modifiers": ["There is proof of full accountability", "People's lives were put into risk"],
+          "modifiers": ["There is proof of full accountability.", "People's lives were put into risk."],
           "weight": 0.25,
           "associated_articles": [358,358.2, 352, 352, 353, 354, 355],
           "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
         },
         "Non-forest fire":{
-          "modifiers": ["There is proof of full accountability", "The environment received damage"],
+          "modifiers": ["There is proof of full accountability.", "The environment received damage."],
           "weight": 0.25,
           "associated_articles": [358, 358.2, 356],
           "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
         },
         "Own-Property fire":{
-          "modifiers": ["There is proof of full accountability", "With the goal to avoid taxes", "The environment received damage", "There was a third party damage"],
+          "modifiers": ["There is proof of full accountability.", "The crime involved the goal to avoid taxes.", "The environment received damage.", "There was a third party damage."],
           "weight": 0.25,
           "associated_articles": [358, 358.2, 357],
           "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
@@ -57,8 +57,8 @@
             363, 364, 365, 366, 367, 368, 369, 370, 371, 172, 373, 374, 375, 376, 377, 378]
         },
         "Speeding":{
-          "modifiers": ["alcohol consumption", "drug consumption", "reckless behavior", "large vehicle", "People's lives were put into risk",
-          "There was a third party damage", "vehicle abandonment", "testing refusal", "severe public disruption"], 
+          "modifiers": ["The crime involved alcohol consumption.", "The crime involved drug consumption.", "A large vehicle was iused.", "People's lives were put into risk.",
+          "There was a third party damage.", "The vehicle was abandoned.", "The suspect refused to test.", "The crime caused severe public disruption."], 
           "weight": 0,
           "associated_articles": [379, 380, 381, 382, 382.2, 383, 384, 385, 385.2, 385.3]
         },
