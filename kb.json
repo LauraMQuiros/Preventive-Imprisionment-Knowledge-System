@@ -46,8 +46,8 @@
           "associated_chapter": "Title XVI: Crimes relative to order of territory and urbanism, protection of historic assets and environment"
         }, 
         "Public Health": {
-          "modifiers": ["Illegal manipulation", "Illegal production", "Illegal disposal",
-          "Illegal trade", "expired product", "damaged product", "illegal product", "People's lives were put into risk.",
+          "modifiers": ["Illegal production of the product.", "Illegal disposal of the product.",
+          "Illegal trade of the product.", "The product is expired.", "The product is damaged.", "The product is illegal.", "People's lives were put into risk.",
           "medicinal drugs or sanitary product", "fraudulent information spread", "There is a proof of full accountability.", "There is proof of full accountability", "Illegal transport", 
           "document fraud", "The suspect is a government employee/civil servant.", "large scale of distribution", "distribution to underage",
           "The suspect belongs to a criminal group.", "public promotion", "Crime concerns doping", "coercion", "alimentary product", "Crime concerns poisoning",
