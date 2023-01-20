@@ -105,6 +105,7 @@ def choose_antecedents():
     antecedent = st.session_state['antecedant_alpha']
     weight *= antecedent * category_weight
     st.session_state['antecedent_weight']= weight
+    print(st.session_state['antecedent_weight'])
 
     st.markdown('---')
     btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
@@ -268,10 +269,10 @@ def final_conclusions():
     # Number of each weight (3), color red the title if made it reach threshold by itself
 
     st.markdown('---')
-    st.write("The value of the final weight is calculated by the multiplication of the coefficient of reliability of the report and three different factors: how serious are their antecedents (past crimes), how serious is the crime committed and how high is the fleeing risk.")
+    st.write("The value of the final weight is calculated by the multiplication of _the coefficient of reliability of the report_ and three different factors: how serious are their _antecedents (past crimes)_, how serious is _the crime committed_ and how high is _the fleeing risk_.")
     if round(Fleeing_weight, 2)<=0:
         Fleeing_weight= 0
-    st.write("In this case the antecedent weight was "+ str(Antecedent_weight)+ ", the crime weight was "+ str(Crime_weight)+ " and the fleeing risk was around "+ str(round(Fleeing_weight, 2)))
+    st.write("In this case the antecedent weight was **"+ str(Antecedent_weight)+ "**, the crime weight was **"+ str(Crime_weight)+ "** and the fleeing risk was around **"+ str(round(Fleeing_weight, 2)) + "**.")
     
     with st.expander("Values of the antecedent weight"):
         antecedents = st.session_state["selected_antecedents"]
@@ -299,11 +300,11 @@ def final_conclusions():
         else:
             st.write("No antecedents were selected")
             #Make an scenario to make this pretty
-        st.write("With a category weight of "+ str(category_weight)+ " multiplied by an antecedent weight of 0.5  and the sum of these weights resulted in "+ str(Antecedent_weight))
+        st.write("With a crime category weight of **"+ str(category_weight)+ "** multiplied by an antecedent weight of **0.5**, and the sum of these weights resulted in **"+ str(Antecedent_weight) + "**.")
 
     with st.expander("Values of the crime weight"):
         st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on a _category weight_, a degree/crime weight, and modifiers.")
-        st.write("The category weight here was "+ str(round(category_weight, 2))+ " and the crime itself was given a weight of "+ str(I_crime_weight))
+        st.write("The category weight here was **"+ str(round(category_weight, 2))+ "** and the crime itself was given a weight of **"+ str(I_crime_weight) + "**.")
         if category_weight >=0.75 and I_crime_weight >=0.75:
             st.warning("These are very high evaluations for both crime category and crime, so it almost guarantees preventive prision by themselves.")
         else:
@@ -317,12 +318,12 @@ def final_conclusions():
 
     with st.expander("Values of the fleeing risk weight"):
         # Fleeing only the checked ones (must make it variable that can move) 
-        st.write("The risk of fleeing was initialized as the danger of the crime committed (multiplication between category and crime weight), which resulted in "+ str(category_weight*Crime_weight))
+        st.write("The risk of fleeing was initialized as the danger of the crime committed (multiplication between category and crime weight), which resulted in **"+ str(category_weight*Crime_weight)+ "**.")
         if len(information)>=1:
             st.write("We subtract to this according to the danger factors asked. In this case, the person's risk of fleeing was lowered by the following factors:")
             st.write(information)
         else:
-            st.write("There was no normal behavior that could decrease this person's risk factor")
+            st.write("There was no normal behavior that could decrease this person's risk factor.")
    
         
     st.markdown('---')
