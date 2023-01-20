@@ -17,15 +17,16 @@ kb = json.load(file)
 def choose_estimated_crime():
     crime_categories = kb['categoryCrime']
     col1, col2 = st.columns([1, 1])
+    
+    #store information taken
     selected_category = col1.radio('What is the category the estimated crime belongs to', crime_categories)
     crimes_of_category = crime_categories[selected_category]['Crimes of Category'] 
+    st.session_state['estimated_category_crimes'] = crimes_of_category
+    st.session_state['estimated_category'] = selected_category
+    st.session_state['estimated_category_weight'] = crime_categories[selected_category]['crime_category_weight']
 
     estimate_crime = col2.radio('What is the estimated committed crime?', crimes_of_category)
     st.session_state['estimated_crime'] = estimate_crime
-    st.session_state['estimated_category_crimes'] = crimes_of_category
-    st.session_state['estimated_category'] = selected_category
-
-    st.session_state['estimated_category_weight'] = crime_categories[selected_category]['crime_category_weight']
     st.session_state['estimated_crime_weight']= crimes_of_category[estimate_crime]['weight']
 
     st.markdown('---')
@@ -45,18 +46,17 @@ def delete_row(df, grid):
     return df
 
 def choose_antecedents():
-    #First we get some info we are gonna need
-
     st.subheader('_Antecedents_')
-    
+
+    #First we get some info we are gonna need
     noAntecedents = st.checkbox('There are not any antecedents.') 
     category_weight = st.session_state['estimated_category_weight']
     category_crimes = st.session_state['estimated_category_crimes']
     status = ['Guilty', 'Not guilty, but was in Preventive Prison', 'Not guilty, was not in Preventive Prison'] 
 
-    # df = pd.DataFrame({'Selected Antecedents':[], 'Selected Status': []})
     if "df_for_grid" not in st.session_state:
             st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedents':[], 'Selected Status': []})
+    
     #Antecedent collection
     my_expander = st.expander(label='Add an antecedent')
     with my_expander:
@@ -89,15 +89,12 @@ def choose_antecedents():
         st.write("No antecedents have been selected.")
 
     #computation of the antecedent weight
-
     selected_antecedents =  st.session_state.df_for_grid.get('Selected Antecedents')
     selected_status =  st.session_state.df_for_grid.get('Selected Status')
-
     st.session_state["selected_antecedents"] = selected_antecedents
     st.session_state["selected_status"] = selected_status
 
     weight = 0
-
     for stat, crime in zip(selected_status, selected_antecedents):
         if stat != 'Not guilty, was not in Preventive Prison':
             weight += category_crimes[crime]['weight']
@@ -110,12 +107,12 @@ def choose_antecedents():
     st.markdown('---')
     btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
 
-    #Some warnings so we get the info b4 we go to the next page
+    #Some warnings so we get the info before we go to the next page
     if btn8.button('Next'):
         st.session_state.df_for_grid = pd.DataFrame({'Selected Antecedents':[], 'Selected Status': []})
         if noAntecedents:
             if len(selected_antecedents)==0:
-                # there are two ways to go to next page, feel free to combine them in one if statement
+                # there are two ways to go to next page depending on whether u want antecedents or not
                 st.session_state['state'] = 'police report' 
                 st.experimental_rerun()
             else: 
@@ -146,14 +143,13 @@ def crime_report():
     modifiers = crimes_of_category[estimate_crime]['modifiers']
 
     selected_modifiers = []
-
     col1, col2 = st.columns([1, 1])
 
-    # explain when it should be national/local report
+    # when it is national/local is in the report
     report_type = col1.radio("What is the type of a police report?", kb['Police Report Type'])
     st.session_state['report_coefficient'] = kb['Police Report Type'][report_type]['weight']
     
-    #explain what modifiers are
+    #explain what modifiers are is in the report
     if len(modifiers)>0:
         col2.write("Check all the modifiers of the estimated crime.")
         for modifier in modifiers:
@@ -165,8 +161,6 @@ def crime_report():
 
     #computation of weight  
     weight = category_weight*(crime_weight + (len(selected_modifiers)* modifier_weight))
-    #We don't use the police report coefficient here bc its noise affects fleeing risk and
-    #crime weights as well
     print("This is the crime weight: "+ str(weight))
     st.session_state['crime_weight'] = weight
 
@@ -258,22 +252,19 @@ def final_conclusions():
     plt.title("Final Calculation")
 
     st.pyplot(fig)
-
     string = "IS"
-
     if final_weight < 1.5:
         string = "IS NOT"
-    
     st.subheader("The suspect " + string + " going to the preventive prison.")
 
-    # Number of each weight (3), color red the title if made it reach threshold by itself
-
+    # Number of each weight and little explanations + comments
     st.markdown('---')
     st.write("The value of the final weight is calculated by the multiplication of _the coefficient of reliability of the report_ and three different factors: how serious are their _antecedents (past crimes)_, how serious is _the crime committed_ and how high is _the fleeing risk_.")
     if round(Fleeing_weight, 2)<=0:
         Fleeing_weight= 0
     st.write("In this case the antecedent weight was **"+ str(Antecedent_weight)+ "**, the crime weight was **"+ str(Crime_weight)+ "** and the fleeing risk was around **"+ str(round(Fleeing_weight, 2)) + "**.")
     
+    #Explanation on antecedent
     with st.expander("Values of the antecedent weight"):
         antecedents = st.session_state["selected_antecedents"]
         status = st.session_state["selected_status"]
@@ -291,7 +282,6 @@ def final_conclusions():
         for crime in selected_antecedents:
             selected_antecedents_weights += [crimes_of_category[crime]['weight']]
 
-
         df = pd.DataFrame({'Selected Antecedents': selected_antecedents, 'Selected Status': selected_status, 'Weight': selected_antecedents_weights})
         df = df.sort_values('Selected Antecedents', ascending=True)
         if len(selected_antecedents)>=1:
@@ -302,6 +292,7 @@ def final_conclusions():
             #Make an scenario to make this pretty
         st.write("With a crime category weight of **"+ str(category_weight)+ "** multiplied by an antecedent weight of **0.5**, and the sum of these weights resulted in **"+ str(Antecedent_weight) + "**.")
 
+    #Explanation on crime weight
     with st.expander("Values of the crime weight"):
         st.write("The crime weight is one of the main three parts of the calculation of the final weight and it relies on a _category weight_, a degree/crime weight, and modifiers.")
         st.write("The category weight here was **"+ str(round(category_weight, 2))+ "** and the crime itself was given a weight of **"+ str(I_crime_weight) + "**.")
@@ -316,8 +307,9 @@ def final_conclusions():
             st.write("To all this we add the modifier(s):")
             st.write(modifiers) 
 
+    #Explanation on fleeing risk weight
     with st.expander("Values of the fleeing risk weight"):
-        # Fleeing only the checked ones (must make it variable that can move) 
+        # Fleeing only the checked ones
         st.write("The risk of fleeing was initialized as the danger of the crime committed (multiplication between category and crime weight), which resulted in **"+ str(category_weight*Crime_weight)+ "**.")
         if len(information)>=1:
             st.write("We subtract to this according to the danger factors asked. In this case, the person's risk of fleeing was lowered by the following factors:")
