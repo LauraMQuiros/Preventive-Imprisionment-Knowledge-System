@@ -91,7 +91,7 @@
             "associated_articles": [142]
           },
           "Attempted": {
-            "modifiers": "", 
+            "modifiers": "The victim is vulnerable or underage.", 
             "weight": 0.5,
             "associated_articles": []
           },
@@ -245,13 +245,13 @@
         "crime_category_weight": 0.75, 
         "Crimes of Category": {
           "Intentional": {
-            "modifiers":["High degree of violence", "Need of medical involvement", "means of assault", "cruelty", 
-          "treachery", "The victim is vulnerable or underage.", "bond with a victim", "body mutilation"],
+            "modifiers":["The crime commited involved a high degree of violence.", "The crime commited involved a high degree of cruelty.", "There is a need of medical involvement for the victim.", "Weapons, instruments, objects, means, methods or forms specifically dangerous to the life or health, physical or mental, of the injured party have been used in the attack.", 
+          "treachery", "The victim is vulnerable or underage.", "The suspect has a bond with a victim.", "As a result, the victim experienced a form of body mutilation."],
           "weight": 1,
           "associated_articles": [147, 148, 149, 150]
           },
           "Reckless": {
-            "modifiers":["Assault occured due to the use of vehicles", "Assault occured due to the use of firearms.", "Assult occured due to professional negligence", "The crime commited involved a high degree of violence."],
+            "modifiers":["Assault occured due to the use of vehicles.", "Assault occured due to the use of firearms.", "Assult occured due to professional negligence.", "The crime commited involved a high degree of violence."],
             "weight": 0,
             "associated_articles": [152]
           },
