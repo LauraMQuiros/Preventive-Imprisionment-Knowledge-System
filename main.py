@@ -1,5 +1,6 @@
 """
 Run commands: python3 -m streamlit run main.py
+When ran into problems regarding st_aggrid: 'pip install streamlit-aggrid==0.3.3' before running
 To go to initial page: go to 3 lines top right, clear cache and rerun
 """
 
