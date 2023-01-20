@@ -327,6 +327,10 @@ def final_conclusions():
    
         
     st.markdown('---')
+    estimated_crime = st.session_state['estimated_crime']
+    st.write("The articles of the spanish civil code used for the computation of this crime were:")
+    st.write(crimes_of_category[estimated_crime]['associated_articles'])
+
     btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8 = st.columns(8)
 
     if btn1.button('Back'):
