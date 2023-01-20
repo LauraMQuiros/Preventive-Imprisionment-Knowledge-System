@@ -48,10 +48,10 @@
         "Public Health": {
           "modifiers": ["Illegal production of the product.", "Illegal disposal of the product.",
           "Illegal trade of the product.", "The product is expired.", "The product is damaged.", "The product is illegal.", "People's lives were put into risk.",
-          "medicinal drugs or sanitary product", "fraudulent information spread", "There is a proof of full accountability.", "There is proof of full accountability", "Illegal transport", 
+          "medicinal drugs or sanitary product", "fraudulent information spread", "There is a proof of full accountability.", "Illegal transport", 
           "document fraud", "The suspect is a government employee/civil servant.", "large scale of distribution", "distribution to underage",
           "The suspect belongs to a criminal group.", "public promotion", "Crime concerns doping", "coercion", "alimentary product", "Crime concerns poisoning",
-          "There is proof of full accountability", "Crime concerns recreational drugs", "A huge quantity of the product.", "conspiracy", "encouragement of illegal activities"], 
+          "Crime concerns recreational drugs", "A huge quantity of the product.", "conspiracy", "encouragement of illegal activities"], 
           "weight": 1,
           "associated_articles": [359, 360, 361, 362, 362.2, 362.3, 362.4, 362.5, 362.6,
             363, 364, 365, 366, 367, 368, 369, 370, 371, 172, 373, 374, 375, 376, 377, 378]
