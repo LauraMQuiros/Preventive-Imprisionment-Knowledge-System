@@ -233,8 +233,8 @@
               "modifiers":["high cultural value", "large quantity", "Illegal trade", 
               "Illegal storage", "Illegal ownership", "Illegal manipulation", "public health violation", 
               "public administration obstruction", "There is proof of full accountability", "leader of organization", "The suspect belongs to a criminal group",
-              "personal benefit", "The suspect is a government employee/civil servant", 
-              "The suspect is a health worker", "encouragement of illegal activities", "conspiracy", "coercion"],
+              "personal benefit", "The suspect is a government employee/civil servant.", 
+              "The suspect is a health worker.", "encouragement of illegal activities", "conspiracy", "coercion"],
               "weight": 0.25,
               "associated_articles":[298, 299, 300, 301, 302, 303, 304, 368, 372, 374, 66.2, 33.7]
             }
@@ -251,12 +251,12 @@
           "associated_articles": [147, 148, 149, 150]
           },
           "Reckless": {
-            "modifiers":["Assault occured due to the use of vehicles", "Assault occured due to the use of firearms.", "Assult occured due to professional negligence", "High degree of violence"],
+            "modifiers":["Assault occured due to the use of vehicles", "Assault occured due to the use of firearms.", "Assult occured due to professional negligence", "The crime commited involved a high degree of violence."],
             "weight": 0,
             "associated_articles": [152]
           },
           "Gender based": {
-            "modifiers": ["The victim is a female","High degree of violence"],
+            "modifiers": ["The victim is a female.","The crime commited involved a high degree of violence."],
             "weight": 0.75,
             "associated_articles": [153]
           }
@@ -267,7 +267,7 @@
         "Crimes of Category": {
           "Trafficking": {
             "modifiers":["The victim is vulnerable or underage.", "People's lives were put into risk",
-             "abuse of authority/status", "The suspect belongs to a criminal group", "leader of organization"],
+             "The suspect abused their authority/status.", "The suspect belongs to a criminal group", "The suspect is a leader of a criminal organization."],
             "weight": 1,
             "associated_articles": [177.2]
           },
@@ -326,7 +326,7 @@
             "associated_articles": [197.3, 197.4, 198]
           },
           "Revealing secrets known through profession": {
-            "modifiers":["Breach of the obligation of confidentiality", "The suspect belongs to a criminal group"],
+            "modifiers":["Breach of the obligation of confidentiality.", "The suspect belongs to a criminal group."],
             "weight": 0,
             "associated_articles": [197.4, 199]
           }  
@@ -337,7 +337,7 @@
         "crime_category_weight": 0.25, 
         "Crimes of Category": {
           "Break In": {
-            "modifiers":["High degree of violence", "abuse of authority/status"],
+            "modifiers":["The crime commited had a high degree of violence.", "abuse of authority/status"],
             "weight": 0.5,
             "associated_articles": [202, 204]
           },

@@ -273,10 +273,11 @@ def final_conclusions():
         #Get the antecedents with a weight of 0 out
         selected_antecedents= []
         selected_status = []
-        for a in range(len(antecedents)):
-            if crimes_of_category[antecedents[a]]['weight'] >= 0.25:
-                selected_antecedents += [antecedents[a]]
-                selected_status += [status[a]]
+
+        for stat, crime in zip(status, antecedents):
+            if crimes_of_category[crime]['weight'] >= 0.25:
+                selected_antecedents += [crime]
+                selected_status += [stat]
 
         #add the weights of the rest
         for crime in selected_antecedents:
