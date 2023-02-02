@@ -100,7 +100,7 @@
 %\newtcolorbox{problemAnswerR}[1][]{enhanced jigsaw,breakable,sharp corners,colback=cornflowerblue!20,leftrule=6pt,toprule=1pt,rightrule=1pt,bottomrule=1pt,parbox=false}
 
 
-\title{Report Knowledge Technology Practical}
+\title{\textbf{Report Knowledge Technology Practical}}
 \author{Laura M Quirós (s4776380) \\ Anna Gumenyuk (s3893464) \\ Mik Claessens (s4370244)}
 \date{\today}
 
@@ -108,34 +108,46 @@
 
 \maketitle
 
-\section{Problem}
-In our Knowledge system we attempt to recreate the decision process that a judge makes when deciding if someone goes to preventive prison. The contextual environment is the Spanish justice system. This decision is mainly based in two factors: whether the arrested person is an active danger to society and whether they will be able to be hold accountable for their actions when the time of the trial comes. This second factor refers to how likely is for the subject to flee such that they cannot be located afterwards. \\
-These factors are evaluated by a judge after the arrested person has been in custody, a period of time in which they have been processed. The national and/or local police has emitted a report on the crime and the regarding civil servant has taken the person's antecedents and contact information. The police report includes the arrested person's testimony and that of witnesses if there were any. \\
-The civil servant compiles these three elements and highlights the antecedents of the same category for the judge to consider (more on crime categories in the domain model subsection). Usually there is a hearing with the arrested person in which a second testimony is compiled by the civil servant in presence of judge, lawyer and fiscal, but this is only relevant to posterior trial. The judge has already decided whether this person will go to prison or not.
+\section{Introduction to the problem}
+In our Knowledge system we attempt to recreate the decision process that a judge makes when deciding if someone goes to preventive prison. We will talk about preventive prison as the period of incarceration leading to a trial. The contextual environment is the Spanish justice system. This decision is mainly based in two factors: whether the arrested person is an active danger to society and whether they will be able to be hold accountable for their actions when the time of the trial comes. This second factor refers to how likely is for the subject to flee such that they cannot be located afterwards. 
+
+These factors are evaluated by a judge after the arrested person has been in custody, a period of time in which they have been processed. The national and/or local police has emitted a report on the crime and the regarding civil servant has taken the person's criminal record and contact information. The police report includes the arrested person's testimony and that of witnesses if there were any. 
+
+The civil servant compiles these three elements (criminal record, police report and personal information) and highlights the past crimes of the same category for the judge to consider (more on crime categories in the domain model subsection). This way, the judge can draw a profile of the suspected criminal. Usually there is a hearing with the arrested person in which a second testimony is compiled by the civil servant in presence of judge, lawyer and fiscal, but this is only relevant to posterior trial. By then, the judge has already decided whether this person will go to preventive prison until the trial or not.
 For our knowledge system, we try to simulate this decision-making process for some of the most common crime categories, according to data provided by our expert.
 
 \section{Expert}
-Purificación Conesa is a testimony transcriptor and civil servant in the 4th court division of general criminal prosecution, having worked previously in the 13th of the same division, 9th and 10th court division of management of crimes against public administration, 2nd court division of managements of crimes committed by minors and Province Courts of Justice in Cádiz and Gran Canaria . Has a degree in Law and has worked in the Spanish justice system over 20 years.
+Purificación Conesa is a testimony transcriptor and civil servant in the 4th court division of general criminal prosecution, having worked previously in the 13th of the same division, 9th and 10th court division of management of crimes against public administration, 2nd court division of managements of crimes committed by minors and Province Courts of Justice in Cádiz (Andalucía, Spain) and Gran Canaria (Canary Islands, Spain). Has a degree in Law by the university of Cádiz and has worked in the Spanish justice system over 20 years. Three meetings of around two hours were hold in which the expert first introduced the legal details of the judges decision-making process concerning sending people to preventive prison, reviewed the weight assignments and made test cases to determine the system's accuracy.
 
 \section{Role of Knowledge Technology}
 This decision-making process is a perfect example of a situation in which Knowledge Technology can be easily implemented. There is a limited and defined knowledge domain that contains all concepts necessary to make an expert judgement. This decision considers not only the elements of the domain, but the combination and modified variants of each of them. 
 The topic is intuitive enough for us to infer a sense of relevance of each of the elements such that we can build most of the model independently. This way only the details have to be supervised by the expert to create accurate judgement.
 
 \section{The knowledge models}
-\subsection{Problem Solving model}
-%% how is the decision made usually, what information the judge gets (antecedents, police report (type, witness info, adj), contact info)
-The first thing we will ask for input is the estimated crime contained in the police report. As mentioned in the first section, there are three elements to the information the judge uses to make the decision: antecedents, police report and contact information.\\
-\\
-\textbf{Antecedents} Out of the antecedents, the judge only looks at the ones highlighted, which belong to the category of the estimated crime. For this, we will filter our knowledge base and offer to fill in only antecedents belonging to the same category.\\
+DISCLAIMER: We will talk about the crimes in the criminal record as ``antecedents", which is a direct translation. Other direct translations may be found.
 
-\textbf{Police Report} From the police report we ask for three pieces of information. 
+\subsection{Problem Solving model}
+%% how is the decision made usually, what information the judge gets (antecedents, police report (type, witness info adj), contact info)
+The first thing we will ask for input is the estimated crime contained in the police report. As mentioned in the first section, there are three elements to the information the judge uses to make the decision: antecedents, police report and contact information.
+\\
+\textbf{Antecedents} Out of the antecedents, the judge only looks at the ones highlighted, which belong to the category of the estimated crime. For this, we will filter our knowledge base and offer to fill in only antecedents belonging to the same category.
+
+\textbf{Police Report} From the police report we ask for two pieces of information (more in domain model). 
 \begin{itemize}
     \item Whether the police report is national or local
-    \item Modifiers of the estimated crime (more in domain model)
-    \item Adjacent crimes (more in domain model)
+    \item Modifiers of the estimated crime 
 \end{itemize}
-We do not consider witnesses reports because, according to our expert, they are rarely influential, and cannot be trusted, specially if the witness' relationship with the victim or arrested person is unknown. Given the little influence, we decided to cut this out of the model. \\
-If a model were to be issued taking this factor into consideration, we would need weights for whether the person's statement confirms or denies the facts presented by the police, as well as whether we know they belong to the inner circle to any of the people affected by the crime. \\
+We do not consider witnesses reports because, according to our expert, they are rarely influential, and cannot be trusted, specially if the witness' relationship with the victim or arrested person is unknown. Given the little influence, we decided to cut this out of the model. 
+
+If a model were to be issued taking this factor into consideration, we would need weights for whether the person's statement confirms or denies the facts presented by the police, as well as whether we know they belong to the inner circle to any of the people affected by the crime. 
+
+Although the police report only contains one estimated crime by which the person has been arrested for, it may happen that there is also a mention of an adjacent crime. We have to bear in mind there is a short time between arrest and preventive prison assessment and charges usually have not been pressed yet. In fact, sometimes the main crime is not even clear, especially if the report is issued by local police. However, local police only takes care of lower-level crimes, that in their majority do not require the arrested person to be sent to preventive prison. \\
+These adjacent crimes are mostly assault accusations belonging to the "On injuries" category (there has been a robbery with violence or a murder attempt that has ended only in injury). 
+
+Our model follows the intuition of our expert, who presented the following example:
+In the case of a homicide attempt ending in injuries, the report would contain both homicide with an attempt modifier and the assault with a severity modifier separately.
+It can be argued that a better model implementation should consider these as parallel crimes and compare the values of both. If we have several antecedents for assault but none for homicide, it is likely that the person will be sent to prison because of the assault crime, which is what makes him truly dangerous. The civil servant makes this distinguishing (of which crime may be the most important) when highlighting the antecedents, but the judge will supervise both and decide on its own which one, if any, is serious enough to send the alleged criminal to prison. \\
+Because of this risk evaluation being made for all crimes in parallel, we thought it was unnecessarily complex to add a feature for adding an unknown amount of adjacent crimes. The model could be run with each crime individually and then each result could be compared. 
 
 \textbf{Contact Information} Out of the contact information we ask the following information, taken from the civil registry and police report.
 \begin{itemize}
@@ -153,47 +165,46 @@ For this expert we limited the categories down to the following 8:
 \begin{itemize}
     \item Title I: Homicide and its forms
     \item Title III: On injuries
-    \item Title VI: Crimes against liberty
-    \item Title VII bis: Trafficking in human beings
+    \item Title VI: Crimes against freedom
+    \item Title VII bis: Human trafficking
     \item Title IX: Of the omission of the duty of relief
     \item Title X: Crimes against privacy , the right to one's own image and the inviolability of the home
     \item Title XIII: Crimes against property and against the socioeconomic order
-    \item Title XVII: Crimes against collective security
+    \item Title XVII: Crimes against public security
 \end{itemize}
-%Within each of them there are a total of SOME crimes
+With each of them there are a total of 49 crimes.
 
-As we read through the criminal code we find there are several ways the value of a crime can be increased or decreased. These are also known as "degrees" to a crime, although we will talk of them as modifiers. There are modifiers that reduce the seriousness of a crime and some that increases them (aggravating modifiers). %For this expert system we will ignore the modifiers that decrease the value of the crime, since a crime in itself is unlikely to reach the threshold by itself an
-We find modifiers that are common across categories, such as if the victim(s) belong to a vulnerable group or if the crime is byproduct of negligent behavior. Some modifiers are property-dependent, such as belonging to a criminal organization in privacy-related crimes or illegal documentation in crimes against public security. However, most of the modifiers are still very much dependent on the crime itself.
+As we read through the criminal code we find there are several ways the value of a crime can be increased or decreased. These are also known as "degrees" to a crime, although we will talk of them as modifiers. There are modifiers that reduce the seriousness of a crime and some that increases them (aggravating modifiers). For this expert system we will ignore the modifiers that decrease the value of the crime for the only reason that they are mostly added in the trial, when proper argumentation and evidence has been presented. However, aggravating modifiers are often more objective, such as "vulnerable victim" or "high degree of violence" which is determined by the medical report often embedded in the police report. 
 
-Although the police report only contains one estimated crime by which the person has been arrested for, it may happen that there is also a mention of an adjacent crime. We have to bear in mind there is a short time between arrest and preventive prison assessment and charges usually have not been pressed yet. In fact, sometimes the main crime is not even clear, especially if the report is issued by local police. However, local police only takes care of lower-level crimes, that in their majority do not require the arrested person to be sent to preventive prison. \\
-These adjacent crimes are mostly assault accusations belonging to the "On injuries" category (there has been a robbery with violence or a murder attempt that has ended only in injury). We consider these as parallel crimes and compare the values of both. \\
-In the case of a homicide attempt ending in injuries, the model would compute both homicide with an attempt modifier and the assault with a severity modifier separately. If we have several antecedents for assault but none for homicide, it is likely that the person will be sent to prison because of the assault crime, which is what makes him truly dangerous. If we did not consider the adjacent crime but as a modifier, the antecedents of the assault category wouldn't be accounted for, leading to an inaccurate judgement.
+We find modifiers that are common across categories, such as if the victim(s) belong to a vulnerable group or if the suspect is known to belong to a criminal organization. Some modifiers are property-dependent, such as document fraud in crimes against public security or illegal documentation in crimes against public security. However, most of the modifiers are still very much dependent on the crime itself. \\
 
 \subsection{Rule model}
 %% Three-part component of decision-making and the rules that compose it
-In the same way that the problem-solving is divided into three parts, we will explain how each of the rules are computed withing these three steps. The final output of this expert system is a weight with unknown range so far (We are still figuring out some weights for certain crimes). With this number we aim to provide an indication of how likely is for the arrested person to go to prison. We also want to provide a report in which it is explained what the weights are for the most relevant input information. We will be able to do this thanks to the separation of the number computation in those 3 parts. \\
+In the same way that the decision-making process of the judges is divided into three parts, we will explain how each of the rules are computed withing these three steps. The final output of this expert system is a weight usually ranging between 0.5 and 3 but it may increase if the number of antecedents is high enough. With this number we aim to provide an indication of how likely is for the arrested person to go to prison. We also want to provide a report in which it is explained what the weights are for the most relevant input information. We will be able to do this thanks to the separation of the number computation in those 3 parts. \\
 The final amount X follows the equation 
 \begin{equation}
     X = C_R(A_w+ C_w+F_w)
 \end{equation}
-in which $C_R$ is the coefficient associated to the reliability of the police report, $A_w$ is the weight of the antecedent section, $C_w$ is the weight of the estimated crime and $F_w$ is the weight of the fleeing risk.\\
+in which $C_R$ is the coefficient associated to the reliability of the police report, $A_w$ is the weight of the antecedents section, $C_w$ is the weight of the estimated crime and $F_w$ is the weight of the fleeing risk.
+
 The coefficient associated to a national police report is 1, since we can assume their information is reliable. However, if it's a local police report, it is possible that the estimated crime is not correct, case in which we would be computing the wrong antecedents and an inaccurate fleeing risk. We account for this with a lower coefficient report.
 
 \textbf{Antecedent Weight ($A_w$)}
 \begin{equation}
     A_w= a * (category_c \sum^{k} C_{wk})
 \end{equation}
-We compute the antecedent weight by multiplying the antecedents to a constant value a, which ensures that the outcome is not as relevant as the weight of the estimated crime. However a summation of a large number of antecedents is able to reach threshold.\\
+We compute the Antecedent weight by multiplying the antecedents to a constant value a, which ensures that the outcome is not as relevant as the weight of the estimated crime. However a summation of a large number of antecedents is able to reach threshold.\\
 $Category_c$ relates to the weight of the category that the crime belongs to, which we multiply by the sum of the k crimes that the person may have committed from the same category. We make this distinction because some categories hold more serious crimes than others. \\
-$C_{wk}$ is the weight of the k-th crime committed, so that we are not adding the same amount for different crimes. A previous intentional homicide cannot be evaluated the same as a reckless homicide. \\
+$C_{wk}$ is the weight of the k-th crime committed, so that we are not adding the same amount for different crimes. A previous crime of intentional homicide in which cannot be evaluated the same as a reckless homicide. 
+
+Although antecedents in which the person was not found guilty nor sent to preventive prison are not accounted for in this addition, they do are highlighted as belonging to the same category and we decided to keep them. We provide also the possibility of distinguishing between antecedents in which the person was found guilty and those in which he was not, but was still sent to preventive prison. This does not make a difference to out system since there were reasons to consider him dangerous or likely to flee behind both scenarios.
 
 \textbf{Crime Weight ($C_w$)}
 \begin{equation}
-    C_w= category_c (C_w + ((n_a -n_m) *C_{modifier}))
+    C_w= category_c (C_w + (n *C_{modifier}))
 \end{equation}
-The equation of the crime weight is similar to the calculation of the antecedents in the sense that it's based on the category weight ($category_c$) and the crime weight ($C_w$). However, we take into account the modifiers in this equation (more information on modifiers in Domain model subsection). The $n$ refers to the number of modifiers, being $n_a$ the number of aggravating modifiers and $n_m$ the number of mitigating modifiers. The result of the subtraction between the two is multiplied by the modifier coefficient $C_modifier$, which we aim to set constant across all categories.
-This decision stems from the fact that although modifiers do differ in severity, we are still working with an estimation of what the crime may be. The definition of what the crime has been is only determined in the trial and the judge is aware that the modifiers may change after charges are pressed. \\
-How to evaluate mitigating and aggravating modifiers is still an ongoing discussion. An example case would be a car crash with reckless behavior and alcohol consumption. The alcohol consumption is interpreted as a mitigating modifier such that the person is not dangerous itself, and we could say it compensates for the reckless behavior. 
+The equation of the crime weight is similar to the calculation of the antecedents in the sense that it's based on the category weight ($category_c$) and the crime weight ($C_w$). However, we take into account only the number of aggravating modifiers ($n$) in this equation (more information on modifiers in Domain model subsection) and we multiply them by a constant modifier coefficient ($C_{modifier}$).
+This decision stems from the fact that although modifiers do differ in severity, we are still working with an estimation of what the crime may be. The definition of what the crime has been is only determined in the trial and the judge is aware that the modifiers may change after charges are pressed. 
 
 \textbf{Fleeing weight ($F_w$)}
 \begin{equation}
@@ -201,11 +212,44 @@ How to evaluate mitigating and aggravating modifiers is still an ongoing discuss
 \end{equation}
 The fleeing risk takes into account the seriousness of the crime category $category_c$ and crime weight $C_w$ as well as the sum of all the questions mentioned in the Problem-solving model subsection, which have yes/no solutions. If the answer is a reason why they might not leave the country (stable family, job or residency), the coefficient $C_i$ will be 1, otherwise it will be 0. There is one exception, which is the question about the stability of the person. This is extracted from the police report. There are no psychological evaluations made to the person before the arrival prison, but if the behavior is specially dangerous or unpredictable this will be considered a reason for them to be sent to prison. It is considered that addicts and severely imbalanced individuals are more likely to be a danger to society.
 
-%\subsection{Inference type}
-%\section{User interface, functionality, tools used}
-%\section{Walkthrough of a session} 
-%\section{Validation of knowledge models} %with the expert
-%\section{Task division} %among group members
-%\section{Reflection} % experiences? role of knowledge technology? problems? evaluation of used techniques? lessons?
+\subsection{Inference type}
+We designed our model to use forward chaining as inference type. We use this instead of justifying a decision by using the information that we have, which is backward chaining. Our model is data-driven. The data inputted into our model is used, made inferences upon, and will finally work towards a result. For the knowledge base, we used JSON format and paired with that we use the functionality of the JSON package for Python in our program. Furthermore, we use the pyplot package from matplotlib to create visual representation of data, and the packages numpy and pandas for easier data processing. 
+
+\section{User interface, functionality, and tools used}
+For our knowledge system, we worked entirely with the programming language Python. This gives us the main advantage of huge community support and thus provided packages. For the user interface, we used such a package. This package is streamlit, and it provides an easy way to turn our program into an application, with which users can easily interact with.
+
+\section{Walkthrough of a session} 
+\begin{itemize}
+    \item The session starts with the estimated crime and category being selected. These and their weights are stored in the session states as we click on next to go to the next page.
+    \item We now choose the antecedents. We store the name of the antecedent and the status of conviction (Guilty, Not Guilty, Not Guilty and preventive imprisoned) in an array. When all antecedents are selected, they are compiled in a table and stored in the session state. Selected antecedents can be deleted before compilation and storage in the session state. There is also an option to not select any antecedents.
+    \item After that, the weight is computed according to the Antecedent Weight function (more information in rule model subsection) and we can check what the police report says. The type of police report is also stored in the session state. The modifiers to the crime are summed up. 
+    \item After that, the weight is computed according to the Crime Weight function (more information in rule model subsection) and we can check the information from our suspect. This is stored in the session state.
+    \item Finally, we reach the report page in which a color-coded bar shows the result and a conclusion is drawn based on a threshold, and a breakdown of each of the 3 weights and how they were computed. These where all computed from the session state.
+\end{itemize}
+
+\section{Validation of knowledge models} %with the expert
+Our knowledge system is very reliant on weights. This in itself brings more complexity than simple if-then rules. These weights are originally set by us, however, our expert has approved or adjusted the weights so it resembles the judgement of an expert. 
+The weights set in the first and second round of revision, along with the final numbers approved or changed by the expert can be found in the pdf document additional to this report. 
+In the final meeting the expert made use of our system with two examples. In one of them she decided to simulate an scenario in which the main crime was corruption in business. There were several antecedents, one modifiers and the person had a perfectly ideal behavior (non-addict with residency, family and job). This amount was not above threshold, which was something she agreed with.
+After this example we repeated the operation with the default crime of nuclear manipulation in the crimes against public security category. This time several antecedents but no modifiers were added. The person behaved violently and did not have a job. This case did reach threshold and the expert agreed with the system's conclusion.
+
+\section{Task division} %among group members
+\begin{itemize}
+    \item Anna Gumenyuk: construction of the knowledge base, design of the streamlit pages, component management and backend
+    \item Mik Claessens: construction of the knowledge base, setting of the weights
+    \item Laura M Quirós: construction of the knowledge base, main point of contact with expert, design of the weight computation, coding of the streamlit page
+\end{itemize}
+\section{Reflection} % experiences? role of knowledge technology? problems? evaluation of used techniques? lessons?
+The role of knowledge technology is that of another renewal for knowledge management. In our project we found a domain of expertise that challenged us from the very beginning. In Spain, it is likely that you don't go to preventive prison for crimes that, for some, are serious enough. Moral concerns were present and at the same time, there was quite a bit of pressure. The whole purpose of this knowledge system is to judge how much of a risk a person is for society or how likely it is that they will not be located when the time of the trial comes. 
+
+This decision-making can set the lifestyle of the alleged criminal for often over a year, without any official trial being made. The legal environment being so unfamiliar to us as internationals did not help much either. The terminology was complex and we had to go through quite a bit of text in order to classify all of the crucial elements.
+
+Streamlit was a nice environment to work in and the existence of projects in this platform also made in orientation to the completion of this course did help. We added streamlit-aggrid for further perfection of the app. This was done for the presentation of the antecedents in a  way that allowed the user to select those antecedents that had to be removed.  %add sth here maybe @anna?
+
+We learned very intuitive way to deploy an app while working entirely in python and to create tailored decision-making processes. The communication with the expert was fluent and insightful, which eased our project in a substantial manner. The workload was doable and although we had our minor pushing and syncing issues with github, there was no serious challenge we could not overcome with the aid of teaching assistants and nicely asked questions to google.
+
+There was, however, trouble implementing the streamlit-aggrid in everyone's computer. It occurred due to the fact that to install that package, the user had to specify a desired version, which is not always necessary. As such, quite a lot of time was spent figuring the issue out. It is important to say that in general, despite the accessibility of streamlit, it was not always easy to work with it. Some desired simple features were not built-in, hence we had to improvise with more complex packages, such as streamlit-aggrid. Nevertheless, we successfully managed to complete the project as we envisioned it initially. 
+
+
 \printbibliography
 \end{document}
