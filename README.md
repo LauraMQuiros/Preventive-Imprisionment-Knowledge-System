@@ -1,15 +1,13 @@
 # Preventive Imprisionment  - Knowledge Technology Practical
 ![Initial overview](/img/Intro.png)
-https://img.shields.io/tokei/lines/github/LauraMQuiros/Preventive-Imprisionment-Knowledge-System
+![Lines of code](https://img.shields.io/tokei/lines/github/LauraMQuiros/Preventive-Imprisionment-Knowledge-System)
 
 ## Environment
 Some specifications about the requirements are in the file `Requirements.txt`. 
-
 The main command to run the code (in VS) is 
 ```
 python3 -m streamlit run main.py
 ```
-
 The knowledge system can also be accessed through [this link](https://huggingface.co/spaces/captainanna/KTP_preventive_Prison)
 
 ## Description
@@ -19,5 +17,8 @@ This knowledge system evaluates both factors through the summation and multiplic
 This allows to compute the likelihood of a person to go to preventive prison in the spanish justice system according to criminal record[^1], crime commited and ease of posterior location.
 
 ## Credits
+5 ECTS for the subject "Knowledge Technology Practical" taught in University of Groningen 2022-23 with code WBAI014-05. 	
+In the course, students design and construct a knowledge system based on expert knowledge. The course addresses rule-based representation and inference. Expert interviews, project planning, system evaluation, and reporting and presentation of the knowledge system are a part of the course. Attention is paid to techniques for knowledge acquisition and designing a user interface.
+@niusagumen, @MikClae and @LauraMQuiros, owner of the repository are the developers behind this code
 
 [^1]: The crimes in the criminal record are talked about as "antecedents", which is a direct translation of the spanish term for a past crime figuring in the criminal record. Other mistranslations may be found.
