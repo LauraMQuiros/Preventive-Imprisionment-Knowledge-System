@@ -1,6 +1,6 @@
 # Preventive Imprisionment  - Knowledge Technology Practical
 ![Initial overview](/img/Intro.png)
-![Lines of code](https://img.shields.io/tokei/lines/github.com/LauraMQuiros/Preventive-Imprisionment-Knowledge-System)
+![Lines of code](https://tokei.rs/b1/github.com/LauraMQuiros/Preventive-Imprisionment-Knowledge-System)
 ![GitHub last commit](https://img.shields.io/github/last-commit/LauraMQuiros/Preventive-Imprisionment-Knowledge-System)
 
 ## Environment
