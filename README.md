@@ -4,8 +4,8 @@
 [![Scc Count Badge](https://sloc.xyz/github/LauraMQuiros/Preventive-Imprisionment-Knowledge-System/)](https://github.com/LauraMQuiros/Preventive-Imprisionment-Knowledge-System/)
 ![GitHub last commit](https://img.shields.io/github/last-commit/LauraMQuiros/Preventive-Imprisionment-Knowledge-System)
 
-## Environment
-Some specifications about the requirements are in the file `Requirements.txt`. 
+## Instructions
+Specifications about the requirements are in `Requirements.txt`. Use `pip install -r requirements.txt`to ensure all dependencies are installed.
 The main command to run the code (in VS) is 
 ```
 python3 -m streamlit run main.py
@@ -27,8 +27,6 @@ This allows to compute the likelihood of a person to go to preventive prison in 
 5 ECTS for the subject "Knowledge Technology Practical" taught in University of Groningen 2022-23 with code WBAI014-05. 
 
 In the course, students design and construct a knowledge system based on expert knowledge. The course addresses rule-based representation and inference.
-
-@niusagumen, @MikClae and @LauraMQuiros, owner of the repository are the developers behind this code
 
 [^1]: More information in additional documentation folder docs, more specifically in files `report.tex` and `WeightAssignment.pdf`.
 [^2]: The crimes in the criminal record are talked about as "antecedents", which is a direct translation of the spanish term for a past crime figuring in the criminal record. Other mistranslations may be found.
